@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JML Boutique style Alibaba · Aperçu mobile (390px) — FR</title>
+<meta name="description" content="JM-ideal / JML Electric — fournisseur Midea de climatisation pour l'Afrique de l'Ouest. Aperçu mobile.">
+<style>
+
+  :root{
+    --brand-orange:#FF6A00;
+    --brand-orange-dark:#E05E00;
+    --brand-orange-soft:#FFF1E5;
+    --brand-blue:#1F3864;
+    --brand-blue-dark:#16294A;
+    --ink:#222222;
+    --ink-2:#555555;
+    --ink-3:#888888;
+    --gray-bg:#F5F6F7;
+    --border:#E4E6EB;
+    --green:#22A854;
+    --yellow:#FFC107;
+    --white:#FFFFFF;
+    --radius:8px;
+    --shadow:0 2px 12px rgba(0,0,0,.08);
+    --shadow-lg:0 8px 28px rgba(0,0,0,.14);
+    --font:"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:1240px;margin:0 auto;padding:0 20px}
+  .section{padding:64px 0}
+  .section-head{margin-bottom:36px}
+  .section-head .eyebrow{font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand-orange)}
+  .section-head h2{font-size:30px;font-weight:800;margin:8px 0 10px;color:var(--brand-blue)}
+  .section-head p{color:var(--ink-2);max-width:720px;font-size:15px}
+
+  /* ===== Top utility bar ===== */
+  .utilbar{background:var(--brand-blue);color:#fff;font-size:12.5px}
+  .utilbar .container{display:flex;justify-content:space-between;align-items:center;height:34px;flex-wrap:wrap;gap:6px}
+  .utilbar .u-left{display:flex;align-items:center;gap:18px}
+  .utilbar .u-left span{display:inline-flex;align-items:center;gap:6px;opacity:.92}
+  .utilbar svg{width:13px;height:13px;fill:var(--brand-orange)}
+
+  /* ===== Header ===== */
+  header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border)}
+  .header-main{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo-mark{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--brand-orange),var(--brand-orange-dark));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:17px;flex-shrink:0}
+  .logo-name{font-weight:800;font-size:20px;color:var(--brand-blue);line-height:1.1}
+  .logo-name small{display:block;font-size:10.5px;font-weight:600;letter-spacing:1.5px;color:var(--ink-3);text-transform:uppercase}
+  nav.main-nav{display:flex;align-items:center;gap:26px}
+  nav.main-nav a{font-size:14.5px;font-weight:600;color:var(--ink-2);padding:6px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+  nav.main-nav a:hover{color:var(--brand-orange);border-color:var(--brand-orange)}
+  .header-actions{display:flex;align-items:center;gap:12px}
+  .searchbox{display:flex;align-items:center;border:1.5px solid var(--brand-orange);border-radius:6px;overflow:hidden;background:#fff}
+  .searchbox input{border:none;outline:none;padding:8px 10px;width:190px;font-size:13px;color:var(--ink)}
+  .searchbox button{background:var(--brand-orange);border:none;color:#fff;padding:8px 14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .searchbox button svg{width:15px;height:15px;fill:#fff}
+  .btn-wa{display:inline-flex;align-items:center;gap:8px;background:var(--brand-orange);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:6px;transition:background .15s,transform .15s}
+  .btn-wa:hover{background:var(--brand-orange-dark);transform:translateY(-1px)}
+  .btn-wa svg{width:16px;height:16px;fill:#fff}
+  .nav-toggle{display:none;background:none;border:1.5px solid var(--border);border-radius:6px;width:42px;height:38px;cursor:pointer;align-items:center;justify-content:center}
+  .nav-toggle svg{width:20px;height:20px;stroke:var(--ink-2)}
+
+  /* ===== Hero ===== */
+  .hero{position:relative;background:linear-gradient(120deg,var(--brand-blue) 0%,#24437e 55%,#2c5196 100%);color:#fff;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background-image:url("https://aka.doubaocdn.com/s/ZRCV5hTvLG");background-size:cover;background-position:center;opacity:.32}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(22,41,74,.92) 8%,rgba(22,41,74,.55) 55%,rgba(31,56,100,.28) 100%)}
+  .hero-inner{position:relative;z-index:2;padding:86px 0 96px;max-width:780px}
+  .hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:22px}
+  .hero .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--brand-orange);box-shadow:0 0 0 3px rgba(255,106,0,.35)}
+  .hero h1{font-size:44px;font-weight:800;line-height:1.18;letter-spacing:-.5px;margin-bottom:16px}
+  .hero h1 .hl{color:var(--brand-orange)}
+  .hero .sub{font-size:17px;color:rgba(255,255,255,.92);max-width:660px;margin-bottom:30px}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn-orange{display:inline-flex;align-items:center;gap:9px;background:var(--brand-orange);color:#fff;font-weight:700;font-size:15.5px;padding:13px 26px;border-radius:6px;transition:background .15s,transform .15s}
+  .btn-orange:hover{background:var(--brand-orange-dark);transform:translateY(-1px)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:9px;background:transparent;color:#fff;font-weight:600;font-size:15.5px;padding:13px 24px;border-radius:6px;border:1.5px solid rgba(255,255,255,.5);transition:background .15s}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  .hero-stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);border-radius:10px;overflow:hidden;margin-top:46px}
+  .hero-stat{background:rgba(22,41,74,.55);padding:20px 22px}
+  .hero-stat b{display:block;font-size:24px;font-weight:800;color:var(--brand-orange)}
+  .hero-stat span{font-size:12.5px;color:rgba(255,255,255,.85)}
+
+  /* ===== Category bar ===== */
+  .catbar{background:#fff;border-bottom:1px solid var(--border);position:relative;z-index:5}
+  .catbar .container{display:flex;gap:6px;overflow-x:auto;padding:14px 20px;scrollbar-width:none}
+  .catbar .container::-webkit-scrollbar{display:none}
+  .cat-pill{flex-shrink:0;display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border:1.5px solid var(--border);border-radius:999px;font-size:13.5px;font-weight:600;color:var(--ink-2);background:#fff;transition:all .15s;cursor:pointer}
+  .cat-pill svg{width:15px;height:15px;fill:var(--ink-3);transition:fill .15s}
+  .cat-pill:hover{border-color:var(--brand-orange);color:var(--brand-orange)}
+  .cat-pill:hover svg{fill:var(--brand-orange)}
+  .cat-pill.active{background:var(--brand-orange);border-color:var(--brand-orange);color:#fff}
+  .cat-pill.active svg{fill:#fff}
+
+  /* ===== Products ===== */
+  #products{background:var(--gray-bg)}
+  .prod-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+  .prod-toolbar .result-count{font-size:14px;color:var(--ink-2)}
+  .prod-toolbar .result-count b{color:var(--brand-orange)}
+  .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .prod-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .18s,transform .18s;display:flex;flex-direction:column}
+  .prod-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+  .prod-card .thumb{position:relative;background:#fff;aspect-ratio:1/1;overflow:hidden}
+  .prod-card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .prod-card:hover .thumb img{transform:scale(1.05)}
+  .prod-card .tag{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:5px;background:var(--brand-orange);color:#fff;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:4px;letter-spacing:.3px}
+  .prod-card .verify{position:absolute;top:12px;right:12px;background:var(--green);color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:4px;display:inline-flex;align-items:center;gap:4px}
+  .prod-card .verify svg{width:11px;height:11px;fill:#fff}
+  .prod-card .body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+  .prod-card .cat{font-size:11.5px;font-weight:700;color:var(--brand-orange);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
+  .prod-card h3{font-size:15px;font-weight:700;line-height:1.35;margin-bottom:9px;min-height:40px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .prod-card .meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--ink-3);margin-bottom:10px}
+  .prod-card .price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:13px}
+  .prod-card .price{font-size:19px;font-weight:800;color:var(--brand-orange)}
+  .prod-card .price .per{font-size:12px;font-weight:600;color:var(--ink-3)}
+  .prod-card .price.ask{font-size:15px;color:var(--ink-2)}
+  .prod-card .btn-ask{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:auto;border:1.5px solid var(--brand-orange);color:var(--brand-orange);font-weight:700;font-size:13.5px;padding:10px;border-radius:6px;transition:all .15s}
+  .prod-card .btn-ask:hover{background:var(--brand-orange);color:#fff}
+  .prod-card .btn-ask svg{width:14px;height:14px;fill:currentColor}
+
+  /* ===== Full product line ===== */
+  .full-line{background:#fff}
+  .line-table{width:100%;border-collapse:collapse;font-size:14px}
+  .line-table thead th{background:var(--brand-blue);color:#fff;text-align:left;padding:12px 14px;font-size:13px;font-weight:700;white-space:nowrap}
+  .line-table tbody td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+  .line-table tbody tr:nth-child(even){background:#FAFBFC}
+  .line-table tbody tr:hover{background:var(--brand-orange-soft)}
+  .line-table .pname{font-weight:700;color:var(--ink)}
+  .line-table .asklink{color:var(--brand-orange);font-weight:700;white-space:nowrap}
+
+  /* ===== Why us ===== */
+  #why{background:var(--gray-bg)}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .why-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:26px 24px;transition:box-shadow .18s}
+  .why-card:hover{box-shadow:var(--shadow)}
+  .why-card .ic{width:48px;height:48px;border-radius:10px;background:var(--brand-orange-soft);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .why-card .ic svg{width:24px;height:24px;fill:var(--brand-orange)}
+  .why-card h3{font-size:17px;font-weight:700;color:var(--brand-blue);margin-bottom:8px}
+  .why-card p{font-size:13.5px;color:var(--ink-2)}
+
+  /* ===== Company profile ===== */
+  #company{background:#fff}
+  .company-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start}
+  .company-wrap .profile p{font-size:15px;color:var(--ink-2);margin-bottom:16px}
+  .company-wrap .profile h3{font-size:20px;font-weight:800;color:var(--brand-blue);margin-bottom:12px}
+  .company-points{list-style:none;margin-top:6px}
+  .company-points li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;font-size:14px;color:var(--ink-2)}
+  .company-points svg{width:18px;height:18px;fill:var(--green);flex-shrink:0;margin-top:2px}
+  .credential-card{background:var(--brand-blue);color:#fff;border-radius:12px;padding:28px;position:sticky;top:90px}
+  .credential-card h3{font-size:18px;font-weight:800;margin-bottom:18px;color:#fff}
+  .credential-card .cred-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+  .credential-card .cred-item:last-child{border-bottom:none}
+  .credential-card .cred-item svg{width:20px;height:20px;fill:var(--brand-orange);flex-shrink:0;margin-top:3px}
+  .credential-card .cred-item b{display:block;font-size:14px;font-weight:700}
+  .credential-card .cred-item span{font-size:12.5px;color:rgba(255,255,255,.82)}
+
+  /* ===== Contact ===== */
+  #contact{background:linear-gradient(135deg,var(--brand-blue) 0%,var(--brand-blue-dark) 100%);color:#fff}
+  #contact .section-head h2{color:#fff}
+  #contact .section-head p{color:rgba(255,255,255,.8)}
+  #contact .section-head .eyebrow{color:var(--brand-orange)}
+  .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .contact-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:26px;transition:background .15s}
+  .contact-card:hover{background:rgba(255,255,255,.12)}
+  .contact-card .ic{width:46px;height:46px;border-radius:10px;background:var(--brand-orange);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .contact-card .ic svg{width:22px;height:22px;fill:#fff}
+  .contact-card h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
+  .contact-card p{font-size:13.5px;color:rgba(255,255,255,.85);margin-bottom:12px}
+  .contact-card .value{font-size:16px;font-weight:800;color:#fff;word-break:break-all}
+  .contact-card .sub-note{font-size:12.5px;color:rgba(255,255,255,.7);margin-top:4px}
+  .contact-card a.btn-orange{justify-content:center;margin-top:6px;display:flex}
+
+  /* ===== Footer ===== */
+  footer{background:#101d33;color:rgba(255,255,255,.75);font-size:13px}
+  .footer-main{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:36px;padding:52px 0 38px}
+  .footer-main h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:16px}
+  .footer-main p{line-height:1.8}
+  .footer-main ul{list-style:none}
+  .footer-main ul li{padding:5px 0}
+  .footer-main ul a{color:rgba(255,255,255,.75);transition:color .15s}
+  .footer-main ul a:hover{color:var(--brand-orange)}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:18px 0;text-align:center;color:rgba(255,255,255,.55);font-size:12.5px}
+
+  /* ===== Mobile ===== */
+  @media (max-width:1024px){
+    .prod-grid{grid-template-columns:repeat(3,1fr)}
+    .why-grid{grid-template-columns:repeat(2,1fr)}
+    .footer-main{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:820px){
+    nav.main-nav{display:none;position:absolute;top:66px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);flex-direction:column;align-items:flex-start;padding:14px 20px;gap:4px}
+    nav.main-nav.open{display:flex}
+    nav.main-nav a{width:100%;padding:12px 0;border-bottom:1px solid var(--border);border-bottom-color:var(--border)}
+    .nav-toggle{display:flex}
+    .searchbox{display:none}
+    .hero h1{font-size:31px}
+    .hero-stats{grid-template-columns:repeat(2,1fr)}
+    .hero-stat b{font-size:20px}
+    .company-wrap{grid-template-columns:1fr}
+    .credential-card{position:static}
+    .contact-grid{grid-template-columns:1fr}
+    .prod-grid{grid-template-columns:repeat(2,1fr)}
+    .section{padding:48px 0}
+    .section-head h2{font-size:25px}
+    .header-actions .btn-wa span.hide-m{display:none}
+    .btn-wa{padding:10px 14px}
+  }
+  @media (max-width:520px){
+    .prod-grid{grid-template-columns:1fr}
+    .why-grid{grid-template-columns:1fr}
+    .footer-main{grid-template-columns:1fr;gap:24px}
+    .utilbar .u-left span:nth-child(2){display:none}
+  }
+
+  /* ===== Floating WhatsApp button ===== */
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:400;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 26px rgba(0,0,0,.30);transition:transform .15s,background .15s;text-decoration:none}
+  .wa-float:hover{transform:translateY(-2px);background:#1fb959}
+  .wa-float svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
+  .wa-float .wa-badge{position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:#FF6A00;border:2px solid #fff;border-radius:50%}
+  @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+  .wa-float{animation:waPulse 2.2s infinite}
+  @media (max-width:640px){
+    .wa-float{padding:14px;border-radius:50%;bottom:18px;right:18px}
+    .wa-float span{display:none}
+  }
+
+
+  /* ===== Phone stage / frame ===== */
+  html{background:#0e1626}
+  body{background:#0e1626;margin:0;padding:28px 0 40px}
+  .phone-stage{display:flex;justify-content:center;padding:0 12px}
+  .phone-frame{width:390px;max-width:100%;background:#fff;border-radius:36px;border:10px solid #1a1a1a;box-shadow:0 24px 60px rgba(0,0,0,.55);overflow:hidden;position:relative}
+  .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:150px;height:26px;background:#1a1a1a;border-radius:0 0 16px 16px;z-index:200}
+  .phone-content{height:760px;overflow-y:auto;scrollbar-width:none}
+  .phone-content::-webkit-scrollbar{display:none}
+  .utilbar .container{flex-wrap:wrap;height:auto;padding:6px 12px;gap:4px}
+  .utilbar .u-left span:nth-child(2){display:none}
+  header{top:0}
+  .hero-inner{padding:56px 0 60px}
+  .hero h1{font-size:27px}
+  .section{padding:40px 0}
+  .container{padding:0 16px}
+  .section-head h2{font-size:22px}
+  .prod-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .prod-card h3{min-height:0;font-size:13.5px;-webkit-line-clamp:3}
+  .prod-card .price{font-size:16px}
+  .why-grid{grid-template-columns:1fr;gap:12px}
+  .line-table{font-size:12.5px}
+  .line-table thead th,.line-table tbody td{padding:9px 8px}
+  .credential-card{position:static}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-main{grid-template-columns:1fr 1fr;gap:22px;padding:38px 0 26px}
+  .footer-main h4{margin-bottom:10px}
+  .footer-bottom{font-size:11px}
+  @media (max-width:420px){
+    .prod-grid{grid-template-columns:1fr}
+    .hero-stats{grid-template-columns:1fr 1fr}
+  }
+
+</style>
+</head>
+<body>
+  <div class="phone-stage">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-content">
+
+
+  <!-- ===== Top utility bar ===== -->
+  <div class="utilbar">
+    <div class="container">
+      <div class="u-left">
+        <span><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> Shunde, Foshan, Guangdong, China</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> Tema (Ghana) · Tincan (Nigeria)</span>
+      </div>
+      <div class="u-left">
+        <span>Expédition port à port vers l'Afrique de l'Ouest</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="container header-main">
+      <a class="logo" href="#top">
+        <div class="logo-mark">JM</div>
+        <div class="logo-name">JM-ideal<small>JML Electric Appliance Ltd</small></div>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#products">Produits</a>
+        <a href="#company">Profil Entreprise</a>
+        <a href="#why">Pourquoi Nous Choisir</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="searchbox">
+          <input type="text" id="searchInput" placeholder="Rechercher un climatiseur...">
+          <button type="button" id="searchBtn" aria-label="Search"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
+        </div>
+        <a class="btn-wa" href="https://wa.me/8613318393556?text=Bonjour%20JM-ideal%2C%20je%20veux%20un%20devis%20pour%20des%20climatiseurs." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          <span class="hide-m">Obtenir un Devis</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="badge"><span class="dot"></span>Agent Agréé Midea · Afrique de l'Ouest</div>
+        <h1>Climatiseurs haut de gamme. <span class="hl">Solutions de refroidissement complètes.</span> Livrés en Afrique de l'Ouest.</h1>
+        <p class="sub">Climatiseurs, fluides frigorigènes, pièces d'installation, pièces détachées et refroidissement solaire en gros — une offre unique depuis le pôle de l'électroménager chinois, conçue pour les distributeurs et installateurs du Ghana, du Nigéria et de l'Afrique de l'Ouest.</p>
+        <div class="cta-row">
+          <a class="btn-orange" href="https://wa.me/8613318393556?text=Bonjour%20JM-ideal%2C%20veuillez%20envoyer%20votre%20tarif%20pour%20l%27Afrique%20de%20l%27Ouest." target="_blank" rel="noopener">Demander le Tarif</a>
+          <a class="btn-ghost" href="#products">Voir les Produits</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>18+</b><span>Gammes de Produits</span></div>
+          <div class="hero-stat"><b>30 yrs</b><span>Ans d'Expérience HVAC</span></div>
+          <div class="hero-stat"><b>3</b><span>Pays de Marché</span></div>
+          <div class="hero-stat"><b>&lt;24h</b><span>Réponse aux Devis</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Category bar ===== -->
+  <div class="catbar">
+    <div class="container" id="catBar">
+      <button class="cat-pill active" data-cat="all">Tous les Produits</button>
+      <button class="cat-pill" data-cat="split">Split AC</button>
+      <button class="cat-pill" data-cat="inverter">Climatiseur Inverter</button>
+      <button class="cat-pill" data-cat="solar">Climatiseur Solaire</button>
+      <button class="cat-pill" data-cat="portable">Portable</button>
+      <button class="cat-pill" data-cat="commercial">Commercial</button>
+      <button class="cat-pill" data-cat="cold">Chaîne du Froid</button>
+      <button class="cat-pill" data-cat="parts">Pièces &amp; Outils</button>
+    </div>
+  </div>
+
+  <!-- ===== Featured products ===== -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Produits Vedettes</div>
+        <h2>Climatiseurs Phares pour l'Afrique de l'Ouest</h2>
+        <p>Prix direct usine avec l'authenticité Midea garantie. Chaque appareil est prêt pour le réseau 220V/50Hz et les cycles de chaleur courants en Afrique de l'Ouest.</p>
+      </div>
+      <div class="prod-toolbar">
+        <div class="result-count"><b id="countLabel">8</b> produits</div>
+        <div style="font-size:13px;color:var(--ink-3)">Tous les prix FOB · MOQ sur demande</div>
+      </div>
+      <div class="prod-grid" id="prodGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== Full product line ===== -->
+  <section class="section full-line" id="fullline">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Catalogue Complet</div>
+        <h2>Gamme Complète — 18+ Références</h2>
+        <p>La liste complète en un seul endroit. Cliquez sur « Demander » pour obtenir le prix actuel et le MOQ.</p>
+      </div>
+      <table class="line-table">
+        <thead>
+          <tr><th>#</th><th>Catégorie</th><th>Produit</th><th>Spécifications</th><th>Réf. FOB (USD)</th><th></th></tr>
+        </thead>
+        <tbody id="lineBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== Why choose us ===== -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Pourquoi Nous Choisir</div>
+        <h2>Conçu pour les Distributeurs &amp; Installateurs d'Afrique de l'Ouest</h2>
+        <p>Nous combinons l'approvisionnement de marque autorisée, l'intégration directe usine et une expertise d'expédition de terrain.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></div>
+          <h3>Agent Midea Agréé</h3>
+          <p>Produits Midea authentiques garantis — un agent officiellement agréé pour l'Afrique de l'Ouest, pour que les acheteurs ne craignent ni contrefaçon ni pièces manquantes.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 5h2v5h-2z"/></svg></div>
+          <h3>Offre Unifiée</h3>
+          <p>Climatiseurs, fluides frigorigènes, accessoires d'installation, pièces détachées et outils professionnels d'une seule source — moins de fournisseurs, une logistique simplifiée.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+          <h3>Prix Direct Usine</h3>
+          <p>Nous intégrons les gammes des principaux fabricants avec un volume d'achat stable — vous obtenez des prix inférieurs à ceux négociés directement avec une usine.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.19-1.59.13-.14 2.4-2.2 2.44-2.38.01-.03.01-.13-.05-.19s-.14-.07-.2-.05c-.07.02-1.77 1.12-4.99 3.3-.47.32-.9.48-1.28.47-.42-.01-1.22-.24-1.82-.43-.73-.24-1.31-.37-1.26-.79.03-.22.32-.44.88-.67 3.53-1.54 5.88-2.56 7.06-3.05 3.36-1.41 4.06-1.66 4.51-1.67.1 0 .26.02.38.13.09.09.12.21.13.3.01.09.02.23-.01.4z"/></svg></div>
+          <h3>Réponse WhatsApp Rapide</h3>
+          <p>Une vraie personne répond en quelques heures, en anglais — devis, spécifications, options d'expédition et conseils d'installation, où que vous soyez en Afrique de l'Ouest.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+          <h3>Focus Afrique de l'Ouest</h3>
+          <p>Expédition via les ports de Tema et Tincan, compatibilité 220V/50Hz et support d'installation adapté au Ghana, au Nigéria et aux marchés voisins.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.64l-.07.15c-1.52 3.33-3.47 6.73-5.9 10.21z"/></svg></div>
+          <h3>Options Solaires &amp; Basse Consommation</h3>
+          <p>Les climatiseurs solaires CC 48V et les refroidisseurs évaporatifs réduisent les coûts là où l'électricité est chère — l'investissement de refroidissement au retour le plus rapide pour les fermes et les magasins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Company profile ===== -->
+  <section class="section" id="company">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Profil Entreprise</div>
+        <h2>JM-ideal / JML Electric Appliance Limited</h2>
+        <p>Un agent Midea agréé pour l'Afrique de l'Ouest, dont le siège se trouve au cœur de l'industrie chinoise de l'électroménager.</p>
+      </div>
+      <div class="company-wrap">
+        <div class="profile">
+          <h3>Qui Sommes-Nous</h3>
+          <p>JM-ideal (JML Electric Appliance Limited) est un agent Midea agréé pour l'Afrique de l'Ouest, dont le siège est à Shunde, Foshan, Guangdong — le cœur de l'industrie chinoise de l'électroménager. Notre fondateur apporte près de 30 ans d'expérience dans la fabrication de climatiseurs, le contrôle qualité et le commerce international.</p>
+          <p>Nous n'exploitons pas notre propre usine. Nous intégrons plutôt les gammes complètes des principaux fabricants — climatiseurs, fluides frigorigènes, accessoires d'installation, pièces détachées et outils professionnels — pour offrir une véritable solution d'approvisionnement unifiée à nos partenaires. En tant qu'agent Midea agréé pour l'Afrique de l'Ouest, nous garantissons des produits Midea authentiques, des prix direct usine et un support après-vente fiable.</p>
+          <p>Notre équipe répond rapidement sur WhatsApp et accompagne les partenaires avec des conseils d'installation, la disponibilité des pièces détachées et une expédition transparente via les ports de Tema et Tincan.</p>
+          <ul class="company-points">
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Produits Midea authentiques avec autorisation officielle</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Catalogue unifié : climatiseurs, fluides, pièces &amp; outils</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Près de 30 ans dans la fabrication HVAC &amp; le contrôle qualité</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Réponse WhatsApp rapide, en anglais</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Expédition transparente via les ports de Tema &amp; Tincan</li>
+          </ul>
+        </div>
+        <div class="credential-card">
+          <h3>Certifications &amp; Couverture</h3>
+          <div class="cred-item">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            <div><b>Agent Agréé</b><span>Midea — produits authentiques garantis</span></div>
+          </div>
+          <div class="cred-item">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <div><b>Entité Commerciale</b><span>JML Electric Appliance Limited (Hong Kong) / JM-ideal</span></div>
+          </div>
+          <div class="cred-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            <div><b>Localisation</b><span>Shunde, Foshan, Guangdong, China</span></div>
+          </div>
+          <div class="cred-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <div><b>Marchés</b><span>Ghana, Nigéria, Afrique de l'Ouest</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Contactez-Nous</div>
+        <h2>Demandez un Devis Aujourd'hui</h2>
+        <p>Envoyez-nous vos quantités et vos ports de destination — nous répondons en quelques heures avec prix, spécifications et options d'expédition.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></div>
+          <h3>WhatsApp — Réponse Rapide</h3>
+          <p>Écrivez-nous directement pour des devis et la disponibilité du stock.</p>
+          <div class="value">+86 133 1839 3556</div>
+          <div class="sub-note">wa.me/8613318393556</div>
+          <a class="btn-orange" href="https://wa.me/8613318393556?text=Bonjour%20JM-ideal%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20climatiseurs." target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+        </div>
+        <div class="contact-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <h3>Email</h3>
+          <p>Envoyez votre demande avec quantités et port de destination.</p>
+          <div class="value">jmlhomeappliance@gmail.com</div>
+          <div class="sub-note">Réponse sous 1 jour ouvré</div>
+          <a class="btn-orange" href="mailto:jmlhomeappliance@gmail.com?subject=Inquiry%20from%20West%20Africa%20-%20Air%20Conditioner%20Quotation">Envoyer un Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-main">
+        <div>
+          <div class="logo" style="margin-bottom:14px">
+            <div class="logo-mark">JM</div>
+            <div class="logo-name" style="color:#fff">JM-ideal<small style="color:rgba(255,255,255,.6)">JML Electric Appliance Ltd</small></div>
+          </div>
+          <p>Agent Midea agréé pour l'Afrique de l'Ouest. Offre unifiée de climatiseurs, fluides frigorigènes, pièces, outils et refroidissement solaire depuis Shunde, Foshan — le pôle de l'électroménager chinois.</p>
+        </div>
+        <div>
+          <h4>Produits</h4>
+          <ul>
+            <li><a href="#products">Climatiseurs Split</a></li>
+            <li><a href="#products">Inverter &amp; Économie d'Énergie</a></li>
+            <li><a href="#products">Climatiseurs Solaires</a></li>
+            <li><a href="#products">Portables &amp; Climatisation Commerciale</a></li>
+            <li><a href="#products">Chambres Froides &amp; Congélateurs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Entreprise</h4>
+          <ul>
+            <li><a href="#company">Profil Entreprise</a></li>
+            <li><a href="#why">Pourquoi Nous Choisir</a></li>
+            <li><a href="#fullline">Catalogue Complet</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>WhatsApp: +86 133 1839 3556</li>
+            <li>Email: jmlhomeappliance@gmail.com</li>
+            <li>Shunde, Foshan, Guangdong, China</li>
+            <li>Ports: Tema (Ghana) · Tincan (Nigeria)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 JM-ideal / JML Electric Appliance Limited. Tous droits réservés. Agent Midea Agréé pour l'Afrique de l'Ouest.</div>
+    </div>
+  </footer>
+
+  <script>
+  // ===== Data: 8 featured products (photo cards) =====
+  var featured = [
+    {cat:"split", name:"Climatiseur Split 12000 BTU — Froid seul R410A", spec:"12K · 1,5CV · Mural", price:"$125–155", ask:false, img:"https://aka.doubaocdn.com/s/H3PYHUVlqW", tag:"Meilleure Vente"},
+    {cat:"inverter", name:"Climatiseur Split Inverter 12000 BTU — DC Inverter", spec:"12K · 1,5CV · Silencieux · Basse Consommation", price:"$159–175", ask:false, img:"https://aka.doubaocdn.com/s/vz4QJaNGzE", tag:"Inverter"},
+    {cat:"solar", name:"Climatiseur Solaire 12000 BTU — DC 48V Hybride", spec:"12K · 48V CC · Prêt Hors Réseau", price:"$290+", ask:false, img:"https://aka.doubaocdn.com/s/ctVEGXo0Vj", tag:"Solaire"},
+    {cat:"portable", name:"Climatiseur Portable 9000 BTU — Auto-Évaporant", spec:"9K · Posable au Sol · Sans Installation", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/RrqW5SCXJu", tag:"Portable"},
+    {cat:"commercial", name:"Climatiseur Colonne 24000 BTU — 3CV", spec:"24K · Colonne · Hall / Restaurant", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/3LIEdUMojM", tag:"Commercial"},
+    {cat:"cold", name:"Chambre Froide Modulaire — 10–100 m³", spec:"Chambre de Marche · Marché / Supermarché", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/wckPukFbg6", tag:"Chaîne du Froid"},
+    {cat:"parts", name:"Lampe UVC Stérilisante pour Split AC", spec:"Tueur de Bactéries · Unité Intérieure", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/F5fdjpgp4S", tag:"Marge Élevée"},
+    {cat:"parts", name:"Fluide Frigorigène R410A — Bouteille 10 kg", spec:"R410A / R32 · Essentiel Après-Vente", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/wMB72UvbRQ", tag:"Recharge"}
+  ];
+
+  // ===== Data: full 18-line catalog =====
+  var catalog = [
+    {n:1, cat:"Split AC", name:"Split AC 12K Vitesse Fixe", spec:"12000BTU · R410A · 220V/50Hz", price:"$125–155"},
+    {n:2, cat:"Split AC", name:"Split AC Inverter 12K", spec:"12000BTU · DC Inverter · Silencieux", price:"$159–175"},
+    {n:3, cat:"Split AC", name:"Split AC Inverter 18K", spec:"18000BTU · 2CV · Refroidissement Rapide", price:"$260–280"},
+    {n:4, cat:"Split AC", name:"12K Économe en Énergie Ghana", spec:"220V/50Hz · Froid Seul · Ligne Tema", price:"$141"},
+    {n:5, cat:"Portable", name:"Climatiseur Portable 9000BTU", spec:"Posable au Sol · Auto-Évaporant", price:"Ask"},
+    {n:6, cat:"Solaire", name:"Climatiseur Solaire 12K 48V CC", spec:"Hybride Hors Réseau · Ferme / Magasin", price:"$290+"},
+    {n:7, cat:"Solaire", name:"Kit Climatiseur Solaire (Panneaux + Contrôleur)", spec:"48V CC · Contrôleur MPPT", price:"Ask"},
+    {n:8, cat:"Split AC", name:"Climatiseur de Fenêtre 12K", spec:"Type Fenêtre · R410A · Froid Seul", price:"Ask"},
+    {n:9, cat:"Commercial", name:"Climatiseur Colonne 24K", spec:"Colonne · 3CV · Hall / Restaurant", price:"Ask"},
+    {n:10, cat:"Commercial", name:"Climatiseur Cassette 24K", spec:"Plafond 4-Voies · Bureau / Magasin", price:"Ask"},
+    {n:11, cat:"Commercial", name:"Climatiseur Gainable 18K", spec:"Dissimulé · Basse Pression · Villa", price:"Ask"},
+    {n:12, cat:"Pièces", name:"Accessoire UVC Stérilisant AC", spec:"Tueur de Bactéries · Unité Intérieure", price:"Ask"},
+    {n:13, cat:"Pièces", name:"Kit d'Installation AC", spec:"Tuyau Cuivre · Support · Câbles", price:"Ask"},
+    {n:14, cat:"Pièces", name:"Kit Outils de Service HVAC", spec:"Manomètre · Pompe à Vide", price:"Ask"},
+    {n:15, cat:"Pièces", name:"Fluide Frigorigène R410A / R32", spec:"Bouteille 10 kg · Recharge Essentielle", price:"Ask"},
+    {n:16, cat:"Chaîne du Froid", name:"Chambre Froide 10–100 m³", spec:"Modulaire · Marché / Supermarché", price:"Ask"},
+    {n:17, cat:"Chaîne du Froid", name:"Congélateur Commercial 200L", spec:"Coffre / Armoire / Vitrine", price:"Ask"},
+    {n:18, cat:"Autres", name:"Refroidisseur Évaporatif 60L", spec:"Basse Consommation · Climat Chaud", price:"Ask"}
+  ];
+
+  // ===== Render featured grid =====
+  function renderGrid(list){
+    var grid = document.getElementById("prodGrid");
+    grid.innerHTML = "";
+    list.forEach(function(p){
+      var card = document.createElement("div");
+      card.className = "prod-card";
+      card.innerHTML =
+        '<div class="thumb">' +
+          '<span class="tag">' + p.tag + '</span>' +
+          '<span class="verify"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Vérifié</span>' +
+          '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy">' +
+        '</div>' +
+        '<div class="body">' +
+          '<div class="cat">' + p.cat + '</div>' +
+          '<h3>' + p.name + '</h3>' +
+          '<div class="meta"><span>' + p.spec + '</span></div>' +
+          '<div class="price-row">' + (p.ask ? '<span class="price ask">Prix sur Demande</span>' : '<span class="price">' + p.price + '<span class="per"> / unité FOB</span></span>') + '</div>' +
+          '<a class="btn-ask" href="https://wa.me/8613318393556?text=' + encodeURIComponent('Bonjour JM-ideal, je veux un devis pour : ' + p.name) + '" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> Demander</a>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+  }
+  renderGrid(featured);
+
+  // ===== Category filter =====
+  var pills = document.querySelectorAll(".cat-pill");
+  pills.forEach(function(pill){
+    pill.addEventListener("click", function(){
+      pills.forEach(function(p){ p.classList.remove("active"); });
+      pill.classList.add("active");
+      var cat = pill.getAttribute("data-cat");
+      var list = cat === "all" ? featured : featured.filter(function(p){ return p.cat === cat; });
+      renderGrid(list);
+      document.getElementById("countLabel").textContent = list.length;
+    });
+  });
+
+  // ===== Render full catalog table =====
+  var lineBody = document.getElementById("lineBody");
+  catalog.forEach(function(p){
+    var tr = document.createElement("tr");
+    tr.innerHTML =
+      '<td>' + p.n + '</td>' +
+      '<td>' + p.cat + '</td>' +
+      '<td class="pname">' + p.name + '</td>' +
+      '<td>' + p.spec + '</td>' +
+      '<td>' + p.price + '</td>' +
+      '<td><a class="asklink" href="https://wa.me/8613318393556?text=' + encodeURIComponent('Bonjour JM-ideal, veuillez chiffrer : ' + p.name + ' (' + p.spec + ')') + '" target="_blank" rel="noopener">Demander &rarr;</a></td>';
+    lineBody.appendChild(tr);
+  });
+
+  // ===== Search =====
+  function doSearch(){
+    var q = document.getElementById("searchInput").value.trim().toLowerCase();
+    if(!q) return;
+    var list = featured.filter(function(p){
+      return (p.name + " " + p.spec + " " + p.cat).toLowerCase().indexOf(q) !== -1;
+    });
+    if(list.length === 0){
+      window.location.href = "https://wa.me/8613318393556?text=" + encodeURIComponent("Bonjour JM-ideal, j'ai cherché : " + q + " — do you have this product?");
+      return;
+    }
+    pills.forEach(function(p){ p.classList.remove("active"); });
+    pills[0].classList.add("active");
+    renderGrid(list);
+    document.getElementById("countLabel").textContent = list.length;
+  }
+  document.getElementById("searchBtn").addEventListener("click", doSearch);
+  document.getElementById("searchInput").addEventListener("keydown", function(e){ if(e.key === "Enter") doSearch(); });
+
+  // ===== Mobile nav =====
+  var nav = document.getElementById("mainNav");
+  document.getElementById("navToggle").addEventListener("click", function(){
+    nav.classList.toggle("open");
+  });
+  nav.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ nav.classList.remove("open"); });
+  });
+  </script>
+
+  <a class="wa-float" href="https://wa.me/8613318393556?text=Bonjour%20JM-ideal%2C%20je%20veux%20un%20devis%20pour%20des%20climatiseurs." target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+    <span class="wa-badge"></span>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    <span>Discuter sur WhatsApp</span>
+  </a>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
