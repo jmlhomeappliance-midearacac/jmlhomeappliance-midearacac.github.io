@@ -322,7 +322,7 @@
 
   <!-- ===== Category bar ===== -->
   <div class="catbar">
-    <div class="container" id="catBar">
+        <div class="container" id="catBar">
       <button class="cat-pill active" data-cat="all">All Products</button>
       <button class="cat-pill" data-cat="split">Split AC</button>
       <button class="cat-pill" data-cat="inverter">Inverter AC</button>
@@ -330,7 +330,8 @@
       <button class="cat-pill" data-cat="portable">Portable</button>
       <button class="cat-pill" data-cat="commercial">Commercial</button>
       <button class="cat-pill" data-cat="cold">Cold Chain</button>
-      <button class="cat-pill" data-cat="parts">Parts &amp; Tools</button>
+      <button class="cat-pill" data-cat="parts">Parts & Tools</button>
+      <button class="cat-pill" data-cat="others">Others</button>
     </div>
   </div>
 
@@ -496,14 +497,19 @@
           <p>Authorized Midea agent for West Africa. One-stop supply of air conditioners, refrigerants, parts, tools and solar cooling from Shunde, Foshan — China's appliance hub.</p>
         </div>
         <div>
+                  <div>
           <h4>Products</h4>
           <ul>
-            <li><a href="#products">Split Air Conditioners</a></li>
-            <li><a href="#products">Inverter &amp; Energy Saving</a></li>
-            <li><a href="#products">Solar Air Conditioners</a></li>
-            <li><a href="#products">Portable &amp; Commercial AC</a></li>
-            <li><a href="#products">Cold Rooms &amp; Freezers</a></li>
+            <li><a href="#products">Split AC</a></li>
+            <li><a href="#products">Inverter AC</a></li>
+            <li><a href="#products">Solar AC</a></li>
+            <li><a href="#products">Portable</a></li>
+            <li><a href="#products">Commercial</a></li>
+            <li><a href="#products">Cold Chain</a></li>
+            <li><a href="#products">Parts & Tools</a></li>
+            <li><a href="#products">Others</a></li>
           </ul>
+        </div>
         </div>
         <div>
           <h4>Company</h4>
@@ -541,35 +547,35 @@
 
   <script>
   // ===== Data: 8 featured products (photo cards) =====
-  var featured = [
-    {cat:"split", name:"12000 BTU Split AC — R410A Cooling Only", spec:"12K · 1.5HP · Wall Mounted", price:"$125–155", ask:false, img:"https://aka.doubaocdn.com/s/H3PYHUVlqW", tag:"Best Seller"},
-    {cat:"inverter", name:"12000 BTU Inverter Split AC — DC Inverter", spec:"12K · 1.5HP · Quiet · Low Power", price:"$159–175", ask:false, img:"https://aka.doubaocdn.com/s/vz4QJaNGzE", tag:"Inverter"},
-    {cat:"solar", name:"12000 BTU Solar AC — DC 48V Hybrid", spec:"12K · 48V DC · Off-Grid Ready", price:"$290+", ask:false, img:"https://aka.doubaocdn.com/s/ctVEGXo0Vj", tag:"Solar"},
-    {cat:"portable", name:"9000 BTU Portable AC — Self Evaporating", spec:"9K · Floor Standing · No Install", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/RrqW5SCXJu", tag:"Portable"},
-    {cat:"commercial", name:"24000 BTU Floor Standing AC — 3HP", spec:"24K · Cabinet · Hall / Restaurant", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/3LIEdUMojM", tag:"Commercial"},
-    {cat:"cold", name:"Modular Cold Room — 10–100 m³", spec:"Walk-In · Market / Supermarket", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/wckPukFbg6", tag:"Cold Chain"},
-    {cat:"parts", name:"UVC Sanitizer Light for Split AC", spec:"Bacteria Killer · Indoor Unit", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/F5fdjpgp4S", tag:"High Margin"},
-    {cat:"parts", name:"R410A Refrigerant — 10 kg Cylinder", spec:"R410A / R32 · After-sales Staple", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/wMB72UvbRQ", tag:"Refill"}
+    var featured = [
+    {cat:"split", name:"12000 BTU Split AC — R410A Cooling Only", spec:"12K · 1.5HP · Wall Mounted", price:"$145–195", ask:false, img:"images/p1.jpg", tag:"Best Seller"},
+    {cat:"inverter", name:"12000 BTU Inverter Split AC — DC Inverter", spec:"12K · 1.5HP · Quiet · Low Power", price:"$179–199", ask:false, img:"images/p2.jpg", tag:"Inverter"},
+    {cat:"solar", name:"12000 BTU Solar AC — DC 48V Hybrid", spec:"12K · 48V DC · Off-Grid Ready", price:"$290+", ask:false, img:"images/p3.jpg", tag:"Solar"},
+    {cat:"portable", name:"9000 BTU Portable AC — Self Evaporating", spec:"9K · Floor Standing · No Install", price:"Ask", ask:true, img:"images/p4.jpg", tag:"Portable"},
+    {cat:"commercial", name:"24000 BTU Floor Standing AC — 3HP Cabinet", spec:"24K · Cabinet · Hall / Restaurant", price:"Ask", ask:true, img:"images/p5.jpg", tag:"Commercial"},
+    {cat:"cold", name:"Modular Cold Room — 10–100 m³", spec:"Walk-In · Market / Supermarket", price:"Ask", ask:true, img:"images/p6.jpg", tag:"Cold Chain"},
+    {cat:"parts", name:"UVC Sanitizer Light for Split AC Indoor Unit", spec:"Bacteria Killer · Indoor Unit", price:"Ask", ask:true, img:"images/p7.jpg", tag:"High Margin"},
+    {cat:"parts", name:"R410A Refrigerant — 10 kg Cylinder", spec:"R410A / R32 · After-sales Staple", price:"Ask", ask:true, img:"images/p8.jpg", tag:"Refill"}
   ];
 
   // ===== Data: full 18-line catalog =====
-  var catalog = [
-    {n:1, cat:"Split AC", name:"12K Fixed-Speed Split AC", spec:"12000BTU · R410A · 220V/50Hz", price:"$125–155"},
-    {n:2, cat:"Split AC", name:"12K Inverter Split AC", spec:"12000BTU · DC Inverter · Quiet", price:"$159–175"},
-    {n:3, cat:"Split AC", name:"18K Inverter Split AC", spec:"18000BTU · 2HP · Fast Cooling", price:"$260–280"},
-    {n:4, cat:"Split AC", name:"Ghana Energy-Efficient 12K", spec:"220V/50Hz · Cool Only · Tema line", price:"$141"},
-    {n:5, cat:"Portable", name:"Portable AC 9000BTU", spec:"Floor Standing · Self Evaporating", price:"Ask"},
-    {n:6, cat:"Solar", name:"Solar AC 12K 48V DC", spec:"Off-Grid Hybrid · Farm / Shop", price:"$290+"},
-    {n:7, cat:"Solar", name:"Solar AC Kit (Panels + Controller)", spec:"48V DC · MPPT Controller", price:"Ask"},
-    {n:8, cat:"Split AC", name:"Window AC 12K", spec:"Window Type · R410A · Cool Only", price:"Ask"},
-    {n:9, cat:"Commercial", name:"Floor Standing AC 24K", spec:"Cabinet · 3HP · Hall / Restaurant", price:"Ask"},
-    {n:10, cat:"Commercial", name:"Cassette AC 24K", spec:"Ceiling 4-Way · Office / Shop", price:"Ask"},
-    {n:11, cat:"Commercial", name:"Duct AC 18K", spec:"Concealed · Low Static · Villa", price:"Ask"},
-    {n:12, cat:"Parts", name:"UVC Sanitizer AC Accessory", spec:"Bacteria Killer · Indoor Unit", price:"Ask"},
-    {n:13, cat:"Parts", name:"AC Installation Kit", spec:"Copper Pipe · Bracket · Wires", price:"Ask"},
-    {n:14, cat:"Parts", name:"HVAC Service Tool Kit", spec:"Manifold Gauge · Vacuum Pump", price:"Ask"},
-    {n:15, cat:"Parts", name:"Refrigerant R410A / R32", spec:"10 kg Cylinder · Refill Staple", price:"Ask"},
-    {n:16, cat:"Cold Chain", name:"Cold Room 10–100 m³", spec:"Modular Walk-In · Market / Super", price:"Ask"},
+    var catalog = [
+    {n:1, cat:"Split AC", name:"12000 BTU Split AC — R410A Cooling Only", spec:"12K · 1.5HP · Wall Mounted", price:"$145–195"},
+    {n:2, cat:"Inverter AC", name:"12000 BTU Inverter Split AC — DC Inverter", spec:"12K · 1.5HP · Quiet · Low Power", price:"$179–199"},
+    {n:3, cat:"Solar AC", name:"12000 BTU Solar AC — DC 48V Hybrid", spec:"12K · 48V DC · Off-Grid Ready", price:"$290+"},
+    {n:4, cat:"Portable", name:"9000 BTU Portable AC — Self Evaporating", spec:"9K · Floor Standing · No Install", price:"Ask"},
+    {n:5, cat:"Commercial", name:"24000 BTU Floor Standing AC — 3HP Cabinet", spec:"24K · Cabinet · Hall / Restaurant", price:"Ask"},
+    {n:6, cat:"Cold Chain", name:"Modular Cold Room — 10–100 m³", spec:"Walk-In · Market / Supermarket", price:"Ask"},
+    {n:7, cat:"Parts & Tools", name:"UVC Sanitizer Light for Split AC Indoor Unit", spec:"Bacteria Killer · Indoor Unit", price:"Ask"},
+    {n:8, cat:"Parts & Tools", name:"R410A Refrigerant — 10 kg Cylinder", spec:"R410A / R32 · After-sales Staple", price:"Ask"},
+    {n:9, cat:"Inverter AC", name:"18K Inverter Split AC", spec:"18000BTU · 2HP · Fast Cooling", price:"$260–280"},
+    {n:10, cat:"Split AC", name:"Ghana Energy-Efficient 12K", spec:"220V/50Hz · Cool Only · Tema line", price:"$141"},
+    {n:11, cat:"Solar AC", name:"Solar AC Kit (Panels + Controller)", spec:"48V DC · MPPT Controller", price:"Ask"},
+    {n:12, cat:"Split AC", name:"Window AC 12K", spec:"Window Type · R410A · Cool Only", price:"Ask"},
+    {n:13, cat:"Commercial", name:"Cassette AC 24K", spec:"Ceiling 4-Way · Office / Shop", price:"Ask"},
+    {n:14, cat:"Commercial", name:"Duct AC 18K", spec:"Concealed · Low Static · Villa", price:"Ask"},
+    {n:15, cat:"Parts & Tools", name:"AC Installation Kit", spec:"Copper Pipe · Bracket · Wires", price:"Ask"},
+    {n:16, cat:"Parts & Tools", name:"HVAC Service Tool Kit", spec:"Manifold Gauge · Vacuum Pump", price:"Ask"},
     {n:17, cat:"Cold Chain", name:"Commercial Freezer 200L", spec:"Chest / Upright / Display", price:"Ask"},
     {n:18, cat:"Others", name:"Evaporative Air Cooler 60L", spec:"Low Power · Hot Climate", price:"Ask"}
   ];
