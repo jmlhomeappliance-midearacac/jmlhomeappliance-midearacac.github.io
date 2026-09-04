@@ -334,15 +334,16 @@
 
   <!-- ===== Category bar ===== -->
   <div class="catbar">
-    <div class="container" id="catBar">
+        <div class="container" id="catBar">
       <button class="cat-pill active" data-cat="all">Tous les Produits</button>
-      <button class="cat-pill" data-cat="split">Split AC</button>
+      <button class="cat-pill" data-cat="split">Climatiseur Split</button>
       <button class="cat-pill" data-cat="inverter">Climatiseur Inverter</button>
       <button class="cat-pill" data-cat="solar">Climatiseur Solaire</button>
       <button class="cat-pill" data-cat="portable">Portable</button>
       <button class="cat-pill" data-cat="commercial">Commercial</button>
       <button class="cat-pill" data-cat="cold">Chaîne du Froid</button>
-      <button class="cat-pill" data-cat="parts">Pièces &amp; Outils</button>
+      <button class="cat-pill" data-cat="parts">Pièces & Outils</button>
+      <button class="cat-pill" data-cat="others">Autres</button>
     </div>
   </div>
 
@@ -508,14 +509,19 @@
           <p>Agent Midea agréé pour l'Afrique de l'Ouest. Offre unifiée de climatiseurs, fluides frigorigènes, pièces, outils et refroidissement solaire depuis Shunde, Foshan — le pôle de l'électroménager chinois.</p>
         </div>
         <div>
+                  <div>
           <h4>Produits</h4>
           <ul>
-            <li><a href="#products">Climatiseurs Split</a></li>
-            <li><a href="#products">Inverter &amp; Économie d'Énergie</a></li>
-            <li><a href="#products">Climatiseurs Solaires</a></li>
-            <li><a href="#products">Portables &amp; Climatisation Commerciale</a></li>
-            <li><a href="#products">Chambres Froides &amp; Congélateurs</a></li>
+            <li><a href="#products">Climatiseur Split</a></li>
+            <li><a href="#products">Climatiseur Inverter</a></li>
+            <li><a href="#products">Climatiseur Solaire</a></li>
+            <li><a href="#products">Portable</a></li>
+            <li><a href="#products">Commercial</a></li>
+            <li><a href="#products">Chaîne du Froid</a></li>
+            <li><a href="#products">Pièces & Outils</a></li>
+            <li><a href="#products">Autres</a></li>
           </ul>
+        </div>
         </div>
         <div>
           <h4>Entreprise</h4>
@@ -553,35 +559,35 @@
 
   <script>
   // ===== Data: 8 featured products (photo cards) =====
-  var featured = [
-    {cat:"split", name:"Climatiseur Split 12000 BTU — Froid seul R410A", spec:"12K · 1,5CV · Mural", price:"$125–155", ask:false, img:"https://aka.doubaocdn.com/s/H3PYHUVlqW", tag:"Meilleure Vente"},
-    {cat:"inverter", name:"Climatiseur Split Inverter 12000 BTU — DC Inverter", spec:"12K · 1,5CV · Silencieux · Basse Consommation", price:"$159–175", ask:false, img:"https://aka.doubaocdn.com/s/vz4QJaNGzE", tag:"Inverter"},
-    {cat:"solar", name:"Climatiseur Solaire 12000 BTU — DC 48V Hybride", spec:"12K · 48V CC · Prêt Hors Réseau", price:"$290+", ask:false, img:"https://aka.doubaocdn.com/s/ctVEGXo0Vj", tag:"Solaire"},
-    {cat:"portable", name:"Climatiseur Portable 9000 BTU — Auto-Évaporant", spec:"9K · Posable au Sol · Sans Installation", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/RrqW5SCXJu", tag:"Portable"},
-    {cat:"commercial", name:"Climatiseur Colonne 24000 BTU — 3CV", spec:"24K · Colonne · Hall / Restaurant", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/3LIEdUMojM", tag:"Commercial"},
-    {cat:"cold", name:"Chambre Froide Modulaire — 10–100 m³", spec:"Chambre de Marche · Marché / Supermarché", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/wckPukFbg6", tag:"Chaîne du Froid"},
-    {cat:"parts", name:"Lampe UVC Stérilisante pour Split AC", spec:"Tueur de Bactéries · Unité Intérieure", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/F5fdjpgp4S", tag:"Marge Élevée"},
-    {cat:"parts", name:"Fluide Frigorigène R410A — Bouteille 10 kg", spec:"R410A / R32 · Essentiel Après-Vente", price:"Ask", ask:true, img:"https://aka.doubaocdn.com/s/wMB72UvbRQ", tag:"Recharge"}
+    var featured = [
+    {cat:"split", name:"Climatiseur Split 12000 BTU — Froid seul R410A", spec:"12K · 1,5CV · Mural", price:"$145–195", ask:false, img:"images/p1.jpg", tag:"Meilleure Vente"},
+    {cat:"inverter", name:"Climatiseur Split Inverter 12000 BTU — DC Inverter", spec:"12K · 1,5CV · Silencieux · Basse Consommation", price:"$179–199", ask:false, img:"images/p2.jpg", tag:"Inverter"},
+    {cat:"solar", name:"Climatiseur Solaire 12000 BTU — DC 48V Hybride", spec:"12K · 48V CC · Prêt Hors Réseau", price:"$290+", ask:false, img:"images/p3.jpg", tag:"Solaire"},
+    {cat:"portable", name:"Climatiseur Portable 9000 BTU — Auto-Évaporant", spec:"9K · Posable au Sol · Sans Installation", price:"Ask", ask:true, img:"images/p4.jpg", tag:"Portable"},
+    {cat:"commercial", name:"Climatiseur Colonne 24000 BTU — 3CV", spec:"24K · Colonne · Hall / Restaurant", price:"Ask", ask:true, img:"images/p5.jpg", tag:"Commercial"},
+    {cat:"cold", name:"Chambre Froide Modulaire — 10–100 m³", spec:"Chambre de Marche · Marché / Supermarché", price:"Ask", ask:true, img:"images/p6.jpg", tag:"Chaîne du Froid"},
+    {cat:"parts", name:"Lampe UVC Stérilisante pour Split AC", spec:"Tueur de Bactéries · Unité Intérieure", price:"Ask", ask:true, img:"images/p7.jpg", tag:"Marge Élevée"},
+    {cat:"parts", name:"Fluide Frigorigène R410A — Bouteille 10 kg", spec:"R410A / R32 · Essentiel Après-Vente", price:"Ask", ask:true, img:"images/p8.jpg", tag:"Recharge"}
   ];
 
   // ===== Data: full 18-line catalog =====
-  var catalog = [
-    {n:1, cat:"Split AC", name:"Split AC 12K Vitesse Fixe", spec:"12000BTU · R410A · 220V/50Hz", price:"$125–155"},
-    {n:2, cat:"Split AC", name:"Split AC Inverter 12K", spec:"12000BTU · DC Inverter · Silencieux", price:"$159–175"},
-    {n:3, cat:"Split AC", name:"Split AC Inverter 18K", spec:"18000BTU · 2CV · Refroidissement Rapide", price:"$260–280"},
-    {n:4, cat:"Split AC", name:"12K Économe en Énergie Ghana", spec:"220V/50Hz · Froid Seul · Ligne Tema", price:"$141"},
-    {n:5, cat:"Portable", name:"Climatiseur Portable 9000BTU", spec:"Posable au Sol · Auto-Évaporant", price:"Ask"},
-    {n:6, cat:"Solaire", name:"Climatiseur Solaire 12K 48V CC", spec:"Hybride Hors Réseau · Ferme / Magasin", price:"$290+"},
-    {n:7, cat:"Solaire", name:"Kit Climatiseur Solaire (Panneaux + Contrôleur)", spec:"48V CC · Contrôleur MPPT", price:"Ask"},
-    {n:8, cat:"Split AC", name:"Climatiseur de Fenêtre 12K", spec:"Type Fenêtre · R410A · Froid Seul", price:"Ask"},
-    {n:9, cat:"Commercial", name:"Climatiseur Colonne 24K", spec:"Colonne · 3CV · Hall / Restaurant", price:"Ask"},
-    {n:10, cat:"Commercial", name:"Climatiseur Cassette 24K", spec:"Plafond 4-Voies · Bureau / Magasin", price:"Ask"},
-    {n:11, cat:"Commercial", name:"Climatiseur Gainable 18K", spec:"Dissimulé · Basse Pression · Villa", price:"Ask"},
-    {n:12, cat:"Pièces", name:"Accessoire UVC Stérilisant AC", spec:"Tueur de Bactéries · Unité Intérieure", price:"Ask"},
-    {n:13, cat:"Pièces", name:"Kit d'Installation AC", spec:"Tuyau Cuivre · Support · Câbles", price:"Ask"},
-    {n:14, cat:"Pièces", name:"Kit Outils de Service HVAC", spec:"Manomètre · Pompe à Vide", price:"Ask"},
-    {n:15, cat:"Pièces", name:"Fluide Frigorigène R410A / R32", spec:"Bouteille 10 kg · Recharge Essentielle", price:"Ask"},
-    {n:16, cat:"Chaîne du Froid", name:"Chambre Froide 10–100 m³", spec:"Modulaire · Marché / Supermarché", price:"Ask"},
+    var catalog = [
+    {n:1, cat:"Climatiseur Split", name:"Climatiseur Split 12000 BTU — Froid seul R410A", spec:"12K · 1,5CV · Mural", price:"$145–195"},
+    {n:2, cat:"Climatiseur Inverter", name:"Climatiseur Split Inverter 12000 BTU — DC Inverter", spec:"12K · 1,5CV · Silencieux · Basse Consommation", price:"$179–199"},
+    {n:3, cat:"Climatiseur Solaire", name:"Climatiseur Solaire 12000 BTU — DC 48V Hybride", spec:"12K · 48V CC · Prêt Hors Réseau", price:"$290+"},
+    {n:4, cat:"Portable", name:"Climatiseur Portable 9000 BTU — Auto-Évaporant", spec:"9K · Posable au Sol · Sans Installation", price:"Ask"},
+    {n:5, cat:"Commercial", name:"Climatiseur Colonne 24000 BTU — 3CV", spec:"24K · Colonne · Hall / Restaurant", price:"Ask"},
+    {n:6, cat:"Chaîne du Froid", name:"Chambre Froide Modulaire — 10–100 m³", spec:"Chambre de Marche · Marché / Supermarché", price:"Ask"},
+    {n:7, cat:"Pièces & Outils", name:"Lampe UVC Stérilisante pour Split AC", spec:"Tueur de Bactéries · Unité Intérieure", price:"Ask"},
+    {n:8, cat:"Pièces & Outils", name:"Fluide Frigorigène R410A — Bouteille 10 kg", spec:"R410A / R32 · Essentiel Après-Vente", price:"Ask"},
+    {n:9, cat:"Climatiseur Inverter", name:"Split AC Inverter 18K", spec:"18000BTU · 2CV · Refroidissement Rapide", price:"$260–280"},
+    {n:10, cat:"Climatiseur Split", name:"12K Économe en Énergie Ghana", spec:"220V/50Hz · Froid Seul · Ligne Tema", price:"$141"},
+    {n:11, cat:"Climatiseur Solaire", name:"Kit Climatiseur Solaire (Panneaux + Contrôleur)", spec:"48V CC · Contrôleur MPPT", price:"Ask"},
+    {n:12, cat:"Climatiseur Split", name:"Climatiseur de Fenêtre 12K", spec:"Type Fenêtre · R410A · Froid Seul", price:"Ask"},
+    {n:13, cat:"Commercial", name:"Climatiseur Cassette 24K", spec:"Plafond 4-Voies · Bureau / Magasin", price:"Ask"},
+    {n:14, cat:"Commercial", name:"Climatiseur Gainable 18K", spec:"Dissimulé · Basse Pression · Villa", price:"Ask"},
+    {n:15, cat:"Pièces & Outils", name:"Kit d'Installation AC", spec:"Tuyau Cuivre · Support · Câbles", price:"Ask"},
+    {n:16, cat:"Pièces & Outils", name:"Kit Outils de Service HVAC", spec:"Manomètre · Pompe à Vide", price:"Ask"},
     {n:17, cat:"Chaîne du Froid", name:"Congélateur Commercial 200L", spec:"Coffre / Armoire / Vitrine", price:"Ask"},
     {n:18, cat:"Autres", name:"Refroidisseur Évaporatif 60L", spec:"Basse Consommation · Climat Chaud", price:"Ask"}
   ];
