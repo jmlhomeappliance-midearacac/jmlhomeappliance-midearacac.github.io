@@ -37,6 +37,20 @@
   .foot{margin-top:34px;font-size:12px;color:#8fa8cf;line-height:1.8}
   .btn{display:inline-block;margin-top:16px;background:#25D366;color:#073b1f;font-weight:700;padding:11px 22px;border-radius:999px;text-decoration:none;font-size:14px}
   .btn:hover{background:#1fb959}
+  .langline{margin-top:6px;font-size:13px;color:#8fa8cf}
+  .langline a{color:#ffb35c;text-decoration:none;font-weight:600;margin:0 6px}
+  .langline a:hover{text-decoration:underline}
+  .langline .on{color:#ffb35c;font-weight:800}
+  .newsletter{margin-top:34px;padding:26px 22px;background:#12315f;border:1px solid #23487f;border-radius:12px;text-align:center}
+  .newsletter h4{font-size:18px;color:#fff;margin-bottom:8px}
+  .newsletter p{color:#c6d7f0;font-size:13.5px;margin-bottom:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6}
+  .newsletter-form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .newsletter-form input{flex:1;min-width:220px;padding:12px 14px;border:1px solid #3a5d94;border-radius:8px;background:#0b2447;color:#fff;font-size:14px;outline:none}
+  .newsletter-form input:focus{border-color:#ff8c2e}
+  .newsletter-form button{background:#ff6a00;color:#fff;font-weight:700;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px;transition:background .15s}
+  .newsletter-form button:hover{background:#ff8c2e}
+  .newsletter-form button:disabled{opacity:.6;cursor:default}
+  #newsletterMsg{font-size:13px;margin-top:10px;min-height:18px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -92,8 +106,48 @@
     </div>
     <a class="btn" href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20am%20interested%20in%20your%20air%20conditioners." target="_blank" rel="noopener">Chat on WhatsApp</a>
   </div>
+  <div class="newsletter">
+    <h4>Stay Updated on New Arrivals &amp; Pricing</h4>
+    <p>Subscribe and we'll send West Africa price lists, new product launches and seasonal promotions straight to your inbox.</p>
+    <form class="newsletter-form" id="newsletterForm" novalidate>
+      <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div id="newsletterMsg"></div>
+  </div>
   <div class="foot">JM-ideal / JML Electric Appliance Limited (Hong Kong) · Shunde, Foshan, Guangdong, China<br>
-  © 2026 JM-ideal. Authorized Midea Agent for West Africa. All rights reserved.</div>
+  © 2026 JM-ideal. Authorized Midea Agent for West Africa. All rights reserved.<br>
+  <span class="langline">Language / Langue: <span class="on">English</span> · <a href="en.html">English Store</a> · <a href="fr.html">Boutique française</a></span></div>
 </div>
+<script>
+var nf = document.getElementById("newsletterForm");
+if(nf){
+  nf.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("newsletterEmail").value.trim();
+    var msg = document.getElementById("newsletterMsg");
+    var btn = nf.querySelector("button");
+    if(!email || email.indexOf("@") < 1){ msg.textContent = "Please enter a valid email address."; msg.style.color = "#ff9b9b"; return; }
+    btn.disabled = true; btn.textContent = "Sending...";
+    fetch("https://formsubmit.co/ajax/jmlhomeappliance@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ email: email, _subject: "JML Website Newsletter Subscription", _template: "table", _captcha: "false" })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      msg.textContent = "Thanks! You are subscribed — we'll send price lists & new arrivals to your inbox.";
+      msg.style.color = "#6fcf97";
+      btn.disabled = false; btn.textContent = "Subscribe";
+      document.getElementById("newsletterEmail").value = "";
+    })
+    .catch(function(err){
+      msg.textContent = "Something went wrong. Please email us directly: jmlhomeappliance@gmail.com";
+      msg.style.color = "#ff9b9b";
+      btn.disabled = false; btn.textContent = "Subscribe";
+    });
+  });
+}
+</script>
 </body>
 </html>

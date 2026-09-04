@@ -226,9 +226,37 @@
     .wa-float{padding:14px;border-radius:50%;bottom:18px;right:18px}
     .wa-float span{display:none}
   }
+  /* ===== Global site bar (home + language switch across all pages) ===== */
+  .sitebar{background:#0b2447;color:#cfe0f5;font-size:12.5px;padding:7px 0;text-align:center;letter-spacing:.3px}
+  .sitebar a{color:#ffb35c;text-decoration:none;font-weight:600;margin:0 8px}
+  .sitebar a:hover{text-decoration:underline}
+  .sitebar .sep{color:rgba(207,224,245,.4);margin:0 2px}
+  .sitebar .lang-label{color:#8fa8cf}
+  .sitebar .lang-on{color:#ffb35c;font-weight:700}
+  /* ===== Newsletter subscription ===== */
+  .newsletter{background:#0d1f3f;border:1px solid #23487f;border-radius:12px;padding:26px 22px;margin:0 0 26px;text-align:center}
+  .newsletter h4{font-size:18px;color:#fff;margin-bottom:8px}
+  .newsletter p{color:#c6d7f0;font-size:13.5px;margin-bottom:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6}
+  .newsletter-form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .newsletter-form input{flex:1;min-width:220px;padding:12px 14px;border:1px solid #3a5d94;border-radius:8px;background:#0b2447;color:#fff;font-size:14px;outline:none}
+  .newsletter-form input:focus{border-color:#ff8c2e}
+  .newsletter-form button{background:#ff6a00;color:#fff;font-weight:700;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px;transition:background .15s}
+  .newsletter-form button:hover{background:#ff8c2e}
+  .newsletter-form button:disabled{opacity:.6;cursor:default}
+  #newsletterMsg{font-size:13px;margin-top:10px;min-height:18px;line-height:1.5}
 </style>
 </head>
 <body>
+
+  <!-- ===== Global site bar: home + language switch ===== -->
+  <div class="sitebar">
+    <a href="index.html">Home · Site Map</a>
+    <span class="sep">|</span>
+    <span class="lang-label">Language:</span>
+    <a href="en.html" class="lang-on">EN</a>
+    <span class="sep">/</span>
+    <a href="fr.html">FR</a>
+  </div>
 
   <!-- ===== Top utility bar ===== -->
   <div class="utilbar">
@@ -496,7 +524,18 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">© 2026 JM-ideal / JML Electric Appliance Limited. All rights reserved. Authorized Midea West Africa Agent.</div>
+      <div class="newsletter">
+        <h4>Stay Updated on New Arrivals &amp; Pricing</h4>
+        <p>Subscribe and we'll send West Africa price lists, new product launches and seasonal promotions straight to your inbox.</p>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div id="newsletterMsg"></div>
+      </div>
+      <div class="footer-bottom">© 2026 JM-ideal / JML Electric Appliance Limited. All rights reserved. Authorized Midea West Africa Agent.
+        <span style="margin-left:10px">· <a href="index.html" style="color:#ffb35c;text-decoration:none">Home</a> · <a href="en.html" style="color:#ffb35c;text-decoration:none">EN</a> / <a href="fr.html" style="color:#ffb35c;text-decoration:none">FR</a></span>
+      </div>
     </div>
   </footer>
 
@@ -614,6 +653,36 @@
   nav.querySelectorAll("a").forEach(function(a){
     a.addEventListener("click", function(){ nav.classList.remove("open"); });
   });
+
+  // ===== Newsletter subscription (via formsubmit.co → jmlhomeappliance@gmail.com) =====
+  var nf = document.getElementById("newsletterForm");
+  if(nf){
+    nf.addEventListener("submit", function(e){
+      e.preventDefault();
+      var email = document.getElementById("newsletterEmail").value.trim();
+      var msg = document.getElementById("newsletterMsg");
+      var btn = nf.querySelector("button");
+      if(!email || email.indexOf("@") < 1){ msg.textContent = "Please enter a valid email address."; msg.style.color = "#ff9b9b"; return; }
+      btn.disabled = true; btn.textContent = "Sending...";
+      fetch("https://formsubmit.co/ajax/jmlhomeappliance@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ email: email, _subject: "JML Website Newsletter Subscription", _template: "table", _captcha: "false" })
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        msg.textContent = "Thanks! You are subscribed — we'll send price lists & new arrivals to your inbox.";
+        msg.style.color = "#6fcf97";
+        btn.disabled = false; btn.textContent = "Subscribe";
+        document.getElementById("newsletterEmail").value = "";
+      })
+      .catch(function(err){
+        msg.textContent = "Something went wrong. Please email us directly: jmlhomeappliance@gmail.com";
+        msg.style.color = "#ff9b9b";
+        btn.disabled = false; btn.textContent = "Subscribe";
+      });
+    });
+  }
   </script>
 
   <a class="wa-float" href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20would%20like%20a%20quote%20for%20air%20conditioners." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">

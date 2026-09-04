@@ -216,6 +216,35 @@
     .footer-main{grid-template-columns:1fr;gap:24px}
     .utilbar .u-left span:nth-child(2){display:none}
   }
+  /* ===== Floating WhatsApp button ===== */
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:400;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 26px rgba(0,0,0,.30);transition:transform .15s,background .15s;text-decoration:none}
+  .wa-float:hover{transform:translateY(-2px);background:#1fb959}
+  .wa-float svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
+  .wa-float .wa-badge{position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:#FF6A00;border:2px solid #fff;border-radius:50%}
+  @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+  .wa-float{animation:waPulse 2.2s infinite}
+  @media (max-width:640px){
+    .wa-float{padding:14px;border-radius:50%;bottom:18px;right:18px}
+    .wa-float span{display:none}
+  }
+  /* ===== Global site bar (home + language switch across all pages) ===== */
+  .sitebar{background:#0b2447;color:#cfe0f5;font-size:12.5px;padding:7px 0;text-align:center;letter-spacing:.3px}
+  .sitebar a{color:#ffb35c;text-decoration:none;font-weight:600;margin:0 8px}
+  .sitebar a:hover{text-decoration:underline}
+  .sitebar .sep{color:rgba(207,224,245,.4);margin:0 2px}
+  .sitebar .lang-label{color:#8fa8cf}
+  .sitebar .lang-on{color:#ffb35c;font-weight:700}
+  /* ===== Newsletter subscription ===== */
+  .newsletter{background:#0d1f3f;border:1px solid #23487f;border-radius:12px;padding:26px 22px;margin:0 0 26px;text-align:center}
+  .newsletter h4{font-size:18px;color:#fff;margin-bottom:8px}
+  .newsletter p{color:#c6d7f0;font-size:13.5px;margin-bottom:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6}
+  .newsletter-form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .newsletter-form input{flex:1;min-width:220px;padding:12px 14px;border:1px solid #3a5d94;border-radius:8px;background:#0b2447;color:#fff;font-size:14px;outline:none}
+  .newsletter-form input:focus{border-color:#ff8c2e}
+  .newsletter-form button{background:#ff6a00;color:#fff;font-weight:700;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px;transition:background .15s}
+  .newsletter-form button:hover{background:#ff8c2e}
+  .newsletter-form button:disabled{opacity:.6;cursor:default}
+  #newsletterMsg{font-size:13px;margin-top:10px;min-height:18px;line-height:1.5}
 
   /* ===== Floating WhatsApp button ===== */
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:400;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 26px rgba(0,0,0,.30);transition:transform .15s,background .15s;text-decoration:none}
@@ -270,6 +299,16 @@
       <div class="phone-notch"></div>
       <div class="phone-content">
 
+
+  <!-- ===== Global site bar: home + language switch ===== -->
+  <div class="sitebar">
+    <a href="index.html">Accueil · Plan du site</a>
+    <span class="sep">|</span>
+    <span class="lang-label">Langue :</span>
+    <a href="fr.html" class="lang-on">FR</a>
+    <span class="sep">/</span>
+    <a href="en.html">EN</a>
+  </div>
 
   <!-- ===== Top utility bar ===== -->
   <div class="utilbar">
@@ -537,7 +576,18 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">© 2026 JM-ideal / JML Electric Appliance Limited. Tous droits réservés. Agent Midea Agréé pour l'Afrique de l'Ouest.</div>
+      <div class="newsletter">
+        <h4>Restez informé des nouveautés &amp; des prix</h4>
+        <p>Abonnez-vous et recevez directement les listes de prix Afrique de l'Ouest, les nouveautés et les promotions saisonnières.</p>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <input type="email" id="newsletterEmail" placeholder="Votre adresse e-mail" required>
+          <button type="submit">S'abonner</button>
+        </form>
+        <div id="newsletterMsg"></div>
+      </div>
+      <div class="footer-bottom">© 2026 JM-ideal / JML Electric Appliance Limited. Tous droits réservés. Agent Midea Agréé pour l'Afrique de l'Ouest.
+        <span style="margin-left:10px">· <a href="index.html" style="color:#ffb35c;text-decoration:none">Accueil</a> · <a href="fr.html" style="color:#ffb35c;text-decoration:none">FR</a> / <a href="en.html" style="color:#ffb35c;text-decoration:none">EN</a></span>
+      </div>
     </div>
   </footer>
 
@@ -655,7 +705,43 @@
   nav.querySelectorAll("a").forEach(function(a){
     a.addEventListener("click", function(){ nav.classList.remove("open"); });
   });
+
+  // ===== Newsletter subscription (via formsubmit.co → jmlhomeappliance@gmail.com) =====
+  var nf = document.getElementById("newsletterForm");
+  if(nf){
+    nf.addEventListener("submit", function(e){
+      e.preventDefault();
+      var email = document.getElementById("newsletterEmail").value.trim();
+      var msg = document.getElementById("newsletterMsg");
+      var btn = nf.querySelector("button");
+      if(!email || email.indexOf("@") < 1){ msg.textContent = "Veuillez saisir une adresse e-mail valide."; msg.style.color = "#ff9b9b"; return; }
+      btn.disabled = true; btn.textContent = "Envoi en cours...";
+      fetch("https://formsubmit.co/ajax/jmlhomeappliance@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ email: email, _subject: "JML Website Newsletter Subscription", _template: "table", _captcha: "false" })
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        msg.textContent = "Merci ! Vous êtes abonné(e) — nous vous enverrons les listes de prix & les nouveautés.";
+        msg.style.color = "#6fcf97";
+        btn.disabled = false; btn.textContent = "S'abonner";
+        document.getElementById("newsletterEmail").value = "";
+      })
+      .catch(function(err){
+        msg.textContent = "Une erreur est survenue. Écrivez-nous : jmlhomeappliance@gmail.com";
+        msg.style.color = "#ff9b9b";
+        btn.disabled = false; btn.textContent = "S'abonner";
+      });
+    });
+  }
   </script>
+
+  <a class="wa-float" href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20would%20like%20a%20quote%20for%20air%20conditioners." target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+    <span class="wa-badge"></span>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    <span>Discuter sur WhatsApp</span>
+  </a>
 
   <a class="wa-float" href="https://wa.me/8613318393556?text=Bonjour%20JM-ideal%2C%20je%20veux%20un%20devis%20pour%20des%20climatiseurs." target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
     <span class="wa-badge"></span>
