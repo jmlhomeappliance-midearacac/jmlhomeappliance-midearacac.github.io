@@ -156,6 +156,39 @@
     .form-row{grid-template-columns:1fr}
     .inquiry-form{padding:20px 16px}
   }
+
+  /* FAQ Section */
+  #faq{background:#fff;padding:52px 0;border-top:1px solid var(--border)}
+  #faq .faq-head{text-align:center;margin-bottom:32px}
+  #faq .faq-head h2{font-size:26px;font-weight:800;color:var(--brand-blue);margin-bottom:6px}
+  #faq .faq-head p{color:var(--ink-2);font-size:14.5px;max-width:600px;margin:0 auto}
+  .faq-list{max-width:820px;margin:0 auto}
+  .faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;transition:box-shadow .15s}
+  .faq-item:hover{box-shadow:var(--shadow)}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;background:#fff;user-select:none}
+  .faq-q h3{font-size:15px;font-weight:700;color:var(--ink);margin:0;flex:1;padding-right:12px}
+  .faq-q .faq-icon{width:28px;height:28px;border-radius:50%;background:var(--brand-orange-soft);color:var(--brand-orange);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0;transition:transform .2s}
+  .faq-item.open .faq-icon{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px}
+  .faq-item.open .faq-a{max-height:500px;padding:0 20px 18px}
+  .faq-a p{color:var(--ink-2);font-size:14px;line-height:1.7;margin:0}
+  .faq-a p strong{color:var(--brand-blue)}
+  .faq-a ul{margin:6px 0 0;padding-left:20px;color:var(--ink-2);font-size:14px;line-height:1.8}
+  /* News Section */
+  #news{background:var(--gray-bg);padding:48px 0;border-top:1px solid var(--border)}
+  #news .news-head{text-align:center;margin-bottom:28px}
+  #news .news-head h2{font-size:24px;font-weight:800;color:var(--brand-blue);margin-bottom:6px}
+  #news .news-head p{color:var(--ink-2);font-size:14px}
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto}
+  .news-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;transition:box-shadow .15s,transform .15s}
+  .news-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+  .news-card .news-date{font-size:11.5px;font-weight:700;color:var(--brand-orange);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .news-card h4{font-size:14.5px;font-weight:700;color:var(--brand-blue);margin-bottom:8px;line-height:1.4}
+  .news-card p{font-size:13px;color:var(--ink-2);line-height:1.6;margin:0}
+  @media (max-width:768px){
+    .news-grid{grid-template-columns:1fr}
+    .faq-q h3{font-size:14px}
+  }
 </style>
 </head>
 <body>
@@ -264,6 +297,164 @@
     <div class="product-nav" id="productNav"></div>
 
     <div class="related-section" id="relatedSection"></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="faq-head">
+      <h2>Frequently Asked Questions</h2>
+      <p>Common questions from distributors, wholesalers and JIJI sellers across Ghana, Nigeria and West Africa.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>What is the minimum order quantity (MOQ)?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p><strong>Split AC:</strong> 20 sets per model. <strong>Commercial / VRF:</strong> 1 set. <strong>Parts & accessories:</strong> 5–100 pcs depending on item. Mixed container loading is available — combine multiple models in one 20ft or 40ft HQ container to reduce your per-unit shipping cost.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>What payment methods do you accept?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>We accept <strong>T/T bank transfer</strong> (30% deposit, 70% before shipment), <strong>L/C at sight</strong> for large orders, and <strong>Western Union / MoneyGram</strong> for sample and small orders. For regular customers in Ghana and Nigeria, <strong>local GHS / NGN cash on delivery (COD)</strong> may be arranged through our bonded warehouse partners in Tema and Tincan.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>How long is the delivery time?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p><strong>Stock items:</strong> 3–7 days after deposit. <strong>OEM / white-label orders:</strong> 15–25 days. <strong>Sea freight to Tema (Ghana):</strong> ~28–35 days. <strong>To Tincan (Nigeria):</strong> ~30–40 days. We can also ship by air or express for urgent spare parts (3–7 days).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>Are the units 220V / 50Hz suitable for West Africa?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p><strong>Yes.</strong> All our split, portable and commercial units are configured for <strong>220V / 50Hz / 1PH</strong> — the standard across Ghana, Nigeria, Togo, Benin, Ivory Coast and most of West Africa. VRF systems are <strong>380V / 3N / 50Hz</strong>. We do not sell 110V / 60Hz units for the North American market.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>What warranty do you offer?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p><strong>1-year compressor warranty</strong> on all Midea-brand units. <strong>1-year parts warranty</strong> on indoor/outdoor PCBs, fan motors and remote controls. We provide free spare parts (PCB, remote, capacitor, sensor) equal to 1% of order value for after-sales support. Extended warranty available for large distributors.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>Do you provide installation accessories?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Yes. Each split AC set includes basic installation accessories (remote control, battery, drain pipe, wall plate, screws). For installers and shops, we offer a <strong>complete 3M installation kit</strong> with insulated copper pipe, brass fittings, universal remote, indoor/outdoor PCB, rotary compressor and fan motors — hard-to-source parts that local technicians in Accra and Lagos struggle to find.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>Can I get white-label / OEM packaging with my own brand?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p><strong>Yes, white-label packing is optional.</strong> We can apply your brand logo, custom carton design and user manual in English or French. MOQ for OEM is typically 100 sets per model. This is ideal for JIJI top sellers and distributors who want to build their own brand recognition in the local market.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>Do you have local stock in West Africa?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>We work with <strong>bonded warehouse partners in Tema (Ghana) and Tincan (Nigeria)</strong> for fast-moving models and spare parts. Local stock means you can receive goods in <strong>2–5 days</strong> instead of waiting 30+ days by sea. Contact us for current stock availability and local GHS/NGN pricing.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>I sell on JIJI — can you support my online store?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p><strong>Absolutely.</strong> We provide JIJI sellers with: high-quality product photos and videos for listings, competitive wholesale pricing with quantity discounts, drop-shipping support from bonded warehouse, and after-sales spare parts supply. Top JIJI sellers in Accra and Kumasi already source from us. Send your JIJI store link for a special partner rate.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>Which refrigerant do your units use?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Most split and portable units use <strong>R410A</strong>. Newer models (including P9 cassette) use <strong>R32</strong> — more environmentally friendly with lower global warming potential. Solar AC models use R410A. VRF systems use R410A. All refrigerants comply with international standards and are available for purchase as spare consumables.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>Can I order a sample before placing a bulk order?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p><strong>Yes.</strong> Sample orders of 1–2 units are accepted at sample pricing (slightly higher than bulk). Sample cost can be <strong>deducted from your first bulk order</strong> of 20+ sets. Samples ship by express air (DHL/FedEx, 5–7 days) or can be collected from our Shunde office.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h3>How do I become an authorized distributor in my country?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <p>We offer <strong>exclusive or semi-exclusive distribution rights</strong> for qualified partners in West African countries. Requirements: minimum annual purchase volume, local after-sales capability, and a physical showroom or warehouse. Benefits: protected pricing, priority stock allocation, marketing support, and joint promotion. Contact us with your company profile for evaluation.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="container">
+    <div class="news-head">
+      <h2>News &amp; Market Updates</h2>
+      <p>Industry insights and West Africa cooling market trends</p>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-date">Sept 2026</div>
+        <h4>Midea V8 VRF Launches with ShieldBox IP55 Protection</h4>
+        <p>The new V8 generation features fully-enclosed electrical control boxes rated IP55 — ideal for dusty coastal environments in West Africa. META 2.0 technology improves annual energy efficiency by 28%+.</p>
+      </div>
+      <div class="news-card">
+        <div class="news-date">Aug 2026</div>
+        <h4>Ghana Electricity Tariff Hike Drives Solar AC Demand</h4>
+        <p>With electricity costs rising in Accra and Kumasi, solar-hybrid air conditioners offer the fastest payback for shops, farms and homes. ROI can be under 18 months in high-usage scenarios.</p>
+      </div>
+      <div class="news-card">
+        <div class="news-date">July 2026</div>
+        <h4>Tema Port Expansion Boosts HVAC Imports</h4>
+        <p>Ghana's Tema Port expansion reduces container dwell time, making bonded-warehouse stock models more viable for distributors. Local stock delivery now possible within 48 hours.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -482,6 +673,15 @@ if(document.readyState === "loading"){
   document.addEventListener("DOMContentLoaded", populateInquiryProducts);
 } else {
   populateInquiryProducts();
+}
+
+// ===== FAQ Toggle =====
+function toggleFaq(el){
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains("open");
+  var all = document.querySelectorAll(".faq-item");
+  for(var i=0;i<all.length;i++){ all[i].classList.remove("open"); }
+  if(!wasOpen){ item.classList.add("open"); }
 }
 </script>
 </body>
