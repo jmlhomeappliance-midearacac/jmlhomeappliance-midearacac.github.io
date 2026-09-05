@@ -131,6 +131,31 @@
     .breadcrumb .back-all{margin-left:0;width:100%;justify-content:center;margin-top:6px}
     .product-nav .nav-btn{padding:12px 14px}
   }
+
+  /* Inquiry Form */
+  #inquiry{background:var(--gray-bg);padding:48px 0;border-top:1px solid var(--border)}
+  #inquiry .inquiry-head{text-align:center;margin-bottom:28px}
+  #inquiry .inquiry-head h2{font-size:26px;font-weight:800;color:var(--brand-blue);margin-bottom:6px}
+  #inquiry .inquiry-head p{color:var(--ink-2);font-size:14.5px}
+  .inquiry-form{max-width:720px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:12px;padding:28px 30px;box-shadow:var(--shadow)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .form-group{margin-bottom:14px}
+  .form-group label{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+  .form-group label .req{color:var(--brand-orange)}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:7px;font-size:14px;font-family:var(--font);color:var(--ink);background:#fff;transition:border-color .15s,box-shadow .15s}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--brand-orange);box-shadow:0 0 0 3px rgba(255,106,0,.12)}
+  .form-group textarea{resize:vertical;min-height:90px}
+  .form-submit{text-align:center;margin-top:6px}
+  .form-submit button{background:var(--brand-orange);color:#fff;border:none;font-weight:700;font-size:15px;padding:12px 36px;border-radius:7px;cursor:pointer;transition:background .15s}
+  .form-submit button:hover{background:var(--brand-orange-dark)}
+  .form-submit button:disabled{background:#ccc;cursor:not-allowed}
+  .form-msg{text-align:center;margin-top:14px;font-size:14px;font-weight:600;display:none}
+  .form-msg.success{color:var(--green);display:block}
+  .form-msg.error{color:#d32f2f;display:block}
+  @media (max-width:640px){
+    .form-row{grid-template-columns:1fr}
+    .inquiry-form{padding:20px 16px}
+  }
 </style>
 </head>
 <body>
@@ -168,6 +193,58 @@
 <section class="section" id="gridView">
   <div class="container">
     <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="inquiry">
+  <div class="container">
+    <div class="inquiry-head">
+      <h2>Send Inquiry / Leave a Message</h2>
+      <p>Fill in the form below — we reply within hours with pricing, specs and shipping options.</p>
+    </div>
+    <form class="inquiry-form" id="inquiryForm" onsubmit="return submitInquiry(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name <span class="req">*</span></label>
+          <input type="text" name="name" required placeholder="e.g. Kwame Mensah">
+        </div>
+        <div class="form-group">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" name="email" required placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Country / City</label>
+          <input type="text" name="country" placeholder="e.g. Accra, Ghana">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number</label>
+          <input type="tel" name="whatsapp" placeholder="e.g. +233 24 XXX XXXX">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Product of Interest</label>
+          <select name="product" id="inquiryProduct">
+            <option value="">— Select a product —</option>
+            <option value="Multiple / Not sure yet">Multiple / Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Quantity</label>
+          <input type="text" name="quantity" placeholder="e.g. 50 sets / 1 container">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message <span class="req">*</span></label>
+        <textarea name="message" required placeholder="Tell us your requirements: target port, budget, delivery timeline, special needs..."></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" id="inquiryBtn">Send Inquiry</button>
+      </div>
+      <div class="form-msg" id="inquiryMsg"></div>
+    </form>
   </div>
 </section>
 
@@ -347,6 +424,65 @@ function route(){
 window.addEventListener("hashchange", route);
 renderGrid();
 route();
+
+// ===== Inquiry Form =====
+function populateInquiryProducts(){
+  var sel = document.getElementById("inquiryProduct");
+  if(!sel) return;
+  PRODUCTS.forEach(function(p){
+    var opt = document.createElement("option");
+    opt.value = p.name;
+    opt.textContent = p.name;
+    sel.appendChild(opt);
+  });
+}
+
+function submitInquiry(e){
+  e.preventDefault();
+  var form = document.getElementById("inquiryForm");
+  var btn = document.getElementById("inquiryBtn");
+  var msg = document.getElementById("inquiryMsg");
+  var formData = new FormData(form);
+  formData.append("_subject", "New Inquiry from jmideal.cn - " + (formData.get("country") || "West Africa"));
+  formData.append("_template", "table");
+  formData.append("_captcha", "false");
+
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+  msg.className = "form-msg";
+  msg.style.display = "none";
+
+  fetch("https://formsubmit.co/ajax/jmlhomeappliance@gmail.com", {
+    method: "POST",
+    body: formData
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(data){
+    if(data.success === "true" || data.success === true){
+      msg.textContent = "Thank you! Your inquiry has been sent. We will reply within hours.";
+      msg.className = "form-msg success";
+      form.reset();
+    } else {
+      msg.textContent = "Something went wrong. Please email jmlhomeappliance@gmail.com or WhatsApp +86 133 1839 3556.";
+      msg.className = "form-msg error";
+    }
+  })
+  .catch(function(err){
+    msg.textContent = "Network error. Please email jmlhomeappliance@gmail.com or WhatsApp +86 133 1839 3556.";
+    msg.className = "form-msg error";
+  })
+  .finally(function(){
+    btn.disabled = false;
+    btn.textContent = "Send Inquiry";
+  });
+  return false;
+}
+
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", populateInquiryProducts);
+} else {
+  populateInquiryProducts();
+}
 </script>
 </body>
 </html>
