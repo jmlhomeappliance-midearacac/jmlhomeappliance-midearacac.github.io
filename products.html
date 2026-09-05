@@ -35,7 +35,6 @@
   .page-head .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand-orange);margin-bottom:8px}
   .page-head h1{font-size:30px;font-weight:800;margin-bottom:8px}
   .page-head p{color:rgba(255,255,255,.85);max-width:760px;font-size:15px}
-  /* Grid view */
   #gridView{padding:40px 0}
   .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   .g-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:box-shadow .18s,transform .18s}
@@ -47,10 +46,17 @@
   .g-card .cat{font-size:11px;font-weight:700;color:var(--brand-orange);text-transform:uppercase;letter-spacing:.5px}
   .g-card h3{font-size:14.5px;font-weight:700;line-height:1.35;margin:5px 0 8px;min-height:40px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .g-card .more{font-size:13px;font-weight:700;color:var(--brand-orange)}
-  /* Detail view */
-  #detailView{display:none;padding:40px 0}
+  #detailView{display:none;padding:32px 0 48px}
+  .breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:13px;margin-bottom:20px;padding:10px 16px;background:var(--gray-bg);border-radius:8px;border:1px solid var(--border)}
+  .breadcrumb a{color:var(--brand-blue);font-weight:600;transition:color .15s}
+  .breadcrumb a:hover{color:var(--brand-orange);text-decoration:underline}
+  .breadcrumb .sep{color:var(--ink-3)}
+  .breadcrumb .current{color:var(--ink-2);font-weight:600;max-width:400px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .breadcrumb .back-all{display:inline-flex;align-items:center;gap:5px;background:var(--brand-orange);color:#fff;font-weight:700;font-size:12.5px;padding:5px 12px;border-radius:5px;margin-left:auto;transition:background .15s}
+  .breadcrumb .back-all:hover{background:var(--brand-orange-dark);text-decoration:none}
   .detail-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:36px;align-items:start}
-  .detail-img{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff}
+  .detail-img{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;position:relative}
+  .detail-img .img-tag{position:absolute;top:14px;left:14px;background:var(--brand-orange);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:5px;z-index:2}
   .detail-info h2{font-size:25px;font-weight:800;color:var(--brand-blue);line-height:1.3;margin-bottom:8px}
   .detail-info .cat{font-size:12px;font-weight:700;color:var(--brand-orange);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
   .detail-info .desc{color:var(--ink-2);font-size:15px;margin-bottom:18px}
@@ -59,13 +65,41 @@
   .price-band span{font-size:12.5px;color:var(--ink-2)}
   .btn-ask{display:inline-flex;align-items:center;gap:8px;background:var(--brand-orange);color:#fff;font-weight:700;font-size:15px;padding:13px 24px;border-radius:6px}
   .btn-ask:hover{background:var(--brand-orange-dark)}
-  .btn-back{display:inline-block;margin-top:14px;color:var(--brand-blue);font-weight:700;font-size:13.5px}
   table.spec{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:22px}
   table.spec th{background:var(--brand-blue);color:#fff;text-align:left;padding:10px 12px;font-size:13px}
   table.spec td{padding:9px 12px;border-bottom:1px solid var(--border)}
   table.spec td:first-child{font-weight:700;color:var(--ink);width:42%;background:#F8F9FB}
   table.spec td:last-child{color:var(--ink-2)}
-  /* Contact */
+  .product-nav{display:flex;justify-content:space-between;align-items:stretch;gap:16px;margin-top:36px;padding-top:28px;border-top:2px solid var(--border)}
+  .product-nav .nav-btn{flex:1;display:flex;align-items:center;gap:12px;padding:16px 18px;border:1.5px solid var(--border);border-radius:10px;transition:all .18s;cursor:pointer;background:#fff}
+  .product-nav .nav-btn:hover{border-color:var(--brand-orange);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .product-nav .nav-btn.prev{justify-content:flex-start;text-align:left}
+  .product-nav .nav-btn.next{justify-content:flex-end;text-align:right}
+  .product-nav .nav-arrow{width:36px;height:36px;border-radius:50%;background:var(--brand-orange-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;color:var(--brand-orange);font-weight:800}
+  .product-nav .nav-btn.next .nav-arrow{order:2}
+  .product-nav .nav-text{flex:1;min-width:0}
+  .product-nav .nav-label{font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px}
+  .product-nav .nav-name{font-size:14px;font-weight:700;color:var(--brand-blue);line-height:1.3;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .product-nav .nav-btn:hover .nav-name{color:var(--brand-orange)}
+  .product-nav .nav-center{display:flex;align-items:center;justify-content:center;padding:0 8px}
+  .product-nav .nav-center a{display:inline-flex;align-items:center;gap:6px;color:var(--ink-3);font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:6px;transition:all .15s}
+  .product-nav .nav-center a:hover{color:var(--brand-orange);background:var(--brand-orange-soft)}
+  .related-section{margin-top:44px;padding-top:32px;border-top:2px solid var(--border)}
+  .related-section .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+  .related-section .section-title h3{font-size:20px;font-weight:800;color:var(--brand-blue)}
+  .related-section .section-title a{font-size:13px;font-weight:700;color:var(--brand-orange)}
+  .related-section .section-title a:hover{text-decoration:underline}
+  .related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .related-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .18s}
+  .related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--brand-orange)}
+  .related-card .r-thumb{position:relative;aspect-ratio:1/1;background:#fff}
+  .related-card .r-thumb img{width:100%;height:100%;object-fit:cover}
+  .related-card .r-tag{position:absolute;top:8px;left:8px;background:var(--brand-orange);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px}
+  .related-card .r-body{padding:10px 12px 12px}
+  .related-card .r-cat{font-size:10.5px;font-weight:700;color:var(--brand-orange);text-transform:uppercase;letter-spacing:.4px}
+  .related-card .r-name{font-size:13px;font-weight:700;line-height:1.35;margin:4px 0 6px;min-height:36px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--ink)}
+  .related-card:hover .r-name{color:var(--brand-orange)}
+  .related-card .r-view{font-size:11.5px;font-weight:700;color:var(--brand-blue)}
   #contact{background:linear-gradient(135deg,var(--brand-blue) 0%,var(--brand-blue-dark) 100%);color:#fff;padding:52px 0}
   #contact h2{font-size:24px;font-weight:800;margin-bottom:6px}
   #contact .lead{color:rgba(255,255,255,.8);margin-bottom:24px;font-size:14.5px}
@@ -75,7 +109,6 @@
   .contact-card .value{font-size:16px;font-weight:800;word-break:break-all}
   .contact-card a{display:inline-block;margin-top:10px;background:var(--brand-orange);color:#fff;font-weight:700;font-size:13.5px;padding:9px 16px;border-radius:6px}
   footer{background:#101d33;color:rgba(255,255,255,.7);font-size:13px;padding:26px 0;text-align:center}
-  /* Global site bar (home + language) */
   .sitebar{background:#0b2447;color:#cfe0f5;font-size:12.5px;padding:7px 0;text-align:center;letter-spacing:.3px}
   .sitebar a{color:#ffb35c;text-decoration:none;font-weight:600;margin:0 8px}
   .sitebar a:hover{text-decoration:underline}
@@ -86,10 +119,17 @@
     .grid{grid-template-columns:repeat(3,1fr)}
     .detail-wrap{grid-template-columns:1fr}
     .contact-grid{grid-template-columns:1fr}
+    .related-grid{grid-template-columns:repeat(3,1fr)}
+    .product-nav{flex-direction:column}
+    .product-nav .nav-center{order:-1}
   }
   @media (max-width:640px){
     .grid{grid-template-columns:repeat(2,1fr)}
     .page-head h1{font-size:24px}
+    .related-grid{grid-template-columns:repeat(2,1fr)}
+    .breadcrumb .current{max-width:200px}
+    .breadcrumb .back-all{margin-left:0;width:100%;justify-content:center;margin-top:6px}
+    .product-nav .nav-btn{padding:12px 14px}
   }
 </style>
 </head>
@@ -125,22 +165,31 @@
   </div>
 </section>
 
-<!-- Grid view -->
 <section class="section" id="gridView">
   <div class="container">
     <div class="grid" id="grid"></div>
   </div>
 </section>
 
-<!-- Detail view -->
 <section class="section" id="detailView">
   <div class="container">
-    <a class="btn-back" href="#all" id="backLink">&#8592; All Products</a>
+    <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="#all" id="bcProducts">All Products</a>
+      <span class="sep">/</span>
+      <span class="current" id="bcCurrent">Product</span>
+      <a href="#all" class="back-all">&#8592; Back to All Products</a>
+    </nav>
+
     <div class="detail-wrap" id="detailContent"></div>
+
+    <div class="product-nav" id="productNav"></div>
+
+    <div class="related-section" id="relatedSection"></div>
   </div>
 </section>
 
-<!-- Contact -->
 <section id="contact">
   <div class="container">
     <h2>Request a Quotation</h2>
@@ -182,6 +231,9 @@ var detailView = document.getElementById("detailView");
 var detailContent = document.getElementById("detailContent");
 var pageTitle = document.getElementById("pageTitle");
 var pageSub = document.getElementById("pageSub");
+var bcCurrent = document.getElementById("bcCurrent");
+var productNav = document.getElementById("productNav");
+var relatedSection = document.getElementById("relatedSection");
 
 function renderGrid(){
   grid.innerHTML = "";
@@ -197,14 +249,22 @@ function renderGrid(){
 }
 
 function renderDetail(id){
-  var p = PRODUCTS.find(function(x){ return x.id === id; });
-  if(!p) { showGrid(); return; }
+  var idx = PRODUCTS.findIndex(function(x){ return x.id === id; });
+  if(idx < 0) { showGrid(); return; }
+  var p = PRODUCTS[idx];
+  var prevP = idx > 0 ? PRODUCTS[idx - 1] : null;
+  var nextP = idx < PRODUCTS.length - 1 ? PRODUCTS[idx + 1] : null;
+
   var rows = p.specs.map(function(s){
     return '<tr><td>' + s[0] + '</td><td>' + s[1] + '</td></tr>';
   }).join("");
   var fob = p.specs.find(function(s){ return s[0] === "FOB Reference"; });
+
+  bcCurrent.textContent = p.name;
+  bcCurrent.title = p.name;
+
   detailContent.innerHTML =
-    '<div class="detail-img"><img src="' + p.img + '" alt="' + p.name + '"></div>' +
+    '<div class="detail-img"><span class="img-tag">' + p.tag + '</span><img src="' + p.img + '" alt="' + p.name + '"></div>' +
     '<div class="detail-info">' +
       '<div class="cat">' + p.cat + ' · ' + p.tag + '</div>' +
       '<h2>' + p.name + '</h2>' +
@@ -213,6 +273,50 @@ function renderDetail(id){
       '<a class="btn-ask" href="https://wa.me/8613318393556?text=' + encodeURIComponent("Hello JM-ideal, I want a quotation for: " + p.name) + '" target="_blank" rel="noopener">Ask on WhatsApp</a>' +
       '<table class="spec"><tr><th colspan="2">Specifications</th></tr>' + rows + '</table>' +
     '</div>';
+
+  var navHTML = '';
+  if(prevP){
+    navHTML += '<a class="nav-btn prev" href="#' + prevP.id + '" title="Previous product: ' + prevP.name + '">' +
+      '<div class="nav-arrow">&#8592;</div>' +
+      '<div class="nav-text"><div class="nav-label">Previous Product</div><div class="nav-name">' + prevP.name + '</div></div>' +
+    '</a>';
+  } else {
+    navHTML += '<div class="nav-btn prev" style="opacity:.4;cursor:default;pointer-events:none">' +
+      '<div class="nav-arrow">&#8592;</div>' +
+      '<div class="nav-text"><div class="nav-label">Previous Product</div><div class="nav-name">This is the first product</div></div>' +
+    '</div>';
+  }
+  navHTML += '<div class="nav-center"><a href="#all">&#9776; All Products</a></div>';
+  if(nextP){
+    navHTML += '<a class="nav-btn next" href="#' + nextP.id + '" title="Next product: ' + nextP.name + '">' +
+      '<div class="nav-text"><div class="nav-label">Next Product</div><div class="nav-name">' + nextP.name + '</div></div>' +
+      '<div class="nav-arrow">&#8594;</div>' +
+    '</a>';
+  } else {
+    navHTML += '<div class="nav-btn next" style="opacity:.4;cursor:default;pointer-events:none">' +
+      '<div class="nav-text"><div class="nav-label">Next Product</div><div class="nav-name">This is the last product</div></div>' +
+      '<div class="nav-arrow">&#8594;</div>' +
+    '</div>';
+  }
+  productNav.innerHTML = navHTML;
+
+  var related = PRODUCTS.filter(function(x){ return x.id !== p.id; }).slice(0, 4);
+  var relHTML =
+    '<div class="section-title">' +
+      '<h3>Other Products You May Like</h3>' +
+      '<a href="#all">View all ' + PRODUCTS.length + ' products &rarr;</a>' +
+    '</div>' +
+    '<div class="related-grid">';
+  related.forEach(function(rp){
+    relHTML +=
+      '<div class="related-card" onclick="location.hash=\'' + rp.id + '\'">' +
+        '<div class="r-thumb"><span class="r-tag">' + rp.tag + '</span><img src="' + rp.img + '" alt="' + rp.name + '" loading="lazy"></div>' +
+        '<div class="r-body"><div class="r-cat">' + rp.cat + '</div><div class="r-name">' + rp.name + '</div><div class="r-view">View details &rarr;</div></div>' +
+      '</div>';
+  });
+  relHTML += '</div>';
+  relatedSection.innerHTML = relHTML;
+
   gridView.style.display = "none";
   detailView.style.display = "block";
   pageTitle.textContent = p.name;
