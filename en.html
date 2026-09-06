@@ -248,6 +248,21 @@
   .newsletter-form button:hover{background:#ff8c2e}
   .newsletter-form button:disabled{opacity:.6;cursor:default}
   #newsletterMsg{font-size:13px;margin-top:10px;min-height:18px;line-height:1.5}
+
+/* View specs link */
+.btn-specs {
+  display: inline-block;
+  color: #0b2447;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 8px;
+  transition: color 0.2s;
+}
+.btn-specs:hover {
+  color: #f59e0b;
+}
+
 </style>
 </head>
 <body>
@@ -552,18 +567,18 @@
   <script>
   // ===== Data: 8 featured products (photo cards) =====
     var featured = [
-    {cat:"split", name:"12000 BTU Split AC — R410A Cooling Only", spec:"12K · 1.5HP · Wall Mounted", price:"$145–195", ask:false, img:"images/p1.jpg?v=20260907", tag:"Best Seller"},
-    {cat:"inverter", name:"12000 BTU Inverter Split AC — DC Inverter", spec:"12K · 1.5HP · Quiet · Low Power", price:"$179–199", ask:false, img:"images/p2.jpg?v=20260907", tag:"Inverter"},
-    {cat:"solar", name:"12000 BTU Solar AC — DC 48V Hybrid", spec:"12K · 48V DC · Off-Grid Ready", price:"$290+", ask:false, img:"images/p3.jpg?v=20260907", tag:"Solar"},
-    {cat:"portable", name:"9000 BTU Portable AC — Self Evaporating", spec:"9K · Floor Standing · No Install", price:"Ask", ask:true, img:"images/p4.jpg?v=20260907", tag:"Portable"},
-    {cat:"commercial", name:"24000 BTU Floor Standing AC — 3HP Cabinet", spec:"24K · Cabinet · Hall / Restaurant", price:"Ask", ask:true, img:"images/p5.jpg?v=20260907", tag:"Commercial"},
-    {cat:"commercial", name:"P9-Cassette On-Off R32 GSP-SC36-CRN8 36000BTU Cooling Only", spec:"36K · Ceiling Cassette · R32 · On/Off", price:"Ask", ask:true, img:"images/P9-Cassette.jpeg?v=20260907", tag:"Commercial"},
-    {cat:"parts", name:"UVC Sanitizer Light for Split AC Indoor Unit", spec:"Bacteria Killer · Indoor Unit", price:"Ask", ask:true, img:"images/p7.jpg?v=20260907", tag:"High Margin"},
-    {cat:"parts", name:"AC Installation Kit & Spare Parts — 3M Pipe + PCB + Motor", spec:"3M Copper Pipe · Remote · PCB · Compressor · Fan Motor", price:"Ask", ask:true, img:"images/p8.jpg?v=20260908", tag:"Parts Kit"},
-    {cat:"commercial", name:"A7 Duct Split AC — Ceiling Concealed Ducted", spec:"18K-24K · Ducted · Low Static · Villa/Office", price:"Ask", ask:true, img:"images/p9.jpg?v=20260908", tag:"Ducted"},
-    {cat:"commercial", name:"Multi-Split AC — 1 Outdoor to 2-3 Indoor", spec:"24K-36K · VRF · Multi-Zone · Villa/Restaurant", price:"Ask", ask:true, img:"images/p10.jpg?v=20260908", tag:"Multi-Split"},
-    {cat:"commercial", name:"Midea V8 VRF — ShieldBox IP55 Commercial VRF System", spec:"8-120HP · IP55 · META 2.0 · HyperLink", price:"Ask", ask:true, img:"images/p11.jpg?v=20260908", tag:"V8 VRF"},
-    {cat:"commercial", name:"Midea VC Max VRF — 8th Gen Standard Series 380V", spec:"8-90HP · Full DC Inverter · 17 Sensors · 3.5W Standby", price:"Ask", ask:true, img:"images/p12.jpg?v=20260908", tag:"VC Max"},
+    {"id":"p1", cat:"split", name:"12000 BTU Split AC — R410A Cooling Only", spec:"12K · 1.5HP · Wall Mounted", price:"$125–155", ask:false, img:"images/p1.jpg?v=20260907", tag:"Best Seller"},
+    {"id":"p2", cat:"inverter", name:"12000 BTU Inverter Split AC — DC Inverter", spec:"12K · 1.5HP · Quiet · Low Power", price:"$159–175", ask:false, img:"images/p2.jpg?v=20260907", tag:"Inverter"},
+    {"id":"p3", cat:"solar", name:"12000 BTU Solar AC — DC 48V Hybrid", spec:"12K · 48V DC · Off-Grid Ready", price:"$290+", ask:false, img:"images/p3.jpg?v=20260907", tag:"Solar"},
+    {"id":"p4", cat:"portable", name:"9000 BTU Portable AC — Self Evaporating", spec:"9K · Floor Standing · No Install", price:"$180–250", ask:false, img:"images/p4.jpg?v=20260907", tag:"Portable"},
+    {"id":"p5", cat:"commercial", name:"24000 BTU Floor Standing AC — 3HP Cabinet", spec:"24K · Cabinet · Hall / Restaurant", price:"$350–450", ask:false, img:"images/p5.jpg?v=20260907", tag:"Commercial"},
+    {"id":"p6", cat:"commercial", name:"P9-Cassette On-Off R32 GSP-SC36-CRN8 36000BTU Cooling Only", spec:"36K · Ceiling Cassette · R32 · On/Off", price:"$550–700", ask:false, img:"images/P9-Cassette.jpeg?v=20260907", tag:"Commercial"},
+    {"id":"p7", cat:"parts", name:"UVC Sanitizer Light for Split AC Indoor Unit", spec:"Bacteria Killer · Indoor Unit", price:"$12–25", ask:false, img:"images/p7.jpg?v=20260907", tag:"High Margin"},
+    {"id":"p8", cat:"parts", name:"AC Installation Kit & Spare Parts — 3M Pipe + PCB + Motor", spec:"3M Copper Pipe · Remote · PCB · Compressor · Fan Motor", price:"$25–45", ask:false, img:"images/p8.jpg?v=20260908", tag:"Parts Kit"},
+    {"id":"p9", cat:"commercial", name:"A7 Duct Split AC — Ceiling Concealed Ducted", spec:"18K-24K · Ducted · Low Static · Villa/Office", price:"$300–420", ask:false, img:"images/p9.jpg?v=20260908", tag:"Ducted"},
+    {"id":"p10", cat:"commercial", name:"Multi-Split AC — 1 Outdoor to 2-3 Indoor", spec:"24K-36K · VRF · Multi-Zone · Villa/Restaurant", price:"$450–650", ask:false, img:"images/p10.jpg?v=20260908", tag:"Multi-Split"},
+    {"id":"p11", cat:"commercial", name:"Midea V8 VRF — ShieldBox IP55 Commercial VRF System", spec:"8-120HP · IP55 · META 2.0 · HyperLink", price:"$1,800–3,500", ask:false, img:"images/p11.jpg?v=20260908", tag:"V8 VRF"},
+    {"id":"p12", cat:"commercial", name:"Midea VC Max VRF — 8th Gen Standard Series 380V", spec:"8-90HP · Full DC Inverter · 17 Sensors · 3.5W Standby", price:"$1,500–3,000", ask:false, img:"images/p12.jpg?v=20260908", tag:"VC Max"},
   ];
 
   // ===== Data: full 18-line catalog =====
@@ -610,6 +625,7 @@
           '<h3>' + p.name + '</h3>' +
           '<div class="meta"><span>' + p.spec + '</span></div>' +
           '<div class="price-row">' + (p.ask ? '<span class="price ask">Price on Request</span>' : '<span class="price">' + p.price + '<span class="per"> / unit FOB</span></span>') + '</div>' +
+          '<a class="btn-specs" href="products.html#' + p.id + '" target="_blank">View specs →</a>' +
           '<a class="btn-ask" href="https://wa.me/8613318393556?text=' + encodeURIComponent('Hello JM-ideal, I want a quotation for: ' + p.name) + '" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> Ask Now</a>' +
         '</div>';
       grid.appendChild(card);
