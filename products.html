@@ -1196,19 +1196,31 @@ function searchKB(){
     results.innerHTML = '<div class="kb-empty"><div class="icon">&#128161;</div><p>Type a question above or click a category to browse common questions</p></div>';
     return;
   }
-  var matched = KB_DATA.filter(function(item){
-    if(currentKBCat !== 'all' && item.cat !== currentKBCat) return false;
-    return item.q.toLowerCase().indexOf(query) > -1 || item.a.toLowerCase().indexOf(query) > -1;
+  var keywords = query.split(/[\s,?]+/).filter(function(k){ return k.length > 1; });
+  var scored = [];
+  KB_DATA.forEach(function(item){
+    if(currentKBCat !== 'all' && item.cat !== currentKBCat) return;
+    var qText = item.q.toLowerCase();
+    var aText = item.a.toLowerCase();
+    var score = 0;
+    if(qText.indexOf(query) > -1) score += 100;
+    if(aText.indexOf(query) > -1) score += 50;
+    keywords.forEach(function(kw){
+      if(qText.indexOf(kw) > -1) score += 10;
+      if(aText.indexOf(kw) > -1) score += 5;
+    });
+    if(score > 0) scored.push({item: item, score: score});
   });
-  if(matched.length === 0){
+  scored.sort(function(a, b){ return b.score - a.score; });
+  if(scored.length === 0){
     results.innerHTML = '<div class="kb-empty"><div class="icon">&#128533;</div><p>No matching answer found. Try different keywords or ask us on WhatsApp.</p></div>';
     return;
   }
   var html = '';
-  matched.forEach(function(item, idx){
+  scored.forEach(function(entry, idx){
     html += '<div class="kb-result-item' + (idx === 0 ? ' open' : '') + '" onclick="toggleKBAnswer(this)">';
-    html += '<div class="q">Q: ' + item.q + '</div>';
-    html += '<div class="a">A: ' + item.a + '</div>';
+    html += '<div class="q">Q: ' + entry.item.q + '</div>';
+    html += '<div class="a">A: ' + entry.item.a + '</div>';
     html += '</div>';
   });
   results.innerHTML = html;
