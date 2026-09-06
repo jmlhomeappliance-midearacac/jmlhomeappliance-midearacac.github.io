@@ -2476,7 +2476,7 @@ function toggleAiChat() {
 }
 
 function aiChatWelcome() {
-  addAiChatMsg('bot', 'Hello! &#128075; I\'m Jimmy, your AI Sales Assistant at JM-ideal. I can help you with product info, pricing, shipping, and more. How can I help you today?');
+  addAiChatMsg('bot', 'Hello! &#128075; I\'m Cofi, your AI Sales Assistant at JM-ideal. I can help you with product info, pricing, shipping, and more. How can I help you today?');
   setTimeout(function() {
     addAiChatQuickReplies([
       'Show me product prices',
@@ -2492,7 +2492,7 @@ function addAiChatMsg(type, text) {
   var container = document.getElementById('aiChatMessages');
   var msg = document.createElement('div');
   msg.className = 'ai-chat-msg ' + type;
-  var label = type === 'bot' ? 'Jimmy' : 'You';
+  var label = type === 'bot' ? 'Cofi' : 'You';
   msg.innerHTML = '<div class="sender-label">' + label + '</div>' + text;
   container.appendChild(msg);
   container.scrollTop = container.scrollHeight;
@@ -2639,7 +2639,7 @@ setTimeout(function() {
     <div class="ai-chat-header">
       <div class="ai-chat-avatar">&#129302;</div>
       <div class="ai-chat-header-info">
-        <div class="ai-chat-header-name">Jimmy - JM-ideal Sales Assistant <span style="font-size:10px;background:rgba(255,255,255,0.2);padding:2px 6px;border-radius:8px">AI</span></div>
+        <div class="ai-chat-header-name">Cofi - JM-ideal Sales Assistant <span style="font-size:10px;background:rgba(255,255,255,0.2);padding:2px 6px;border-radius:8px">AI</span></div>
         <div class="ai-chat-header-status"><span class="ai-chat-status-dot"></span>Online - Reply in seconds</div>
       </div>
       <button class="ai-chat-close" onclick="toggleAiChat()">&#10005;</button>
@@ -2649,7 +2649,7 @@ setTimeout(function() {
       <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter')sendAiChatMsg()">
       <button class="ai-chat-send" onclick="sendAiChatMsg()">&#10148;</button>
     </div>
-    <div class="ai-chat-footer">Powered by Jimmy AI | JM-ideal | <a href="https://wa.me/8613318393556" target="_blank">Talk to human on WhatsApp</a></div>
+    <div class="ai-chat-footer">Powered by Cofi AI | JM-ideal | <a href="https://wa.me/8613318393556" target="_blank">Talk to human on WhatsApp</a></div>
   </div>
 </div>
 
