@@ -1453,6 +1453,87 @@
   }
 }
 
+
+/* PROMOTION Social Share */
+.promo-share-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.promo-share-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 600;
+}
+.promo-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.promo-share-btn:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.promo-share-btn.facebook { background: #1877F2; color: #fff; }
+.promo-share-btn.linkedin { background: #0A66C2; color: #fff; }
+.promo-share-btn.twitter { background: #000; color: #fff; }
+.promo-share-btn.whatsapp { background: #25D366; color: #fff; }
+.promo-share-btn.email { background: #EA4335; color: #fff; }
+.promo-share-btn.copy { background: #6B7280; color: #fff; }
+.promo-share-btn.copied { background: #10B981; }
+.promo-share-toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #10B981;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 10000;
+}
+.promo-share-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.promo-floating-share {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+}
+.promo-floating-share .promo-share-btn {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .promo-floating-share { display: none; }
+  .promo-share-bar { justify-content: center; }
+  .promo-share-label { width: 100%; text-align: center; }
+}
+
 </style>
 <link rel="preconnect" href="https://www.jmideal.cn">
 <link rel="preconnect" href="https://wa.me">
@@ -1757,6 +1838,15 @@
       <a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20am%20interested%20in%20the%20PROMOTION%2024000%20BTU%20Fix-Speed%2018C%20Split%20AC%20at%20GHS7599.%20Please%20share%20details%20and%20pickup%20info." target="_blank" class="promo-cta">
         &#128172; Grab This Deal on WhatsApp
       </a>
+      <div class="promo-share-bar">
+        <span class="promo-share-label">&#128228; Share this deal:</span>
+        <a href="javascript:void(0)" class="promo-share-btn facebook" onclick="sharePromo('facebook')" title="Share on Facebook">&#120143;</a>
+        <a href="javascript:void(0)" class="promo-share-btn linkedin" onclick="sharePromo('linkedin')" title="Share on LinkedIn">&#128279;</a>
+        <a href="javascript:void(0)" class="promo-share-btn twitter" onclick="sharePromo('twitter')" title="Share on X (Twitter)">&#120143;</a>
+        <a href="javascript:void(0)" class="promo-share-btn whatsapp" onclick="sharePromo('whatsapp')" title="Share on WhatsApp">&#128172;</a>
+        <a href="javascript:void(0)" class="promo-share-btn email" onclick="sharePromo('email')" title="Share via Email">&#9993;</a>
+        <a href="javascript:void(0)" class="promo-share-btn copy" onclick="sharePromo('copy')" id="promoCopyBtn" title="Copy Link">&#128203;</a>
+      </div>
     </div>
     <div class="promo-image">
       <img src="images/Carries%2024K%20Split%20AC%20Promotion_01.png" alt="Midea Carrier 24000 BTU Split AC Promotion - GHS7599 Only" loading="lazy">
@@ -3658,6 +3748,66 @@ document.addEventListener('DOMContentLoaded', function() {
     renderGrid();
   }
 });
+</script>
+
+<div class="promo-share-toast" id="promoShareToast">&#10003; Link copied to clipboard!</div>
+
+<script>
+// PROMOTION Social Share Functions
+function sharePromo(platform) {
+  var url = window.location.origin + window.location.pathname + '#promotion';
+  var title = '🔥 HOT DEAL! Midea Carrier 24,000 BTU Split AC - Only GHS 7,599 (30% OFF!)';
+  var desc = 'Midea Carrier Thailand Factory Clearance Sale! 24,000 BTU Fix-Speed 18C Series Hi-Wall Split AC. Genuine quality, lowest price in Ghana. Pay & pickup at JML Accra Warehouse. Limited stock!';
+  var shareUrl = '';
+  
+  switch(platform) {
+    case 'facebook':
+      shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) + '&quote=' + encodeURIComponent(title);
+      window.open(shareUrl, '_blank', 'width=600,height=500');
+      break;
+    case 'linkedin':
+      shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
+      window.open(shareUrl, '_blank', 'width=600,height=500');
+      break;
+    case 'twitter':
+      shareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(title + ' ' + desc) + '&url=' + encodeURIComponent(url);
+      window.open(shareUrl, '_blank', 'width=600,height=500');
+      break;
+    case 'whatsapp':
+      shareUrl = 'https://wa.me/?text=' + encodeURIComponent(title + '\n\n' + desc + '\n\n' + url);
+      window.open(shareUrl, '_blank');
+      break;
+    case 'email':
+      shareUrl = 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(desc + '\n\n' + url);
+      window.location.href = shareUrl;
+      break;
+    case 'copy':
+      navigator.clipboard.writeText(url).then(function() {
+        var toast = document.getElementById('promoShareToast');
+        var copyBtn = document.getElementById('promoCopyBtn');
+        toast.classList.add('show');
+        copyBtn.classList.add('copied');
+        copyBtn.innerHTML = '&#10003;';
+        setTimeout(function() {
+          toast.classList.remove('show');
+          copyBtn.classList.remove('copied');
+          copyBtn.innerHTML = '&#128203;';
+        }, 2500);
+      }).catch(function() {
+        // Fallback for older browsers
+        var textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        var toast = document.getElementById('promoShareToast');
+        toast.classList.add('show');
+        setTimeout(function() { toast.classList.remove('show'); }, 2500);
+      });
+      break;
+  }
+}
 </script>
 
 </body>
