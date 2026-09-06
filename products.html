@@ -787,6 +787,10 @@
         <input type="text" id="kbSearch" placeholder="e.g. What is the MOQ for VRF? / How to install split AC? / Warranty period?" oninput="searchKB()">
         <span class="kb-search-icon">&#128269;</span>
       </div>
+      <div style="text-align:right;margin-bottom:10px;">
+        <span class="kb-lang-btn active" onclick="switchKBLang('en',this)" style="background:#ff8c00;color:#fff;padding:5px 12px;border-radius:5px;cursor:pointer;font-size:13px;margin-left:5px;">EN</span>
+        <span class="kb-lang-btn" onclick="switchKBLang('fr',this)" style="background:rgba(255,255,255,.15);color:#fff;padding:5px 12px;border-radius:5px;cursor:pointer;font-size:13px;margin-left:5px;">FR</span>
+      </div>
       <div class="kb-categories" id="kbCategories">
         <span class="kb-cat active" onclick="filterKB('all',this)">All</span>
         <span class="kb-cat" onclick="filterKB('product',this)">Products</span>
@@ -814,8 +818,11 @@
         </div>
       </div>
       <div class="kb-whatsapp">
-        <p>Can't find your answer? Chat with us directly on WhatsApp</p>
-        <a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20have%20a%20question%20about%20your%20products" target="_blank" rel="noopener">&#128172; Ask on WhatsApp</a>
+        <p>Can't find your answer? Get AI-assisted reply on WhatsApp</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <a href="#" onclick="askAIOnWhatsApp();return false;" style="display:inline-block;background:#7c3aed;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;transition:transform .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">&#129302; Ask AI (WhatsApp)</a>
+          <a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20have%20a%20question%20about%20your%20products" target="_blank" rel="noopener" style="display:inline-block;background:#25D366;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;transition:transform .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">&#128172; Chat Direct</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1185,6 +1192,39 @@ var KB_DATA = [
   {cat:"price", q:"What payment methods do you accept?", a:"We accept: T/T bank transfer (30% deposit, 70% before shipment), L/C at sight for large orders, Western Union / MoneyGram for sample and small orders. For regular customers in Ghana and Nigeria, local GHS / NGN cash on delivery (COD) may be arranged through bonded warehouse partners."},
   {cat:"price", q:"Do you offer quantity discounts?", a:"Yes. Quantity tiers: 20-49 sets (standard price), 50-99 sets (3-5% discount), 100-499 sets (5-8% discount), 500+ sets / year (distributor pricing + extended warranty + dedicated support). Annual distributor agreements available with priority production, marketing support and training."},
   {cat:"price", q:"Can I order a sample before bulk order?", a:"Yes. Sample orders of 1-2 units accepted at sample pricing (slightly higher than bulk). Sample cost can be DEDUCTED from your first bulk order of 20+ sets. Samples ship by express air (DHL/FedEx, 5-7 days) or can be collected from our Shunde office. This lets you test quality before committing to bulk purchase."},
+
+  // More product questions
+  {cat:"product", q:"How does portable AC work and do I need installation?", a:"Portable AC is plug-and-play — no professional installation needed. Simply: 1) Place near a window, 2) Extend the exhaust hose (included) through the window kit, 3) Plug into 220V socket, 4) Turn on. Self-evaporating design means no water tank to empty in most conditions. Wheels make it easy to move between rooms. Ideal for shops, offices, rental apartments and JIJI sellers who cannot install wall units."},
+  {cat:"product", q:"What area can 9000 BTU portable AC cool?", a:"9000 BTU portable AC effectively cools 15-25 sqm (160-270 sqft) — suitable for single bedrooms, small shops, offices. For larger areas up to 35 sqm, consider 12000 BTU portable or 24000 BTU floor standing. Note: portable AC efficiency is slightly lower than split units due to heat exchange through the exhaust hose."},
+  {cat:"product", q:"Is portable AC noisy?", a:"Portable AC noise level: 50-55 dB on low fan, 58-62 dB on high fan. Comparable to normal conversation or a refrigerator. For bedrooms, use low fan speed or sleep mode. Split wall units are quieter (35-45 dB) if noise is a primary concern. We recommend placing portable AC on a flat surface and keeping the exhaust hose as short/straight as possible to minimize noise."},
+  {cat:"product", q:"How many solar panels needed for 12K solar AC?", a:"12000 BTU DC 48V solar AC requires: Minimum 3 x 300W panels (900W total), Recommended 4 x 350-450W panels (1400-1800W total) for all-day operation. Panels should be monocrystalline, connected in series to reach 48V+ VOC. MPPT charge controller included with the unit. For 24-hour operation, add a 48V battery bank (minimum 100Ah, recommended 200Ah)."},
+  {cat:"product", q:"Can solar AC work on cloudy days or at night?", a:"Hybrid solar AC can work: 1) Sunny day — runs directly from solar panels (free electricity), 2) Cloudy day — solar panels still produce 30-60% power, unit supplements from grid/battery, 3) Night — runs from battery bank (if installed) or grid power via AC/DC adapter. MPPT controller automatically switches between power sources. With 4 panels + 200Ah battery, you can achieve 12-16 hours of solar-powered operation per day."},
+  {cat:"product", q:"What is the payback period for solar AC in Ghana?", a:"Payback calculation for 12K solar AC in Ghana: System cost ~US$290 + 4 panels (~US$200) + battery (~US$250) = US$740 total. Electricity savings: 1.2kW x 8 hours/day x 30 days = 288 kWh/month. At Ghana tariff ~GHS 1.5/kWh (~US$0.13), monthly savings = US$37. Annual savings = US$444. Simple payback = 740/444 = 1.7 years. For shops running AC 12+ hours/day, payback under 14 months. Battery lifespan 5-8 years, panels 25 years."},
+  {cat:"product", q:"What does the 3M installation kit include?", a:"Our 3M AC Installation Kit includes: 1) 3 meters insulated copper pipe (liquid 1/4 + gas 3/8), 2) Brass flare fittings (4 nuts + 2 unions), 3) Universal AC remote control (works with 1000+ brands), 4) Indoor unit PCB control board, 5) Outdoor unit PCB/inverter board, 6) Rotary compressor (optional add-on), 7) Indoor/outdoor fan motors, 8) Drain pipe + wall sleeve, 9) Cable ties + insulation tape. These are hard-to-source parts that local technicians in Accra and Lagos struggle to find — perfect for JIJI parts sellers and repair shops."},
+  {cat:"product", q:"Are installation parts universal or brand-specific?", a:"Copper pipe, brass fittings, drain pipe, wall brackets and cable are UNIVERSAL — fit all brands (Midea, LG, Samsung, TCL, Hisense, Nasco, etc.). PCBs and remote controls are brand/model-specific — our universal remote works with 1000+ brands but PCB must match the exact model. Compressors must match BTU capacity and refrigerant type (R410A/R32). When ordering PCB or compressor, please send photo of the original part label with model number."},
+  {cat:"product", q:"What area can 24000 BTU floor standing AC cool?", a:"24000 BTU (3HP) floor standing AC cools 30-50 sqm (320-540 sqft) — suitable for living rooms, restaurants, shops, offices, small conference rooms. Cabinet design stands on floor, no wall mounting needed. Comes with remote control, auto swing louvers, 3 fan speeds, timer. For areas 50-80 sqm, consider 36000 BTU ceiling cassette or 48000 BTU floor standing. For commercial buildings 100+ sqm, VRF system is more efficient."},
+  {cat:"product", q:"What is ceiling cassette AC and where to use it?", a:"Ceiling cassette AC (also called 4-way cassette) is installed flush in a suspended ceiling — only the grille is visible. 360-degree airflow from all 4 directions provides even cooling. Ideal for: offices, shops, restaurants, hotels, showrooms where wall space is limited or aesthetics matter. Requires suspended ceiling with minimum 300mm clearance above. Our P9 cassette is 36000 BTU (3HP), R32 refrigerant, cooling only, suitable for 35-60 sqm. Individual louver control lets you direct airflow where needed."},
+  {cat:"product", q:"What is ducted AC and when is it better than split?", a:"A7 ducted AC (ceiling concealed ducted) is installed above the ceiling with air distributed through ductwork to multiple rooms/areas. Only the supply/return grilles are visible — very clean aesthetic. Better than split when: 1) You want invisible AC (no indoor units on walls), 2) Multiple rooms need cooling from one outdoor unit, 3) Commercial spaces with high ceilings, 4) New construction where ducts can be installed. Our A7 duct is medium static pressure, suitable for shops, offices, restaurants. Requires professional design and installation."},
+  {cat:"product", q:"What is multi-split AC and how many indoor units?", a:"Multi-split AC connects ONE outdoor unit to MULTIPLE indoor units (2 to 5 indoor units). Each indoor unit can be independently controlled — different rooms can have different temperatures or be turned off. Our multi-split supports 1 outdoor to 2-3 indoor units (9K/12K/18K combinations). Benefits: only one outdoor unit (saves wall space, quieter), individual room control, more efficient than multiple separate splits when not all rooms are cooling. Ideal for apartments, small offices, shops with multiple rooms."},
+  {cat:"product", q:"Do you sell UVC sanitizer light and how does it work?", a:"Yes! Our UVC Sanitizer Light is an add-on accessory for split AC indoor units. It installs inside the indoor unit near the evaporator coil. When the AC runs, UVC light (254nm wavelength) kills bacteria, viruses, mold and fungi on the coil and in the airflow. Benefits: cleaner air, reduces AC smell, prevents mold growth, healthier for families. Cost US$12-25 per unit, MOQ 100 pcs. Easy DIY installation with included brackets and wire. High-margin product for JIJI sellers and health-conscious customers. Note: UVC light must not be exposed to eyes/skin — installed inside unit, safe when AC panel is closed."},
+  {cat:"product", q:"What is the difference between inverter and fixed speed AC?", a:"Fixed speed (non-inverter): Compressor runs at full power or turns off completely. Temperature fluctuates ±2-3°C. More electricity consumption. Lower purchase price. Simpler technology, cheaper to repair. Inverter: Compressor speed varies continuously to maintain exact temperature. Temperature stable ±0.5°C. 30-40% less electricity. Quieter operation. Higher purchase price but pays back in 1-2 years with high electricity tariffs. For West Africa with high electricity costs, inverter is strongly recommended — especially for shops running 8+ hours/day. Our inverter split is US$159-175 vs fixed US$125-155."},
+
+];
+
+
+
+// ===== French Knowledge Base =====
+var KB_DATA_FR = [
+  {cat:"product", q:"Quels produits proposez-vous?", a:"Nous proposons une gamme complete: Climatiseur split (12000 BTU fixe/inverter), Climatiseur solaire (12K DC 48V hybride), Climatiseur portable (9K), Climatiseur sur pied (24K 3HP), Cassette plafond (36K), Gainable A7, Multi-split (1 exterieur a 2-3 interieurs), VRF commercial V8 (8-120HP), VC Max VRF (8-90HP), plus pieces detachees et kits d'installation."},
+  {cat:"product", q:"Vos appareils sont-ils 220V 50Hz adaptes a l'Afrique de l'Ouest?", a:"Oui! Tous les splits, portables et commerciaux sont configures en 220V / 50Hz / 1PH — standard au Ghana, Nigeria, Togo, Benin, Cote d'Ivoire et la plupart de l'Afrique de l'Ouest. Les systemes VRF sont en 380V / 3N / 50Hz. Nous ne vendons pas d'appareils 110V/60Hz pour l'Amerique du Nord."},
+  {cat:"vrf", q:"Quelle est la capacite du VRF V8?", a:"Midea V8 VRF propose: Serie individuelle 8-42HP, Serie combinable 8-120HP (jusqu'a 4 modules combines). Capacite de refroidissement de 22.4kW a 335kW. Convient pour bureaux, hotels, centres commerciaux, hopitaux et ecoles."},
+  {cat:"install", q:"Comment installer un climatiseur split?", a:"1) Fixer la plaque murale de l'unite interieure a 2-2.5m de haut, bien de niveau. 2) Percer un trou de 65mm a travers le mur pour les tuyaux et cables (pente legere vers l'exterieur pour l'evacuation). 3) Connecter les tuyaux en cuivre (liquide 1/4, gaz 3/8), l'isolation doit couvrir tout le cuivre. 4) Connecter le cable d'alimentation et le fil de signal. 5) Fixer l'unite exterieure sur socle en beton ou support mural, prevoir 30cm d'espace pour la circulation d'air. 6) Mettre le systeme sous vide pendant 15-30 minutes. 7) Ouvrir les vannes de refrigerant, tester les fuites avec de l'eau savonneuse. 8) Allumer et tester le refroidissement. Nous recommandons un technicien qualifie pour l'installation."},
+  {cat:"warranty", q:"Quelle est la duree de garantie du compresseur?", a:"Garantie compresseur de 1 an sur tous les appareils de marque Midea. Pour les accords de grands distributeurs (volume annuel 500+ unites), une garantie compresseur etendue jusqu'a 5 ans est disponible. La garantie couvre uniquement les defauts de fabrication — ne couvre pas les dommages dus a une installation incorrecte, a des surtensions electriques ou au manque d'entretien."},
+  {cat:"shipping", q:"Combien de temps pour livrer a Tema Ghana?", a:"Transport maritime de Guangzhou a Tema (Ghana): environ 28-35 jours. A Tincan (Nigeria): 30-40 jours. A Abidjan (Cote d'Ivoire): 32-38 jours. A Lome (Togo) / Cotonou (Benin): 30-35 jours. Les articles en stock partent 3-7 jours apres l'acompte. Commandes OEM/marque blanche: 15-25 jours de production."},
+  {cat:"price", q:"Quel est le MOQ pour le climatiseur split?", a:"Split AC: 20 unites par modele. Commercial / VRF: 1 unite. Pieces et accessoires: 5-100 pieces selon l'article. Chargement mixte en conteneur disponible — combinez plusieurs modeles pour remplir un conteneur. Commandes echantillon de 1-2 unites acceptees au prix echantillon (cout deduisable de la premiere commande en gros de 20+ unites)."},
+  {cat:"price", q:"Quels sont les prix des climatiseurs split?", a:"Split 12000 BTU vitesse fixe: US$125-155 / unite FOB. Split 12000 BTU inverter: US$159-175 / unite FOB. Les prix sont indicatifs uniquement — le prix final depend de la quantite, du port, du marche actuel et du moment de la commande. Les grandes quantites beneficient de meilleurs prix. Contactez-nous sur WhatsApp pour un devis exact."},
+  {cat:"product", q:"Comment fonctionne le climatiseur portable et faut-il l'installer?", a:"Le climatiseur portable est pret a l'emploi — pas besoin d'installation professionnelle. Simplement: 1) Placer pres d'une fenetre, 2) Sortir le tuyau d'evacuation (inclus) par le kit de fenetre, 3) Brancher sur prise 220V, 4) Allumer. Design a auto-evaporation signifie pas de reservoir a vider dans la plupart des cas. Des roulettes facilitent le deplacement entre pieces. Ideal pour boutiques, bureaux, appartements en location et vendeurs JIJI qui ne peuvent pas installer d'unites murales."},
+  {cat:"product", q:"Combien de panneaux solaires pour un climatiseur solaire 12K?", a:"Climatiseur solaire 12000 BTU DC 48V necessite: Minimum 3 panneaux de 300W (900W total), Recommande 4 panneaux de 350-450W (1400-1800W total) pour fonctionner toute la journee. Les panneaux doivent etre monocristallins, connectes en serie pour atteindre 48V+ VOC. Controleur de charge MPPT inclus avec l'appareil. Pour fonctionnement 24h, ajouter une batterie 48V (minimum 100Ah, recommande 200Ah)."},
 ];
 
 var currentKBCat = 'all';
@@ -1257,6 +1297,83 @@ function askKB(question){
   document.getElementById('kbSearch').value = question;
   searchKB();
   document.getElementById('kbResults').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+// ===== Language Switch =====
+var currentKBLang = 'en';
+function switchKBLang(lang, el){
+  currentKBLang = lang;
+  document.querySelectorAll('.kb-lang-btn').forEach(function(b){
+    b.style.background = 'rgba(255,255,255,.15)';
+    b.classList.remove('active');
+  });
+  el.style.background = '#ff8c00';
+  el.classList.add('active');
+  // Update placeholder
+  var searchInput = document.getElementById('kbSearch');
+  if(lang === 'fr'){
+    searchInput.placeholder = 'ex. Quel est le MOQ? / Comment installer? / Garantie?';
+    document.querySelector('.kb-head h2').innerHTML = '&#129302; Base de Connaissances Produits IA';
+    document.querySelector('.kb-head p').textContent = 'Posez nimporte quelle question sur nos produits — reponses instantanees 24h/24';
+  } else {
+    searchInput.placeholder = 'e.g. What is the MOQ for VRF? / How to install split AC? / Warranty period?';
+    document.querySelector('.kb-head h2').innerHTML = '&#129302; AI Product Knowledge Base';
+    document.querySelector('.kb-head p').textContent = 'Ask any question about our products — get instant answers 24/7';
+  }
+  searchKB();
+}
+
+// Override searchKB to use current language
+var originalSearchKB = searchKB;
+searchKB = function(){
+  var query = document.getElementById('kbSearch').value.toLowerCase().trim();
+  var results = document.getElementById('kbResults');
+  if(!query){
+    results.innerHTML = '<div class="kb-empty"><div class="icon">&#128161;</div><p>' + (currentKBLang === 'fr' ? 'Tapez une question ci-dessus ou cliquez sur une categorie' : 'Type a question above or click a category to browse common questions') + '</p></div>';
+    return;
+  }
+  var data = currentKBLang === 'fr' ? KB_DATA_FR : KB_DATA;
+  var keywords = query.split(/[\s,?]+/).filter(function(k){ return k.length > 1; });
+  var scored = [];
+  data.forEach(function(item){
+    if(currentKBCat !== 'all' && item.cat !== currentKBCat) return;
+    var qText = item.q.toLowerCase();
+    var aText = item.a.toLowerCase();
+    var score = 0;
+    if(qText.indexOf(query) > -1) score += 100;
+    if(aText.indexOf(query) > -1) score += 50;
+    keywords.forEach(function(kw){
+      if(qText.indexOf(kw) > -1) score += 10;
+      if(aText.indexOf(kw) > -1) score += 5;
+    });
+    if(score > 0) scored.push({item: item, score: score});
+  });
+  scored.sort(function(a, b){ return b.score - a.score; });
+  if(scored.length === 0){
+    results.innerHTML = '<div class="kb-empty"><div class="icon">&#128533;</div><p>' + (currentKBLang === 'fr' ? 'Aucune reponse trouvee. Essayez dautres mots-cles ou demandez sur WhatsApp.' : 'No matching answer found. Try different keywords or ask us on WhatsApp.') + '</p></div>';
+    return;
+  }
+  var html = '';
+  scored.forEach(function(entry, idx){
+    html += '<div class="kb-result-item' + (idx === 0 ? ' open' : '') + '" onclick="toggleKBAnswer(this)">';
+    html += '<div class="q">Q: ' + entry.item.q + '</div>';
+    html += '<div class="a">A: ' + entry.item.a + '</div>';
+    html += '</div>';
+  });
+  results.innerHTML = html;
+};
+
+// ===== AI Ask via WhatsApp =====
+function askAIOnWhatsApp(){
+  var query = document.getElementById('kbSearch').value.trim();
+  var message = '';
+  if(query){
+    message = 'Hello JM-ideal! I asked your AI Knowledge Base: "' + query + '". Please provide a detailed answer with prices, MOQ and shipping info. Thank you!';
+  } else {
+    message = 'Hello JM-ideal! I have a question about your air conditioners. Please assist.';
+  }
+  var url = 'https://wa.me/8613318393556?text=' + encodeURIComponent(message);
+  window.open(url, '_blank');
 }
 
 // ===== FAQ Toggle =====
