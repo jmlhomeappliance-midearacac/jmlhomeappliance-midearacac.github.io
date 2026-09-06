@@ -355,6 +355,40 @@
 .kb-empty{text-align:center;padding:30px;color:rgba(255,255,255,.6);}
 .kb-empty .icon{font-size:40px;margin-bottom:10px;}
 
+
+/* ===== Ghana Landed Cost Calculator ===== */
+.landed-section { background: #f8f9fa; padding: 60px 20px; }
+.landed-container { max-width: 1100px; margin: 0 auto; }
+.landed-title { text-align: center; font-size: 2rem; color: #1a365d; margin-bottom: 8px; }
+.landed-sub { text-align: center; color: #64748b; margin-bottom: 35px; font-size: 1.05rem; }
+.landed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; }
+.landed-input-group { background: #fff; border-radius: 12px; padding: 25px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.landed-input-group h3 { color: #1a365d; font-size: 1.15rem; margin-bottom: 18px; border-bottom: 2px solid #ff6b35; padding-bottom: 8px; }
+.landed-field { margin-bottom: 14px; }
+.landed-field label { display: block; font-size: 0.88rem; color: #475569; margin-bottom: 5px; font-weight: 500; }
+.landed-field input, .landed-field select { width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box; }
+.landed-field input:focus, .landed-field select:focus { outline: none; border-color: #ff6b35; box-shadow: 0 0 0 3px rgba(255,107,53,0.1); }
+.landed-results { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); border-radius: 12px; padding: 25px; color: #fff; }
+.landed-results h3 { font-size: 1.15rem; margin-bottom: 18px; border-bottom: 2px solid #ff6b35; padding-bottom: 8px; }
+.landed-result-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
+.landed-result-row:last-child { border-bottom: none; }
+.landed-result-row .label { color: #cbd5e1; }
+.landed-result-row .value { font-weight: 600; }
+.landed-result-row.highlight { background: rgba(255,107,53,0.15); margin: 0 -10px; padding: 10px; border-radius: 6px; border-bottom: none; }
+.landed-result-row.highlight .value { color: #ff6b35; font-size: 1.15rem; }
+.landed-tax-breakdown { background: #fff; border-radius: 12px; padding: 20px 25px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.landed-tax-breakdown h4 { color: #1a365d; font-size: 1rem; margin-bottom: 12px; }
+.landed-tax-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.landed-tax-item { background: #f1f5f9; border-radius: 8px; padding: 10px 12px; text-align: center; }
+.landed-tax-item .tax-name { font-size: 0.78rem; color: #64748b; margin-bottom: 3px; }
+.landed-tax-item .tax-rate { font-size: 0.85rem; color: #1a365d; font-weight: 600; }
+.landed-tax-item .tax-amount { font-size: 0.9rem; color: #ff6b35; font-weight: 700; margin-top: 2px; }
+.landed-note { text-align: center; color: #94a3b8; font-size: 0.82rem; margin-top: 18px; font-style: italic; }
+@media (max-width: 768px) {
+  .landed-grid { grid-template-columns: 1fr; }
+  .landed-tax-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 </style>
 </head>
 <body>
@@ -473,6 +507,138 @@
     </div>
   </div>
 </section>
+
+  <!-- ===== Ghana Landed Cost Calculator ===== -->
+  <section class="landed-section" id="landedcost">
+    <div class="landed-container">
+      <h2 class="landed-title">Ghana AC Landed Cost Calculator</h2>
+      <p class="landed-sub">Estimate total landed cost and retail price for air conditioners imported to Tema Port, Ghana</p>
+      <div class="landed-grid">
+        <div class="landed-input-group">
+          <h3>Input Parameters</h3>
+          <div class="landed-field">
+            <label>AC Model (BTU)</label>
+            <select id="lcModel" onchange="updateLandedCost()">
+              <option value="9000">1HP — 9,000 BTU</option>
+              <option value="12000" selected>1.5HP — 12,000 BTU</option>
+              <option value="18000">2HP — 18,000 BTU</option>
+              <option value="24000">2.5HP — 24,000 BTU</option>
+            </select>
+          </div>
+          <div class="landed-field">
+            <label>FOB Price (USD/unit)</label>
+            <input type="number" id="lcFOB" value="165" min="50" max="1000" step="1" oninput="updateLandedCost()">
+          </div>
+          <div class="landed-field">
+            <label>Ocean Freight (USD/unit)</label>
+            <input type="number" id="lcFreight" value="15" min="0" max="100" step="1" oninput="updateLandedCost()">
+          </div>
+          <div class="landed-field">
+            <label>Dealer Markup (%)</label>
+            <input type="number" id="lcMarkup" value="30" min="0" max="100" step="1" oninput="updateLandedCost()">
+          </div>
+          <div class="landed-field">
+            <label>Exchange Rate USD → GHS</label>
+            <input type="number" id="lcRate" value="12.5" min="1" max="30" step="0.1" oninput="updateLandedCost()">
+          </div>
+        </div>
+        <div class="landed-results">
+          <h3>Cost Breakdown (USD/unit)</h3>
+          <div class="landed-result-row">
+            <span class="label">FOB Value</span>
+            <span class="value" id="lcFOBOut">$165.00</span>
+          </div>
+          <div class="landed-result-row">
+            <span class="label">Ocean Freight</span>
+            <span class="value" id="lcFreightOut">$15.00</span>
+          </div>
+          <div class="landed-result-row">
+            <span class="label">Insurance (0.3%)</span>
+            <span class="value" id="lcInsOut">$0.50</span>
+          </div>
+          <div class="landed-result-row">
+            <span class="label"><strong>CIF Value</strong></span>
+            <span class="value" id="lcCIFOut">$180.50</span>
+          </div>
+          <div class="landed-result-row">
+            <span class="label">Import Duties & Taxes (46.4%)</span>
+            <span class="value" id="lcTaxOut">$83.75</span>
+          </div>
+          <div class="landed-result-row">
+            <span class="label">Port & Clearing Fees</span>
+            <span class="value" id="lcPortOut">$10.00</span>
+          </div>
+          <div class="landed-result-row">
+            <span class="label">Inland Transport (Tema→Accra)</span>
+            <span class="value" id="lcTruckOut">$4.00</span>
+          </div>
+          <div class="landed-result-row highlight">
+            <span class="label"><strong>Total Landed Cost</strong></span>
+            <span class="value" id="lcLandedOut">$278.24</span>
+          </div>
+          <div class="landed-result-row highlight">
+            <span class="label"><strong>Retail Price (USD)</strong></span>
+            <span class="value" id="lcRetailOut">$361.72</span>
+          </div>
+          <div class="landed-result-row highlight">
+            <span class="label"><strong>Retail Price (GHS)</strong></span>
+            <span class="value" id="lcGHSOut">GH₵4,521</span>
+          </div>
+        </div>
+      </div>
+      <div class="landed-tax-breakdown">
+        <h4>Ghana Import Tax Structure (HS 8415.10 — Split AC)</h4>
+        <div class="landed-tax-grid">
+          <div class="landed-tax-item">
+            <div class="tax-name">Import Duty</div>
+            <div class="tax-rate">20% of CIF</div>
+            <div class="tax-amount" id="txDuty">$36.10</div>
+          </div>
+          <div class="landed-tax-item">
+            <div class="tax-name">ECOWAS Levy</div>
+            <div class="tax-rate">0.5% of CIF</div>
+            <div class="tax-amount" id="txEcowas">$0.90</div>
+          </div>
+          <div class="landed-tax-item">
+            <div class="tax-name">EDIF Levy</div>
+            <div class="tax-rate">1% of CIF</div>
+            <div class="tax-amount" id="txEdif">$1.80</div>
+          </div>
+          <div class="landed-tax-item">
+            <div class="tax-name">Exim Levy</div>
+            <div class="tax-rate">0.5% of CIF</div>
+            <div class="tax-amount" id="txExim">$0.90</div>
+          </div>
+          <div class="landed-tax-item">
+            <div class="tax-name">NHIL Health Tax</div>
+            <div class="tax-rate">2.5% of (CIF+Duty)</div>
+            <div class="tax-amount" id="txNhil">$5.51</div>
+          </div>
+          <div class="landed-tax-item">
+            <div class="tax-name">GETFund Education</div>
+            <div class="tax-rate">2.5% of (CIF+Duty)</div>
+            <div class="tax-amount" id="txGetfund">$5.51</div>
+          </div>
+          <div class="landed-tax-item">
+            <div class="tax-name">VAT</div>
+            <div class="tax-rate">15% of (CIF+Duty)</div>
+            <div class="tax-amount" id="txVat">$33.03</div>
+          </div>
+          <div class="landed-tax-item">
+            <div class="tax-name">Total Tax Burden</div>
+            <div class="tax-rate">~46.4% of CIF</div>
+            <div class="tax-amount" id="txTotal">$83.75</div>
+          </div>
+          <div class="landed-tax-item">
+            <div class="tax-name">Effective Landed Multiplier</div>
+            <div class="tax-rate">FOB × 1.69</div>
+            <div class="tax-amount" id="txMult">1.69×</div>
+          </div>
+        </div>
+      </div>
+      <p class="landed-note">* Based on Ghana Customs tariff 2026, Tema Port. Actual costs vary by shipping line, customs broker, season, and exchange rate. Contact us for a precise quotation.</p>
+    </div>
+  </section>
 
 <section id="inquiry">
   <div class="container">
@@ -1437,6 +1603,87 @@ setTimeout(function(){
   var tip = document.getElementById('waTooltip');
   if(tip){ tip.classList.add('show'); setTimeout(function(){ tip.classList.remove('show'); }, 4000); }
 }, 2000);
+
+// ===== Ghana Landed Cost Calculator =====
+function updateLandedCost(){
+  var model = document.getElementById('lcModel').value;
+  var fob = parseFloat(document.getElementById('lcFOB').value) || 0;
+  var freight = parseFloat(document.getElementById('lcFreight').value) || 0;
+  var markup = parseFloat(document.getElementById('lcMarkup').value) || 0;
+  var rate = parseFloat(document.getElementById('lcRate').value) || 1;
+
+  // Auto-adjust freight and port fees based on model
+  var freightByModel = {'9000':12, '12000':15, '18000':21, '24000':23};
+  var portByModel = {'9000':8, '12000':10, '18000':14, '24000':18};
+  var truckByModel = {'9000':3, '12000':4, '18000':5, '24000':7};
+
+  // Only auto-set freight if user hasn't manually changed it (simplified: use input value)
+  var portFee = portByModel[model] || 10;
+  var truckFee = truckByModel[model] || 4;
+
+  // CIF calculation
+  var insurance = fob * 0.003;
+  var cif = fob + freight + insurance;
+
+  // Duties & taxes (CIF-based)
+  var importDuty = cif * 0.20;
+  var ecowas = cif * 0.005;
+  var edif = cif * 0.01;
+  var exim = cif * 0.005;
+  var dutyPlusLevies = importDuty + ecowas + edif + exim;
+
+  // VAT/NHIL/GETFund base = CIF + duty + levies
+  var vatBase = cif + dutyPlusLevies;
+  var nhil = vatBase * 0.025;
+  var getfund = vatBase * 0.025;
+  var vat = vatBase * 0.15;
+
+  var totalTax = dutyPlusLevies + nhil + getfund + vat;
+  var landedCost = cif + totalTax + portFee + truckFee;
+  var retailUSD = landedCost * (1 + markup / 100);
+  var retailGHS = retailUSD * rate;
+  var multiplier = landedCost / fob;
+
+  // Update display
+  document.getElementById('lcFOBOut').textContent = '$' + fob.toFixed(2);
+  document.getElementById('lcFreightOut').textContent = '$' + freight.toFixed(2);
+  document.getElementById('lcInsOut').textContent = '$' + insurance.toFixed(2);
+  document.getElementById('lcCIFOut').textContent = '$' + cif.toFixed(2);
+  document.getElementById('lcTaxOut').textContent = '$' + totalTax.toFixed(2);
+  document.getElementById('lcPortOut').textContent = '$' + portFee.toFixed(2);
+  document.getElementById('lcTruckOut').textContent = '$' + truckFee.toFixed(2);
+  document.getElementById('lcLandedOut').textContent = '$' + landedCost.toFixed(2);
+  document.getElementById('lcRetailOut').textContent = '$' + retailUSD.toFixed(2);
+  document.getElementById('lcGHSOut').textContent = 'GH₵' + Math.round(retailGHS).toLocaleString();
+
+  // Tax breakdown
+  document.getElementById('txDuty').textContent = '$' + importDuty.toFixed(2);
+  document.getElementById('txEcowas').textContent = '$' + ecowas.toFixed(2);
+  document.getElementById('txEdif').textContent = '$' + edif.toFixed(2);
+  document.getElementById('txExim').textContent = '$' + exim.toFixed(2);
+  document.getElementById('txNhil').textContent = '$' + nhil.toFixed(2);
+  document.getElementById('txGetfund').textContent = '$' + getfund.toFixed(2);
+  document.getElementById('txVat').textContent = '$' + vat.toFixed(2);
+  document.getElementById('txTotal').textContent = '$' + totalTax.toFixed(2);
+  document.getElementById('txMult').textContent = multiplier.toFixed(2) + '×';
+}
+
+// Auto-update freight when model changes
+document.addEventListener('DOMContentLoaded', function(){
+  var modelSelect = document.getElementById('lcModel');
+  if(modelSelect){
+    modelSelect.addEventListener('change', function(){
+      var freightByModel = {'9000':12, '12000':15, '18000':21, '24000':23};
+      var fobByModel = {'9000':140, '12000':165, '18000':270, '24000':380};
+      var m = this.value;
+      document.getElementById('lcFreight').value = freightByModel[m] || 15;
+      document.getElementById('lcFOB').value = fobByModel[m] || 165;
+      updateLandedCost();
+    });
+  }
+  updateLandedCost();
+});
+
 </script>
 
 </body>
