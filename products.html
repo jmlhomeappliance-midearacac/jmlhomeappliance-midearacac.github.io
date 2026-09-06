@@ -92,7 +92,7 @@
   .product-nav .nav-center{display:flex;align-items:center;justify-content:center;padding:0 8px}
   .product-nav .nav-center a{display:inline-flex;align-items:center;gap:6px;color:var(--ink-3);font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:6px;transition:all .15s}
   .product-nav .nav-center a:hover{color:var(--brand-orange);background:var(--brand-orange-soft)}
-  .related-section{margin-top:44px;padding-top:32px;border-top:2px solid var(--border)}
+  .related-section{display:none !important;margin-top:44px;padding-top:32px;border-top:2px solid var(--border)}
   .related-section .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
   .related-section .section-title h3{font-size:20px;font-weight:800;color:var(--brand-blue)}
   .related-section .section-title a{font-size:13px;font-weight:700;color:var(--brand-orange)}
@@ -333,7 +333,7 @@
 .kb-wrap{max-width:900px;margin:0 auto;}
 .kb-head{text-align:center;margin-bottom:30px;}
 .kb-head h2{color:#fff;margin:0 0 10px;font-size:28px;}
-.kb-head p{color:rgba(255,255,255,.7);margin:0;font-size:15px;}
+.kb-head p{color:rgba(255,255,255,.95);margin:0;font-size:15px;}
 .kb-search-box{position:relative;margin-bottom:25px;}
 .kb-search-box input{width:100%;padding:16px 50px 16px 20px;border:none;border-radius:10px;font-size:16px;background:rgba(255,255,255,.95);color:#333;}
 .kb-search-box input:focus{outline:none;box-shadow:0 0 0 3px rgba(255,140,0,.4);}
@@ -342,22 +342,22 @@
 .kb-result-item{background:rgba(255,255,255,.1);border-radius:8px;padding:15px;margin-bottom:12px;cursor:pointer;transition:background .2s;}
 .kb-result-item:hover{background:rgba(255,255,255,.18);}
 .kb-result-item .q{font-weight:600;color:#ff8c00;margin-bottom:6px;font-size:15px;}
-.kb-result-item .a{color:rgba(255,255,255,.85);font-size:14px;line-height:1.6;display:none;}
+.kb-result-item .a{color:#fff;font-size:14px;line-height:1.6;display:none;}
 .kb-result-item.open .a{display:block;}
 .kb-result-item .a.show{display:block;}
 .kb-categories{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center;}
 .kb-cat{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer;transition:all .2s;}
 .kb-cat:hover,.kb-cat.active{background:#ff8c00;border-color:#ff8c00;}
 .kb-suggest{margin-top:15px;padding-top:15px;border-top:1px solid rgba(255,255,255,.15);}
-.kb-suggest h4{color:rgba(255,255,255,.7);font-size:13px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px;}
+.kb-suggest h4{color:rgba(255,255,255,.9);font-size:13px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px;}
 .kb-suggest-list{display:flex;flex-wrap:wrap;gap:8px;}
-.kb-suggest-item{background:rgba(255,255,255,.1);padding:6px 12px;border-radius:6px;font-size:13px;color:rgba(255,255,255,.8);cursor:pointer;transition:background .2s;}
+.kb-suggest-item{background:rgba(255,255,255,.1);padding:6px 12px;border-radius:6px;font-size:13px;color:#fff;cursor:pointer;transition:background .2s;}
 .kb-suggest-item:hover{background:rgba(255,140,0,.3);color:#fff;}
 .kb-whatsapp{text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);}
-.kb-whatsapp p{color:rgba(255,255,255,.7);font-size:14px;margin:0 0 10px;}
+.kb-whatsapp p{color:rgba(255,255,255,.95);font-size:14px;margin:0 0 10px;}
 .kb-whatsapp a{display:inline-block;background:#25D366;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;transition:transform .2s;}
 .kb-whatsapp a:hover{transform:translateY(-2px);}
-.kb-empty{text-align:center;padding:30px;color:rgba(255,255,255,.6);}
+.kb-empty{text-align:center;padding:30px;color:rgba(255,255,255,.9);}
 .kb-empty .icon{font-size:40px;margin-bottom:10px;}
 
 /* ===== Ghana Landed Cost Calculator ===== */
@@ -2109,7 +2109,59 @@
       body.detail-mode #inquiry { background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%); padding-top: 30px; }
       body.detail-mode #inquiry .inquiry-head h2 { color: #0b2447; }
       body.detail-mode #knowledgebase { background: #fafafe; }
-    </style>
+    
+/* ===== Proof Modal ===== */
+.proof-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  overflow: auto;
+}
+.proof-modal.active { display: flex; align-items: center; justify-content: center; }
+.proof-modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 680px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  text-align: center;
+}
+.proof-modal-close {
+  position: absolute;
+  top: 12px; right: 16px;
+  font-size: 32px;
+  cursor: pointer;
+  color: #64748b;
+  line-height: 1;
+}
+.proof-modal-close:hover { color: #1e293b; }
+.proof-modal-content h3 {
+  color: #0f172a;
+  margin: 0 0 16px 0;
+  font-size: 20px;
+}
+.proof-modal-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 12px;
+}
+.proof-modal-content p {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+.midea-genuine-card[onclick] { transition: transform 0.2s, box-shadow 0.2s; }
+.midea-genuine-card[onclick]:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+</style>
     <form class="inquiry-form" id="inquiryForm" onsubmit="return submitInquiry(event)">
       <div class="form-row">
         <div class="form-group">
@@ -2531,6 +2583,31 @@
       <div class="icon">&#128737;</div>
       <div class="title">Full After-sales Support</div>
       <div class="desc">Genuine Midea warranty coverage + local spare parts stock in Ghana & Nigeria.</div>
+    </div>
+    <div class="midea-genuine-card" onclick="openProofModal('license')" style="cursor:pointer">
+      <div class="icon">&#128220;</div>
+      <div class="title">JML Hong Kong License</div>
+      <div class="desc">JML Electric Appliance Limited (CR No. 3337867), registered in Hong Kong since 2023. Click to view certificate.</div>
+    </div>
+    <div class="midea-genuine-card" onclick="openProofModal('po')" style="cursor:pointer">
+      <div class="icon">&#128203;</div>
+      <div class="title">Midea Purchase Order (PO)</div>
+      <div class="desc">Official Proforma Invoice from Midea Electric Trading (Singapore) — JML buys directly from Midea. Click to view.</div>
+    </div>
+    <div class="midea-genuine-card" onclick="openProofModal('payment')" style="cursor:pointer">
+      <div class="icon">&#128179;</div>
+      <div class="title">Bank Payment Proof</div>
+      <div class="desc">JML pays Midea directly via Bankingcircle to Standard Chartered Bank Singapore. Real transactions, real trust. Click to view.</div>
+    </div>
+    <div class="midea-genuine-card" onclick="openProofModal('sn')" style="cursor:pointer">
+      <div class="icon">&#128243;</div>
+      <div class="title">Midea SN Barcode List</div>
+      <div class="desc">Every unit ships with authentic Midea serial numbers — traceable from factory to your warehouse. Click to view sample.</div>
+    </div>
+    <div class="midea-genuine-card" onclick="openProofModal('warehouse')" style="cursor:pointer">
+      <div class="icon">&#127973;</div>
+      <div class="title">Ghana Accra Warehouse</div>
+      <div class="desc">Containers arrive at our Accra bonded warehouse — real stock, real photos, real delivery. Click to view unloading photos.</div>
     </div>
   </div>
   
@@ -3856,5 +3933,67 @@ function sharePromo(platform) {
 }
 </script>
 
+<!-- ===== Proof Modal ===== -->
+<div id="proofModal" class="proof-modal" onclick="closeProofModal(event)">
+  <div class="proof-modal-content" onclick="event.stopPropagation()">
+    <span class="proof-modal-close" onclick="closeProofModal()">&times;</span>
+    <h3 id="proofModalTitle"></h3>
+    <img id="proofModalImg" src="" alt="Proof document">
+    <p id="proofModalDesc"></p>
+  </div>
+</div>
+
+<script>
+
+// ===== Proof Modal =====
+var PROOF_DATA = {
+  license: {
+    title: "JML Hong Kong Company Registration Certificate",
+    img: "https://aka.doubaocdn.com/s/Yp0dl3TxGE",
+    desc: "JML Electric Appliance Limited (CR No. 3337867), registered in Hong Kong on 14 November 2023. Authorized Midea West Africa Agent."
+  },
+  po: {
+    title: "Midea Proforma Invoice — Purchase Order",
+    img: "https://aka.doubaocdn.com/s/c13LqMKfu0",
+    desc: "Official Proforma Invoice from Midea Electric Trading (Singapore) Pte Ltd. JML purchased 36 units of Midea AG series air conditioners, total US$45,360, dated 3 July 2025. Signed by Jimmy Lau, JML Electric Appliance Ltd."
+  },
+  payment: {
+    title: "Bank Payment Proof — JML to Midea",
+    img: "https://aka.doubaocdn.com/s/ygn2lFVZOp",
+    desc: "JML Electric Appliance Limited pays Midea Electric Trading Singapore Co Pte Ltd via Bankingcircle. Date: 29 May 2026. Reference: 70990102590000026052903091589. Beneficiary Bank: Standard Chartered Bank (Singapore). Real transactions, real trust."
+  },
+  sn: {
+    title: "Midea SN Barcode List — Authentic Serial Numbers",
+    img: "https://aka.doubaocdn.com/s/gSUwoQb54n",
+    desc: "Every Midea unit ships with authentic serial numbers. Sample: Invoice MDATS2606040002, Container MSKU9690793, Model GSP-24CR/N8/18C IDU. Complete SN list traceable from Midea factory to your warehouse. Verify authenticity anytime."
+  },
+  warehouse: {
+    title: "Ghana Accra Warehouse — Container Unloading",
+    img: "https://aka.doubaocdn.com/s/FwV3JyuRZI",
+    desc: "Midea air conditioner containers arriving and unloading at our Accra, Ghana bonded warehouse. Real stock, real photos, real delivery. Local GHS cash on delivery available. Tema port clearance handled by JML local team."
+  }
+};
+
+function openProofModal(key) {
+  var data = PROOF_DATA[key];
+  if (!data) return;
+  document.getElementById('proofModalTitle').textContent = data.title;
+  document.getElementById('proofModalImg').src = data.img;
+  document.getElementById('proofModalDesc').textContent = data.desc;
+  document.getElementById('proofModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProofModal(e) {
+  if (e && e.target !== e.currentTarget && e.type === 'click') return;
+  document.getElementById('proofModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeProofModal();
+});
+
+</script>
 </body>
 </html>
