@@ -1340,32 +1340,28 @@ function updateCalculator(){
   var container = document.getElementById('calcContainer').value;
   var price = parseFloat(document.getElementById('calcPrice').value) || 0;
 
-  // CBM per unit based on actual Midea 2025 OEM catalog loading data
-  // Verified against real packing dimensions and loading quantities
-  var cbmPerUnit = {
-    split: 0.14,        // 12K Split AC (indoor+outdoor packed separately, optimized stacking)
-    floor: 0.38,        // 24K Floor Standing (can be laid down and stacked)
-    portable: 0.19,     // 12K Portable AC (actual packing ~512x442x880mm)
-    cassette: 0.42,     // 36K Cassette AC (indoor+outdoor)
-    vrf: 1.3,           // 8HP VRF Outdoor Unit
-    window9k: 0.16,     // 9K/12K Window AC (packing 743x530x431mm)
-    window18k: 0.30,    // 18K/21K Window AC (packing 815x746x515mm)
-    solar: 0.18,        // 12K Solar AC (includes MPPT controller, slightly larger packing)
-    dehumidifier: 0.04  // 10L/12L Dehumidifier (compact packing)
+  // Actual loading quantities from Midea 2025 OEM Catalog, verified against real packing
+  // 12K Split AC: 366 units/40HQ (user-verified actual optimized packing)
+  var loadingQty = {
+    split:      {'20':158, '40':329, '40hq':366},  // 12K Split AC (catalog CO:132/274/305; actual optimized 366/40HQ)
+    solar:      {'20':130, '40':270, '40hq':305},  // 12K Solar AC (similar to 12K split + MPPT)
+    portable:   {'20':114, '40':240, '40hq':280},  // 12K Portable AC (catalog: 114/20GP)
+    floor:      {'20':83,  '40':169, '40hq':199},  // 24K Floor Standing (catalog: 83/169/199)
+    cassette:   {'20':60,  '40':124, '40hq':144},  // 36K Cassette AC (catalog: 60/124/144)
+    window9k:   {'20':164, '40':340, '40hq':390},  // 9K/12K Window AC (catalog: 164/20GP)
+    window18k:  {'20':88,  '40':184, '40hq':210},  // 18K/21K Window AC (catalog: 88/20GP)
+    vrf:        {'20':8,   '40':16,  '40hq':20},   // 8HP VRF Outdoor Unit (large & heavy)
+    dehumidifier:{'20':935,'40':1950,'40hq':2250}  // 10L/12L Dehumidifier (catalog: 935/20GP)
   };
   var containerCBM = {'20':28, '40':58, '40hq':68};
-  // Loading efficiency varies by container type - higher for larger containers
-  var loadEfficiency = {'20':0.85, '40':0.90, '40hq':0.95};
   var freightToTema = {'20':2800, '40':4200, '40hq':4800};
 
-  var cbm = cbmPerUnit[product] || 0.14;
+  var units = (loadingQty[product] && loadingQty[product][container]) || 100;
   var totalCBM = containerCBM[container] || 28;
-  var efficiency = loadEfficiency[container] || 0.85;
-  var units = Math.floor(totalCBM / cbm * efficiency);
   var totalValue = units * price;
   var freight = freightToTema[container] || 2800;
 
-  document.getElementById('calcUnits').textContent = '~' + units;
+  document.getElementById('calcUnits').textContent = units;
   document.getElementById('calcTotal').textContent = '$' + totalValue.toLocaleString();
   document.getElementById('calcCBM').textContent = totalCBM;
   document.getElementById('calcFreight').textContent = '$' + freight.toLocaleString();
