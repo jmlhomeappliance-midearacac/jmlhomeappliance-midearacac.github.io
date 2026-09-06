@@ -442,6 +442,285 @@
 }
 .kb-search-btn:hover { background: #e67e00; }
 
+
+/* AI Customer Service Chat Widget */
+.ai-chat-widget {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 9998;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.ai-chat-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.ai-chat-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+}
+.ai-chat-button .pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.4);
+  animation: chatPulse 2s infinite;
+}
+@keyframes chatPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.ai-chat-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4757;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+.ai-chat-window {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  height: 520px;
+  max-height: calc(100vh - 150px);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: chatSlideUp 0.3s ease;
+}
+@keyframes chatSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ai-chat-window.open {
+  display: flex;
+}
+.ai-chat-header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ai-chat-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.ai-chat-header-info {
+  flex: 1;
+}
+.ai-chat-header-name {
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ai-chat-header-status {
+  font-size: 12px;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.ai-chat-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #2ed573;
+  border-radius: 50%;
+  animation: statusBlink 2s infinite;
+}
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.ai-chat-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  opacity: 0.8;
+}
+.ai-chat-close:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.15);
+}
+.ai-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #f8f9fc;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ai-chat-msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  animation: msgFadeIn 0.3s ease;
+}
+@keyframes msgFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ai-chat-msg.bot {
+  background: #fff;
+  color: #2d3436;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.ai-chat-msg.user {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.ai-chat-typing {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: 16px;
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.ai-chat-typing span {
+  width: 8px;
+  height: 8px;
+  background: #b2bec3;
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite;
+}
+.ai-chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.ai-chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+}
+.ai-chat-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.ai-chat-quick-btn {
+  background: #f0f2ff;
+  color: #667eea;
+  border: 1px solid #dfe4ff;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ai-chat-quick-btn:hover {
+  background: #667eea;
+  color: #fff;
+}
+.ai-chat-input-area {
+  padding: 12px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.ai-chat-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ai-chat-input:focus {
+  border-color: #667eea;
+}
+.ai-chat-send {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.ai-chat-send:hover {
+  transform: scale(1.05);
+}
+.ai-chat-footer {
+  padding: 6px 12px;
+  background: #f8f9fc;
+  text-align: center;
+  font-size: 10px;
+  color: #b2bec3;
+  border-top: 1px solid #eee;
+}
+.ai-chat-footer a {
+  color: #667eea;
+  text-decoration: none;
+}
+@media (max-width: 480px) {
+  .ai-chat-window {
+    width: calc(100vw - 20px);
+    right: -10px;
+    height: 70vh;
+  }
+  .ai-chat-widget {
+    bottom: 80px;
+    right: 12px;
+  }
+}
+
 </style>
 <link rel="preconnect" href="https://www.jmideal.cn">
 <link rel="preconnect" href="https://wa.me">
@@ -2131,7 +2410,204 @@ function scrollToSection(id) {
     window.scrollTo({top: top, behavior: 'smooth'});
   }
 }
+
+// AI Customer Service Chat Widget
+var aiChatOpened = false;
+var aiChatConversation = [];
+
+function toggleAiChat() {
+  var win = document.getElementById('aiChatWindow');
+  var badge = document.getElementById('aiChatBadge');
+  aiChatOpened = !aiChatOpened;
+  if (aiChatOpened) {
+    win.classList.add('open');
+    badge.style.display = 'none';
+    if (aiChatConversation.length === 0) {
+      setTimeout(function() {
+        aiChatWelcome();
+      }, 300);
+    }
+  } else {
+    win.classList.remove('open');
+  }
+}
+
+function aiChatWelcome() {
+  addAiChatMsg('bot', 'Hello! &#128075; I\'m Emma, your AI Sales Assistant at JM-ideal. I can help you with product info, pricing, shipping, and more. How can I help you today?');
+  setTimeout(function() {
+    addAiChatQuickReplies([
+      'Show me product prices',
+      'What is MOQ?',
+      'Shipping to Ghana?',
+      'White label OEM?',
+      'Talk to human'
+    ]);
+  }, 500);
+}
+
+function addAiChatMsg(type, text) {
+  var container = document.getElementById('aiChatMessages');
+  var msg = document.createElement('div');
+  msg.className = 'ai-chat-msg ' + type;
+  msg.innerHTML = text;
+  container.appendChild(msg);
+  container.scrollTop = container.scrollHeight;
+  aiChatConversation.push({type: type, text: text});
+}
+
+function addAiChatQuickReplies(buttons) {
+  var container = document.getElementById('aiChatMessages');
+  var wrapper = document.createElement('div');
+  wrapper.className = 'ai-chat-msg bot';
+  var html = '<div style="margin-bottom:6px;font-size:12px;color:#636e72">Quick questions:</div><div class="ai-chat-quick-replies">';
+  buttons.forEach(function(btn) {
+    html += '<button class="ai-chat-quick-btn" onclick="aiChatQuickClick(\'' + btn.replace(/'/g, "\\'") + '\')">' + btn + '</button>';
+  });
+  html += '</div>';
+  wrapper.innerHTML = html;
+  container.appendChild(wrapper);
+  container.scrollTop = container.scrollHeight;
+}
+
+function aiChatQuickClick(text) {
+  document.getElementById('aiChatInput').value = text;
+  sendAiChatMsg();
+}
+
+function showAiTyping() {
+  var container = document.getElementById('aiChatMessages');
+  var typing = document.createElement('div');
+  typing.className = 'ai-chat-typing';
+  typing.id = 'aiChatTyping';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  container.appendChild(typing);
+  container.scrollTop = container.scrollHeight;
+}
+
+function hideAiTyping() {
+  var typing = document.getElementById('aiChatTyping');
+  if (typing) typing.remove();
+}
+
+function sendAiChatMsg() {
+  var input = document.getElementById('aiChatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  addAiChatMsg('user', text);
+  input.value = '';
+  showAiTyping();
+  setTimeout(function() {
+    hideAiTyping();
+    aiChatRespond(text);
+  }, 800 + Math.random() * 700);
+}
+
+function aiChatRespond(query) {
+  var q = query.toLowerCase();
+  
+  // Price inquiry
+  if (q.indexOf('price') > -1 || q.indexOf('cost') > -1 || q.indexOf('how much') > -1 || q.indexOf('pricing') > -1) {
+    addAiChatMsg('bot', 'Here are our factory-direct prices (FOB China, USD):<br><br>&#128073; <strong>Split AC 12000BTU</strong>: $125-155<br>&#128073; <strong>Inverter 12000BTU</strong>: $159-175<br>&#128073; <strong>Solar AC 12000BTU</strong>: $290+<br>&#128073; <strong>Portable 9000BTU</strong>: $180-250<br>&#128073; <strong>VRF Commercial</strong>: $1,500-3,500<br><br>Prices vary by quantity and customization. Would you like a detailed quote for specific models?');
+    addAiChatQuickReplies(['12K split AC quote', 'Inverter AC quote', 'Full price list', 'WhatsApp quote']);
+    return;
+  }
+  
+  // MOQ
+  if (q.indexOf('moq') > -1 || q.indexOf('minimum') > -1 || q.indexOf('minimum order') > -1) {
+    addAiChatMsg('bot', 'Our MOQ is very flexible for West African customers:<br><br>&#128230; <strong>Split/Inverter AC</strong>: 20 units/model<br>&#128230; <strong>Portable/Solar</strong>: 10-20 units<br>&#128230; <strong>Commercial VRF</strong>: 1 unit<br>&#128230; <strong>Spare parts</strong>: 50-100 pcs<br><br>We also support <strong>mixed container loading</strong> - combine different models in one 40HQ to save freight! Would you like to know how many units fit in a container?');
+    addAiChatQuickReplies(['Container loading capacity', 'Mixed container option', 'Small order possible?']);
+    return;
+  }
+  
+  // Shipping
+  if (q.indexOf('ship') > -1 || q.indexOf('shipping') > -1 || q.indexOf('delivery') > -1 || q.indexOf('freight') > -1 || q.indexOf('ghana') > -1 || q.indexOf('nigeria') > -1 || q.indexOf('tema') > -1 || q.indexOf('tincan') > -1) {
+    addAiChatMsg('bot', 'Shipping to West Africa is our specialty!<br><br>&#128674; <strong>Sea freight to Tema (Ghana)</strong>: 28-35 days<br>&#128674; <strong>Sea freight to Tincan (Nigeria)</strong>: 30-38 days<br>&#128674; <strong>40HQ freight cost</strong>: ~$4,200-4,800<br><br>&#9989; We have <strong>local stock</strong> in bonded warehouses<br>&#9989; We handle <strong>customs clearance</strong> support<br>&#9989; <strong>Door-to-door</strong> delivery available<br><br>Would you like a shipping quote for your order?');
+    addAiChatQuickReplies(['Shipping quote', 'Local stock available?', 'Customs clearance help']);
+    return;
+  }
+  
+  // White label / OEM
+  if (q.indexOf('white') > -1 || q.indexOf('label') > -1 || q.indexOf('oem') > -1 || q.indexOf('private') > -1 || q.indexOf('brand') > -1) {
+    addAiChatMsg('bot', 'Yes! We offer full <strong>white-label OEM services</strong>:<br><br>&#9989; Your brand name & logo on units<br>&#9989; Custom packaging design<br>&#9989; Custom manuals in English/French<br>&#9989; Custom remote control branding<br>&#9989; Minimum for OEM: 100 units/model<br><br>We are backed by <strong>Midea factory</strong> - same quality, your brand! Many West African importers build their own brand with us. Would you like to see OEM samples?');
+    addAiChatQuickReplies(['OEM process details', 'OEM packaging cost', 'Midea factory quality']);
+    return;
+  }
+  
+  // Products
+  if (q.indexOf('product') > -1 || q.indexOf('model') > -1 || q.indexOf('catalog') > -1 || q.indexOf('catalogue') > -1 || q.indexOf('show') > -1) {
+    addAiChatMsg('bot', 'We have a complete product line for West Africa:<br><br>&#10052; <strong>Residential</strong>: Split 9K-24K, Inverter, Solar, Portable, Window<br>&#10052; <strong>Commercial</strong>: Floor Standing, Cassette Ceiling, Ducted A7<br>&#10052; <strong>Multi-zone</strong>: Multi Split 2-3 rooms, V8 VRF, VC Max<br>&#10052; <strong>Parts</strong>: Installation kits, Compressors, Remote controls, PC boards<br><br>All units are <strong>220V/50Hz</strong> ready for West Africa! Which product line interests you?');
+    addAiChatQuickReplies(['Split AC details', 'VRF commercial', 'Spare parts list', 'Download catalog']);
+    return;
+  }
+  
+  // Warranty
+  if (q.indexOf('warranty') > -1 || q.indexOf('guarantee') > -1 || q.indexOf('guaranty') > -1) {
+    addAiChatMsg('bot', 'Our warranty policy:<br><br>&#128737; <strong>Compressor</strong>: 1 year (GMCC/Midea)<br>&#128737; <strong>Whole unit</strong>: 1 year<br>&#128737; <strong>Spare parts</strong>: 3 months<br><br>&#9989; We keep <strong>local spare parts stock</strong> in Ghana/Nigeria<br>&#9989; <strong>Technical support</strong> via WhatsApp/Video call<br>&#9989; <strong>Installation training</strong> available for your technicians<br><br>Would you like to know more about after-sales support?');
+    addAiChatQuickReplies(['Spare parts stock', 'Technical training', 'Installation guide']);
+    return;
+  }
+  
+  // Contact / human
+  if (q.indexOf('human') > -1 || q.indexOf('talk') > -1 || q.indexOf('contact') > -1 || q.indexOf('call') > -1 || q.indexOf('whatsapp') > -1 || q.indexOf('person') > -1) {
+    addAiChatMsg('bot', 'Of course! You can reach our human sales team directly:<br><br>&#128241; <strong>WhatsApp</strong>: <a href="https://wa.me/8613318393556" target="_blank" style="color:#667eea">+86 133 1839 3556</a><br>&#128231; <strong>Email</strong>: jmlhomeappliance@gmail.com<br>&#127760; <strong>Website</strong>: www.jmideal.cn<br><br>Our sales manager <strong>Jimmy Lau</strong> (30 years home appliance experience) will personally assist you! Would you like me to send your inquiry to him now?');
+    addAiChatQuickReplies(['Send my inquiry', 'Request call back', 'Leave my contact']);
+    return;
+  }
+  
+  // Compressor
+  if (q.indexOf('compressor') > -1) {
+    addAiChatMsg('bot', 'All our ACs use <strong>GMCC rotary compressors</strong> (Midea-Toshiba joint venture, world\'s largest compressor manufacturer):<br><br>&#9889; <strong>12K fixed speed</strong>: GMCC PH series, ~10.2 cc/rev<br>&#9889; <strong>12K inverter</strong>: GMCC DC inverter, 15-120Hz variable<br>&#9889; <strong>GP Pro R32 12K</strong>: Model KSM99V02VDZ3<br>&#9889; <strong>18K</strong>: KSF190V03VETB3<br>&#9889; <strong>24K</strong>: KSF230V02VKT<br><br>GMCC = low noise (<52dB), 10+ year life, wide voltage 150-264V! Need more specs?');
+    addAiChatQuickReplies(['Full compressor list', '12K detailed specs', 'Spare compressor price']);
+    return;
+  }
+  
+  // Voltage
+  if (q.indexOf('voltage') > -1 || q.indexOf('220') > -1 || q.indexOf('50hz') > -1 || q.indexOf('50 hz') > -1) {
+    addAiChatMsg('bot', 'Perfect question for West Africa! All our units are <strong>220V/50Hz</strong> standard:<br><br>&#9989; Residential split/inverter: 220V/50Hz, single phase<br>&#9989; Portable/window: 220V/50Hz<br>&#9989; Commercial floor/cassette: 220V/50Hz or 380V/3-phase<br>&#9989; VRF systems: 380V/50Hz/3-phase<br><br>&#9889; <strong>Wide voltage tolerance</strong>: 150-264V (handles Ghana/Nigeria voltage fluctuations!)<br><br>Need a specific model voltage confirmation?');
+    addAiChatQuickReplies(['Stabilizer needed?', '3-phase models', 'Voltage protector']);
+    return;
+  }
+  
+  // Default - cannot answer
+  addAiChatMsg('bot', 'Thank you for your question! Let me connect you with our sales team for a detailed answer.<br><br>You can reach us directly on <strong>WhatsApp</strong>: <a href="https://wa.me/8613318393556?text=' + encodeURIComponent(query) + '" target="_blank" style="color:#667eea">+86 133 1839 3556</a><br><br>Or leave your email/WhatsApp and we\'ll get back to you within 2 hours!');
+  addAiChatQuickReplies(['Talk to human', 'Show products', 'Price list', 'Shipping info']);
+}
+
+// Auto-open after 8 seconds on first visit
+setTimeout(function() {
+  if (!aiChatOpened && aiChatConversation.length === 0) {
+    var badge = document.getElementById('aiChatBadge');
+    badge.style.display = 'flex';
+  }
+}, 5000);
+
 </script>
+
+
+<!-- AI Customer Service Chat Widget -->
+<div class="ai-chat-widget" id="aiChatWidget">
+  <button class="ai-chat-button" onclick="toggleAiChat()" id="aiChatBtn">
+    <div class="pulse-ring"></div>
+    &#128172;
+    <span class="ai-chat-badge" id="aiChatBadge">1</span>
+  </button>
+  <div class="ai-chat-window" id="aiChatWindow">
+    <div class="ai-chat-header">
+      <div class="ai-chat-avatar">&#129302;</div>
+      <div class="ai-chat-header-info">
+        <div class="ai-chat-header-name">JM-ideal Sales Assistant <span style="font-size:10px;background:rgba(255,255,255,0.2);padding:2px 6px;border-radius:8px">AI</span></div>
+        <div class="ai-chat-header-status"><span class="ai-chat-status-dot"></span>Online - Reply in seconds</div>
+      </div>
+      <button class="ai-chat-close" onclick="toggleAiChat()">&#10005;</button>
+    </div>
+    <div class="ai-chat-messages" id="aiChatMessages"></div>
+    <div class="ai-chat-input-area">
+      <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter')sendAiChatMsg()">
+      <button class="ai-chat-send" onclick="sendAiChatMsg()">&#10148;</button>
+    </div>
+    <div class="ai-chat-footer">Powered by JM-ideal AI | <a href="https://wa.me/8613318393556" target="_blank">Talk to human on WhatsApp</a></div>
+  </div>
+</div>
 
 </body>
 </html>
