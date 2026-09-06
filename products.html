@@ -2104,6 +2104,12 @@
       <h2>Send Inquiry / Leave a Message</h2>
       <p>Fill in the form below — we reply within hours with pricing, specs and shipping options.</p>
     </div>
+    <style>
+      /* Detail view optimization: cleaner layout */
+      body.detail-mode #inquiry { background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%); padding-top: 30px; }
+      body.detail-mode #inquiry .inquiry-head h2 { color: #0b2447; }
+      body.detail-mode #knowledgebase { background: #fafafe; }
+    </style>
     <form class="inquiry-form" id="inquiryForm" onsubmit="return submitInquiry(event)">
       <div class="form-row">
         <div class="form-group">
@@ -2725,6 +2731,35 @@ function renderDetail(id){
   detailView.style.display = "block";
   pageTitle.textContent = p.name;
   pageSub.textContent = p.cat + " — " + p.tag + ". FOB reference shown where available; final price depends on quantity and port.";
+  
+  // Add detail mode class to body
+  document.body.classList.add("detail-mode");
+  
+  // Hide unrelated sections when viewing product detail - keep only inquiry + AI
+  var hideIds = ["promotion", "calculator", "landedcost", "faq", "shipping", "warranty", "news", "midea-genuine", "local-payment", "contact", "page-head", "mobile-category-bar"];
+  hideIds.forEach(function(id) {
+    var el = document.getElementById(id);
+    if(el) el.style.display = "none";
+  });
+  
+  // Show inquiry and knowledgebase sections
+  var showIds = ["inquiry", "knowledgebase"];
+  showIds.forEach(function(id) {
+    var el = document.getElementById(id);
+    if(el) el.style.display = "block";
+  });
+  
+  // Auto-select current product in inquiry form
+  var inquiryProduct = document.getElementById("inquiryProduct");
+  if(inquiryProduct) {
+    for(var i = 0; i < inquiryProduct.options.length; i++) {
+      if(inquiryProduct.options[i].value === p.name) {
+        inquiryProduct.selectedIndex = i;
+        break;
+      }
+    }
+  }
+  
   window.scrollTo(0, 0);
 }
 
@@ -2733,6 +2768,16 @@ function showGrid(){
   detailView.style.display = "none";
   pageTitle.textContent = "Air Conditioners, VRFs & Parts for West Africa";
   pageSub.textContent = "World No.1 Aircon Factory-direct pricing with genuine Midea backing. Local Stock & Service Parts ready, shipped via Tema and Tincan Bonded Warehouse, White-label Packing optional, Local GHS/NGN COD. Tap any product for full specs and an instant WhatsApp quote.";
+  
+  // Remove detail mode class
+  document.body.classList.remove("detail-mode");
+  
+  // Restore all sections when returning to grid view
+  var restoreIds = ["promotion", "calculator", "landedcost", "faq", "shipping", "warranty", "news", "midea-genuine", "local-payment", "contact", "page-head", "mobile-category-bar", "inquiry", "knowledgebase"];
+  restoreIds.forEach(function(id) {
+    var el = document.getElementById(id);
+    if(el) el.style.display = "";
+  });
 }
 
 function route(){
