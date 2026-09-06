@@ -443,6 +443,12 @@
 .kb-search-btn:hover { background: #e67e00; }
 
 </style>
+<link rel="preconnect" href="https://www.jmideal.cn">
+<link rel="preconnect" href="https://wa.me">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
 
@@ -480,7 +486,7 @@
 <header>
   <div class="container header-main">
     <a class="logo" href="#top">
-      <img src="JML_star_logo.ico" alt="JM-ideal Logo" class="logo-img">
+      <img src="JML_star_logo.ico" alt="JM-ideal Logo" class="logo-img" loading="lazy">
       <div>JM-ideal<small>JML Electric Appliance Ltd</small></div>
     </a>
     <a class="btn-wa" href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20please%20share%20your%20full%20catalog%20with%20prices." target="_blank" rel="noopener">
@@ -1129,7 +1135,7 @@
 
 <footer>
   <div class="container">© 2026 JM-ideal / JML Electric Appliance Limited (Hong Kong). Authorized Midea West Africa Agent. Shunde, Foshan, Guangdong, China.</div>
-</footer>
+<p style="margin-top:10px;font-size:12px"><a href="privacy.html" style="color:#94a3b8;text-decoration:none">&#128274; Privacy Policy</a></p></footer>
 
 <script>
 var PRODUCTS = [
@@ -1186,7 +1192,7 @@ function renderDetail(id){
   bcCurrent.title = p.name;
 
   detailContent.innerHTML =
-    '<div class="detail-img"><span class="img-tag">' + p.tag + '</span><img src="' + p.img + '" alt="' + p.name + '"></div>' +
+    '<div class="detail-img"><span class="img-tag">' + p.tag + '</span><img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>' +
     '<div class="detail-info">' +
       '<div class="cat">' + p.cat + ' · ' + p.tag + '</div>' +
       '<h2>' + p.name + '</h2>' +
