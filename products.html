@@ -289,6 +289,39 @@
   .cert-item { font-size: 11px; padding: 4px 10px; }
 }
 
+
+/* ===== Container Calculator ===== */
+.calc-section{background:#f8f9fb;padding:60px 0;}
+.calc-wrap{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.06);padding:40px;}
+.calc-wrap h2{text-align:center;color:#1a2b4a;margin-bottom:8px;}
+.calc-wrap .calc-sub{text-align:center;color:#666;margin-bottom:30px;}
+.calc-row{display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap;}
+.calc-group{flex:1;min-width:200px;}
+.calc-group label{display:block;font-weight:600;color:#333;margin-bottom:6px;font-size:14px;}
+.calc-group select,.calc-group input{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:6px;font-size:14px;}
+.calc-result{background:linear-gradient(135deg,#1a2b4a,#2a4a7a);color:#fff;border-radius:10px;padding:25px;margin-top:20px;}
+.calc-result h3{margin:0 0 15px;font-size:18px;}
+.calc-result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px;}
+.calc-result-item{text-align:center;}
+.calc-result-item .num{font-size:28px;font-weight:700;color:#ff8c00;}
+.calc-result-item .label{font-size:12px;opacity:.8;margin-top:4px;}
+.calc-note{font-size:12px;color:#999;margin-top:15px;text-align:center;}
+
+/* ===== Shipping & Warranty Sections ===== */
+.info-section{padding:60px 0;background:#fff;}
+.info-section.alt{background:#f8f9fb;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:30px;}
+.info-card{background:#fff;border:1px solid #e8e8e8;border-radius:10px;padding:25px;transition:box-shadow .3s;}
+.info-card:hover{box-shadow:0 4px 15px rgba(0,0,0,.08);}
+.info-card .icon{font-size:32px;margin-bottom:12px;}
+.info-card h4{color:#1a2b4a;margin:0 0 10px;font-size:16px;}
+.info-card p{color:#555;font-size:14px;line-height:1.6;margin:0;}
+.info-card ul{color:#555;font-size:14px;line-height:1.8;padding-left:18px;margin:0;}
+.warranty-table{width:100%;border-collapse:collapse;margin-top:20px;}
+.warranty-table th,.warranty-table td{padding:12px 15px;text-align:left;border-bottom:1px solid #eee;font-size:14px;}
+.warranty-table th{background:#1a2b4a;color:#fff;}
+.warranty-table tr:hover{background:#f8f9fb;}
+
 </style>
 </head>
 <body>
@@ -345,6 +378,62 @@
     <div class="product-nav" id="productNav"></div>
 
     <div class="related-section" id="relatedSection"></div>
+  </div>
+</section>
+
+
+<section class="calc-section" id="calculator">
+  <div class="container">
+    <div class="calc-wrap">
+      <h2>Container Load Calculator</h2>
+      <p class="calc-sub">Estimate how many units fit in one container and your total landed cost</p>
+      <div class="calc-row">
+        <div class="calc-group">
+          <label>Product Type</label>
+          <select id="calcProduct">
+            <option value="split">Split AC (12K BTU) — ~0.12 CBM/set</option>
+            <option value="floor">Floor Standing (24K) — ~0.25 CBM/set</option>
+            <option value="portable">Portable AC (9K) — ~0.15 CBM/set</option>
+            <option value="cassette">Cassette (36K) — ~0.30 CBM/set</option>
+            <option value="vrf">VRF Outdoor (8-12HP) — ~1.2 CBM/unit</option>
+          </select>
+        </div>
+        <div class="calc-group">
+          <label>Container Size</label>
+          <select id="calcContainer">
+            <option value="20">20ft GP (28 CBM)</option>
+            <option value="40">40ft GP (58 CBM)</option>
+            <option value="40hq">40ft HQ (68 CBM)</option>
+          </select>
+        </div>
+        <div class="calc-group">
+          <label>Unit Price (USD)</label>
+          <input type="number" id="calcPrice" value="140" min="10">
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Estimated Results</h3>
+        <div class="calc-result-grid">
+          <div class="calc-result-item">
+            <div class="num" id="calcUnits">~230</div>
+            <div class="label">Units per Container</div>
+          </div>
+          <div class="calc-result-item">
+            <div class="num" id="calcTotal">$32,200</div>
+            <div class="label">Total Goods Value</div>
+          </div>
+          <div class="calc-result-item">
+            <div class="num" id="calcCBM">28</div>
+            <div class="label">Container CBM</div>
+          </div>
+          <div class="calc-result-item">
+            <div class="num" id="calcFreight">$2,800</div>
+            <div class="label">Est. Sea Freight to Tema</div>
+          </div>
+        </div>
+        <p class="calc-note">* Estimates only. Actual loading depends on packaging and mix. Mixed container loading available — combine multiple models.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -528,6 +617,127 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<section class="info-section alt" id="shipping">
+  <div class="container">
+    <div class="section-title" style="text-align:center;margin-bottom:10px;">
+      <h2>Shipping, Customs & Logistics</h2>
+      <p style="color:#666;max-width:700px;margin:10px auto 0;">We handle the full shipping process so you can focus on selling</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="icon">&#128674;</div>
+        <h4>Sea Freight to West Africa</h4>
+        <ul>
+          <li><strong>Tema (Ghana):</strong> ~28-35 days from Guangzhou</li>
+          <li><strong>Tincan (Nigeria):</strong> ~30-40 days</li>
+          <li><strong>Abidjan (Ivory Coast):</strong> ~32-38 days</li>
+          <li><strong>Lome (Togo) / Cotonou (Benin):</strong> ~30-35 days</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="icon">&#128230;</div>
+        <h4>Customs Clearance Support</h4>
+        <ul>
+          <li>Commercial Invoice & Packing List</li>
+          <li>Bill of Lading (B/L)</li>
+          <li>Certificate of Origin (CO)</li>
+          <li>CE / RoHS certification copies</li>
+          <li>HS Code: 8415.10 (split), 8415.81 (other)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="icon">&#127981;</div>
+        <h4>Bonded Warehouse Option</h4>
+        <ul>
+          <li>Local stock in Tema & Tincan bonded warehouses</li>
+          <li>Fast delivery: 2-5 days instead of 30+ by sea</li>
+          <li>Local GHS / NGN cash on delivery (COD)</li>
+          <li>Ideal for JIJI sellers and urgent orders</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="icon">&#9993;</div>
+        <h4>Air & Express for Spare Parts</h4>
+        <ul>
+          <li>DHL / FedEx express: 5-7 days</li>
+          <li>Air freight: 7-10 days</li>
+          <li>For urgent PCB, remote, compressor orders</li>
+          <li>Sample orders ship by express</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="info-section" id="warranty">
+  <div class="container">
+    <div class="section-title" style="text-align:center;margin-bottom:10px;">
+      <h2>Warranty & After-Sales Support</h2>
+      <p style="color:#666;max-width:700px;margin:10px auto 0;">We stand behind every unit with comprehensive warranty and spare parts supply</p>
+    </div>
+    <table class="warranty-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Warranty Period</th>
+          <th>Coverage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Compressor</strong></td>
+          <td>1 year (5 years for large distributor agreements)</td>
+          <td>Manufacturing defects only</td>
+        </tr>
+        <tr>
+          <td><strong>Indoor / Outdoor PCB</strong></td>
+          <td>1 year</td>
+          <td>Circuit board failure under normal use</td>
+        </tr>
+        <tr>
+          <td><strong>Fan Motors</strong></td>
+          <td>1 year</td>
+          <td>Motor burnout or bearing failure</td>
+        </tr>
+        <tr>
+          <td><strong>Remote Control</strong></td>
+          <td>6 months</td>
+          <td>Button failure or display issues</td>
+        </tr>
+        <tr>
+          <td><strong>Refrigerant Leak</strong></td>
+          <td>Not covered (installation-related)</td>
+          <td>Proper installation by certified technician required</td>
+        </tr>
+        <tr>
+          <td><strong>Free Spare Parts</strong></td>
+          <td>With every order</td>
+          <td>PCB, remote, capacitor, sensor = 1% of order value</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="info-grid" style="margin-top:30px;">
+      <div class="info-card">
+        <div class="icon">&#128737;</div>
+        <h4>Spare Parts Supply</h4>
+        <p>We maintain a full inventory of spare parts: PCB boards, compressors, fan motors, remote controls, capacitors, sensors, copper fittings. Hard-to-source parts that local technicians in Accra and Lagos struggle to find.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">&#128187;</div>
+        <h4>Technical Support</h4>
+        <p>WhatsApp technical support 7 days a week. Video call troubleshooting for installation and repair. Fault code reference guide included with every shipment. Training available for distributor service teams.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">&#127973;</div>
+        <h4>Extended Warranty for Distributors</h4>
+        <p>Annual purchase volume over 500 units qualifies for extended compressor warranty (up to 5 years), dedicated technical support line, and priority spare parts shipping. Contact us for distributor partnership terms.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -782,6 +992,71 @@ if(document.readyState === "loading"){
   document.addEventListener("DOMContentLoaded", populateInquiryProducts);
 } else {
   populateInquiryProducts();
+}
+
+
+// ===== Container Calculator =====
+function updateCalculator(){
+  var product = document.getElementById('calcProduct').value;
+  var container = document.getElementById('calcContainer').value;
+  var price = parseFloat(document.getElementById('calcPrice').value) || 0;
+
+  var cbmPerUnit = {split:0.12, floor:0.25, portable:0.15, cassette:0.30, vrf:1.2};
+  var containerCBM = {'20':28, '40':58, '40hq':68};
+  var freightToTema = {'20':2800, '40':4200, '40hq':4800};
+
+  var cbm = cbmPerUnit[product] || 0.12;
+  var totalCBM = containerCBM[container] || 28;
+  var units = Math.floor(totalCBM / cbm * 0.85); // 85% loading efficiency
+  var totalValue = units * price;
+  var freight = freightToTema[container] || 2800;
+
+  document.getElementById('calcUnits').textContent = '~' + units;
+  document.getElementById('calcTotal').textContent = '$' + totalValue.toLocaleString();
+  document.getElementById('calcCBM').textContent = totalCBM;
+  document.getElementById('calcFreight').textContent = '$' + freight.toLocaleString();
+}
+
+// Add event listeners when DOM is ready
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", function(){
+    ['calcProduct','calcContainer','calcPrice'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){ el.addEventListener('change', updateCalculator); el.addEventListener('input', updateCalculator); }
+    });
+    updateCalculator();
+  });
+} else {
+  ['calcProduct','calcContainer','calcPrice'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){ el.addEventListener('change', updateCalculator); el.addEventListener('input', updateCalculator); }
+  });
+  updateCalculator();
+}
+
+// ===== Price List Download =====
+function downloadPriceList(){
+  var csv = 'Product,Category,MOQ,FOB Price Range (USD),Loading Port\n';
+  PRODUCTS.forEach(function(p){
+    var moq = '';
+    var fob = '';
+    p.specs.forEach(function(s){
+      if(s[0] === 'MOQ') moq = s[1];
+      if(s[0] === 'FOB Reference') fob = s[1];
+    });
+    csv += '"' + p.name + '","' + p.cat + '","' + moq + '","' + fob + '","Guangzhou / Shenzhen"\n';
+  });
+  csv += '\n* Prices are FOB reference only. Final price depends on quantity, port and current market.\n';
+  csv += '* Contact us for mixed container pricing and distributor volume discounts.\n';
+  csv += '* JM-ideal / JML Electric Appliance Limited — Authorized Midea West Africa Agent\n';
+
+  var blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+  var link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'JM-ideal_Price_List_West_Africa.csv';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 // ===== FAQ Toggle =====
