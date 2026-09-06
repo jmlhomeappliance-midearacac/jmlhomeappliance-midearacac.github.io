@@ -764,6 +764,292 @@
   }
 }
 
+
+/* Local Payment Feature */
+.local-payment-banner {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  color: #fff;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.local-payment-banner .icon {
+  font-size: 20px;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.local-payment-banner .highlight {
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+.local-payment-section {
+  background: linear-gradient(135deg, #f0fdf4, #ecfeff);
+  padding: 40px 20px;
+  margin: 30px 0;
+  border-radius: 16px;
+  border: 2px solid #00b894;
+}
+.local-payment-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+.local-payment-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+.local-payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.local-payment-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,184,148,0.1);
+  border: 1px solid #d1fae5;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.local-payment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,184,148,0.2);
+}
+.local-payment-card .flag {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+.local-payment-card .country {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+.local-payment-card .currency {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+.local-payment-card .speed {
+  display: inline-block;
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.local-payment-card .bank-info {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+.local-payment-card .bank-info a {
+  color: #00b894;
+  text-decoration: none;
+  font-weight: 600;
+}
+.local-payment-features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.local-payment-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #334155;
+  font-weight: 500;
+}
+.local-payment-feature .check {
+  color: #00b894;
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .local-payment-banner { font-size: 12px; padding: 10px 12px; }
+  .local-payment-title { font-size: 20px; }
+  .local-payment-grid { grid-template-columns: 1fr; }
+  .local-payment-features { gap: 15px; }
+}
+
+
+/* 100% Midea Genuine Feature */
+.midea-genuine-banner {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: #fff;
+  padding: 14px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-bottom: 3px solid #fbbf24;
+}
+.midea-genuine-banner .badge {
+  background: #fbbf24;
+  color: #1e3a8a;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.midea-genuine-banner .icon {
+  font-size: 22px;
+}
+.midea-genuine-section {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  padding: 45px 20px;
+  margin: 30px 0;
+  border-radius: 16px;
+  border: 2px solid #3b82f6;
+  position: relative;
+  overflow: hidden;
+}
+.midea-genuine-section::before {
+  content: "100%";
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(59, 130, 246, 0.08);
+  line-height: 1;
+}
+.midea-genuine-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.midea-genuine-title .highlight {
+  color: #f59e0b;
+}
+.midea-genuine-subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.midea-genuine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.midea-genuine-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  border: 1px solid #bfdbfe;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.midea-genuine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+}
+.midea-genuine-card .icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.midea-genuine-card .title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+}
+.midea-genuine-card .desc {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+.midea-genuine-cta {
+  text-align: center;
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+.midea-genuine-cta a {
+  display: inline-block;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #1e3a8a;
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  transition: transform 0.2s;
+}
+.midea-genuine-cta a:hover {
+  transform: scale(1.05);
+}
+.midea-genuine-trust {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.midea-genuine-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #3b82f6;
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  .midea-genuine-banner { font-size: 12px; padding: 10px 12px; }
+  .midea-genuine-title { font-size: 20px; }
+  .midea-genuine-subtitle { font-size: 13px; }
+  .midea-genuine-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .midea-genuine-card { padding: 14px 10px; }
+  .midea-genuine-card .icon { font-size: 28px; }
+  .midea-genuine-card .title { font-size: 12px; }
+  .midea-genuine-card .desc { font-size: 11px; }
+}
+
 </style>
 <link rel="preconnect" href="https://www.jmideal.cn">
 <link rel="preconnect" href="https://wa.me">
@@ -1021,6 +1307,23 @@
 </header>
 
 <section class="page-head" id="top">
+<!-- Local Payment Instant Banner -->
+
+<!-- 100% Midea Genuine Banner -->
+<div class="midea-genuine-banner">
+  <span class="icon">&#9989;</span>
+  <span class="badge">100% Genuine</span>
+  <span><strong>Midea Original Factory Manufacturing</strong> — Not White Label, Not Copycat</span>
+  <span style="font-size:12px;opacity:0.9">&#128220; Customs Declaration | &#128278; Product Barcode | &#127909; Loading Video | &#128247; Showroom Photos</span>
+</div>
+
+<div class="local-payment-banner">
+  <span class="icon">&#9889;</span>
+  <span>&#127757; <strong>Local Payment Available</strong> — Pay in GHS / NGN / XOF</span>
+  <span class="highlight">&#9201; Funds received in 2-3 Hours!</span>
+  <span>&#127468;&#127469; Ghana &nbsp; &#127475;&#127468; Nigeria &nbsp; &#127464;&#127471; Côte d'Ivoire</span>
+</div>
+
   <div class="container">
     <div class="eyebrow">JM-ideal / JML Electric — Product Line</div>
     <h1 id="pageTitle">Air Conditioners, VRFs &amp; Parts for West Africa</h1>
@@ -1635,6 +1938,98 @@
         <p>Ghana's Tema Port expansion reduces container dwell time, making bonded-warehouse stock models more viable for distributors. Local stock delivery now possible within 48 hours.</p>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- Local Payment Solutions Section -->
+
+<!-- 100% Midea Genuine Factory Direct Section -->
+<section class="midea-genuine-section" id="midea-genuine">
+  <h2 class="midea-genuine-title">&#127981; 100% <span class="highlight">Midea Genuine</span> — Factory Direct from China</h2>
+  <p class="midea-genuine-subtitle">We are NOT a white label trader. Every single air conditioner we supply is <strong>100% manufactured by Midea</strong> at their original factory. We provide complete proof of authenticity — so you can buy with total confidence.</p>
+  
+  <div class="midea-genuine-grid">
+    <div class="midea-genuine-card">
+      <div class="icon">&#127981;</div>
+      <div class="title">100% Midea Original</div>
+      <div class="desc">Every unit manufactured at Midea's original factory. No rebranding, no assembly elsewhere.</div>
+    </div>
+    <div class="midea-genuine-card">
+      <div class="icon">&#128220;</div>
+      <div class="title">Midea Customs Declaration</div>
+      <div class="desc">We provide official Midea export customs declaration documents for every shipment.</div>
+    </div>
+    <div class="midea-genuine-card">
+      <div class="icon">&#128278;</div>
+      <div class="title">Authentic Product Barcode</div>
+      <div class="desc">Each unit carries Midea's unique product barcode — fully traceable and verifiable.</div>
+    </div>
+    <div class="midea-genuine-card">
+      <div class="icon">&#127909;</div>
+      <div class="title">Factory Loading Video</div>
+      <div class="desc">Watch real videos of your order being loaded at Midea's warehouse before shipping.</div>
+    </div>
+    <div class="midea-genuine-card">
+      <div class="icon">&#128247;</div>
+      <div class="title">Midea Showroom Photos</div>
+      <div class="desc">Photos from Midea's official showroom and factory — see the real production capacity.</div>
+    </div>
+    <div class="midea-genuine-card">
+      <div class="icon">&#128737;</div>
+      <div class="title">Full After-sales Support</div>
+      <div class="desc">Genuine Midea warranty coverage + local spare parts stock in Ghana & Nigeria.</div>
+    </div>
+  </div>
+  
+  <div class="midea-genuine-cta">
+    <a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20want%20to%20see%20proof%20of%20Midea%20genuine%20products%20(customs%20declaration%2C%20barcode%2C%20loading%20video)" target="_blank">&#128240; Request Proof of Authenticity on WhatsApp</a>
+  </div>
+  
+  <div class="midea-genuine-trust">
+    <div class="midea-genuine-trust-item">&#9989; World No.1 AC Brand</div>
+    <div class="midea-genuine-trust-item">&#9989; 60+ Million Units/Year</div>
+    <div class="midea-genuine-trust-item">&#9989; ISO 9001 Certified</div>
+    <div class="midea-genuine-trust-item">&#9989; CE & RoHS Compliant</div>
+  </div>
+</section>
+
+<section class="local-payment-section" id="local-payment">
+  <h2 class="local-payment-title">&#9889; Local Payment — Get Your Order Started Today!</h2>
+  <p class="local-payment-subtitle">No more waiting 3-7 days for international wire transfers. Pay with your local currency and we receive funds in just 2-3 hours!</p>
+  
+  <div class="local-payment-grid">
+    <div class="local-payment-card">
+      <div class="flag">&#127468;&#127469;</div>
+      <div class="country">Ghana</div>
+      <div class="currency">Ghana Cedi (GHS) &#128179;</div>
+      <div class="speed">&#9201; 2-3 Hours</div>
+      <div class="bank-info">Local Bank Account Available<br><a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20please%20share%20your%20Ghana%20bank%20account%20details%20for%20GHS%20payment" target="_blank">&#128172; Get Bank Details</a></div>
+    </div>
+    
+    <div class="local-payment-card">
+      <div class="flag">&#127475;&#127468;</div>
+      <div class="country">Nigeria</div>
+      <div class="currency">Nigerian Naira (NGN) &#128179;</div>
+      <div class="speed">&#9201; 2-3 Hours</div>
+      <div class="bank-info">Local Bank Account Available<br><a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20please%20share%20your%20Nigeria%20bank%20account%20details%20for%20NGN%20payment" target="_blank">&#128172; Get Bank Details</a></div>
+    </div>
+    
+    <div class="local-payment-card">
+      <div class="flag">&#127464;&#127471;</div>
+      <div class="country">Côte d'Ivoire</div>
+      <div class="currency">West African CFA Franc (XOF) &#128179;</div>
+      <div class="speed">&#9201; 2-3 Hours</div>
+      <div class="bank-info">Local Bank Account Available<br><a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20please%20share%20your%20Cote%20d%27Ivoire%20bank%20account%20details%20for%20XOF%20payment" target="_blank">&#128172; Get Bank Details</a></div>
+    </div>
+  </div>
+  
+  <div class="local-payment-features">
+    <div class="local-payment-feature"><span class="check">&#9989;</span> No FX Control Issues</div>
+    <div class="local-payment-feature"><span class="check">&#9989;</span> Pay in Local Currency</div>
+    <div class="local-payment-feature"><span class="check">&#9989;</span> Instant Confirmation</div>
+    <div class="local-payment-feature"><span class="check">&#9989;</span> Secure & Trusted</div>
+    <div class="local-payment-feature"><span class="check">&#9989;</span> Start Shipping Faster</div>
   </div>
 </section>
 
