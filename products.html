@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Performance Optimization for West Africa / Ghana Low-Bandwidth -->
+<meta http-equiv="Cache-Control" content="public, max-age=86400">
+<meta name="theme-color" content="#0b2447">
+<link rel="preconnect" href="https://www.jmideal.cn" crossorigin>
+<link rel="preconnect" href="https://wa.me">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JM-ideal Product Line — Split, Inverter, Solar AC, VRFs &amp; Parts | JML Electric</title>
@@ -257,7 +265,6 @@
   .whatsapp-float svg { width: 28px; height: 28px; }
 }
 
-
 /* Certification Badges */
 .cert-row {
   display: flex;
@@ -288,7 +295,6 @@
   .cert-row { gap: 6px; }
   .cert-item { font-size: 11px; padding: 4px 10px; }
 }
-
 
 /* ===== Container Calculator ===== */
 .calc-section{background:#f8f9fb;padding:60px 0;}
@@ -322,7 +328,6 @@
 .warranty-table th{background:#1a2b4a;color:#fff;}
 .warranty-table tr:hover{background:#f8f9fb;}
 
-
 /* ===== AI Knowledge Base / Smart Q&A ===== */
 .kb-section{background:linear-gradient(135deg,#1a2b4a 0%,#2a4a7a 100%);padding:60px 0;color:#fff;}
 .kb-wrap{max-width:900px;margin:0 auto;}
@@ -354,7 +359,6 @@
 .kb-whatsapp a:hover{transform:translateY(-2px);}
 .kb-empty{text-align:center;padding:30px;color:rgba(255,255,255,.6);}
 .kb-empty .icon{font-size:40px;margin-bottom:10px;}
-
 
 /* ===== Ghana Landed Cost Calculator ===== */
 .landed-section { background: #f8f9fa; padding: 60px 20px; }
@@ -388,7 +392,6 @@
   .landed-grid { grid-template-columns: 1fr; }
   .landed-tax-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
 
 /* ===== Quick Navigation & Back to Top ===== */
 .scroll-progress {
@@ -441,7 +444,6 @@
   transition: background 0.2s; white-space: nowrap;
 }
 .kb-search-btn:hover { background: #e67e00; }
-
 
 /* AI Customer Service Chat Widget */
 .ai-chat-widget {
@@ -764,7 +766,6 @@
   }
 }
 
-
 /* Local Payment Feature */
 .local-payment-banner {
   background: linear-gradient(135deg, #00b894, #00cec9);
@@ -893,7 +894,6 @@
   .local-payment-grid { grid-template-columns: 1fr; }
   .local-payment-features { gap: 15px; }
 }
-
 
 /* 100% Midea Genuine Feature */
 .midea-genuine-banner {
@@ -1049,7 +1049,6 @@
   .midea-genuine-card .title { font-size: 12px; }
   .midea-genuine-card .desc { font-size: 11px; }
 }
-
 
 /* Mobile Bottom Navigation Bar */
 .mobile-bottom-nav {
@@ -1286,7 +1285,6 @@
   }
 }
 
-
 /* PROMOTION Section */
 .promo-section {
   background: linear-gradient(135deg, #dc2626, #991b1b);
@@ -1453,7 +1451,6 @@
   }
 }
 
-
 /* PROMOTION Social Share */
 .promo-share-bar {
   display: flex;
@@ -1533,6 +1530,22 @@
   .promo-share-bar { justify-content: center; }
   .promo-share-label { width: 100%; text-align: center; }
 }
+
+<style>
+/* Critical CSS - Above the fold (loads immediately) */
+.promo-section{background:linear-gradient(135deg,#dc2626,#991b1b);padding:30px 20px;position:relative;overflow:hidden}
+.promo-container{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:30px;position:relative;z-index:1}
+.promo-badge{display:inline-block;background:#fbbf24;color:#991b1b;padding:6px 18px;border-radius:20px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;animation:pulse-badge 2s infinite}
+@keyframes pulse-badge{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.promo-title{font-size:26px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.2}
+.promo-title .highlight{color:#fbbf24}
+.promo-new-price{font-size:38px;font-weight:900;color:#fbbf24;line-height:1}
+.promo-discount{display:inline-block;background:#fff;color:#dc2626;padding:4px 12px;border-radius:8px;font-size:16px;font-weight:800}
+.promo-cta{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 28px;border-radius:25px;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:transform .2s}
+.promo-image{flex-shrink:0;width:320px;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.3);border:3px solid rgba(255,255,255,.3)}
+.promo-image img{width:100%;height:auto;display:block}
+@media(max-width:768px){.promo-container{flex-direction:column;text-align:center}.promo-image{width:100%;max-width:350px}.promo-title{font-size:20px}.promo-new-price{font-size:30px}}
+</style>
 
 </style>
 <link rel="preconnect" href="https://www.jmideal.cn">
@@ -1743,6 +1756,9 @@
   ]
 }
 </script>
+
+<link rel="preload" as="image" href="images/p1.jpg">
+<link rel="preload" as="image" href="images/Carries%2024K%20Split%20AC%20Promotion_01.png">
 </head>
 <body>
 
@@ -1766,7 +1782,6 @@
   <div class="side-nav-item" onclick="scrollToSection('news')"><span class="side-nav-label">News</span><span class="side-nav-dot"></span></div>
   <div class="side-nav-item" onclick="scrollToSection('contact')"><span class="side-nav-label">Contact</span><span class="side-nav-dot"></span></div>
 </nav>
-
 
 <div class="sitebar">
   <a href="index.html">Home · Site Map</a>
@@ -1814,7 +1829,6 @@
     <p id="pageSub">World No.1 Aircon Factory-direct pricing with genuine Midea backing. Local Stock &amp; Service Parts ready, shipped via Tema and Tincan Bonded Warehouse, White-label Packing optional, Local GHS/NGN COD. Tap any product for full specs and an instant WhatsApp quote.</p>
   </div>
 </section>
-
 
 <!-- PROMOTION Section -->
 <section class="promo-section" id="promotion">
@@ -1892,7 +1906,6 @@
     <div class="related-section" id="relatedSection"></div>
   </div>
 </section>
-
 
 <section class="calc-section" id="calculator">
   <div class="container">
@@ -2269,7 +2282,6 @@
   </div>
 </section>
 
-
 <section class="info-section alt" id="shipping">
   <div class="container">
     <div class="section-title" style="text-align:center;margin-bottom:10px;">
@@ -2321,7 +2333,6 @@
     </div>
   </div>
 </section>
-
 
 <section class="info-section" id="warranty">
   <div class="container">
@@ -2389,7 +2400,6 @@
     </div>
   </div>
 </section>
-
 
 <section class="kb-section" id="knowledgebase">
   <div class="container">
@@ -2477,7 +2487,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- Local Payment Solutions Section -->
 
@@ -2798,7 +2807,6 @@ if(document.readyState === "loading"){
   populateInquiryProducts();
 }
 
-
 // ===== Container Calculator =====
 function updateCalculator(){
   var product = document.getElementById('calcProduct').value;
@@ -2873,7 +2881,6 @@ function downloadPriceList(){
   link.click();
   document.body.removeChild(link);
 }
-
 
 // ===== AI Knowledge Base =====
 var KB_DATA = [
@@ -2988,8 +2995,6 @@ var KB_DATA = [
   {cat:"product", q:"How does multi split compare with ordinary split AC for my business?", a:"Multi Split vs Ordinary Split AC comparison for West Africa distributors/retailers: COST: Ordinary split: 1 outdoor + 1 indoor per room. 3 rooms = 3 complete systems. Multi split: 1 outdoor + 3 indoor = 1 system. Multi split outdoor unit is more expensive than single split, but total system cost for 3+ rooms is typically 10-15% LOWER than buying 3 separate systems. INSTALLATION: Ordinary split: 3 outdoor units to mount, 3 sets of pipes, 3 electrical connections, 3 holes in wall. Multi split: 1 outdoor unit, 1 main power supply, branch pipes to each indoor. Less installation labor, less wall penetration, cleaner look. SPACE: Ordinary split: 3 outdoor units take 3x balcony/wall space. Multi split: 1 outdoor unit only — critical for apartments with limited balcony space, or buildings with restrictions on multiple outdoor units. ENERGY: Ordinary split: each outdoor has its own compressor cycling independently. Multi split: single inverter compressor modulates capacity based on total load — when only 1 room is cooling, compressor runs at low speed = much lower power consumption. 15-25% energy savings in partial load. NOISE: Ordinary split: 3 outdoor fans running = more noise. Multi split: 1 outdoor fan, quieter. FLEXIBILITY: Ordinary split: each room independent, if one outdoor fails only that room affected. Multi split: if outdoor fails, ALL rooms affected (single point of failure). But multi split has higher reliability — fewer compressors = fewer failure points. SERVICE: Ordinary split: simpler, any technician can repair. Multi split: requires trained technician, refrigerant piping more complex (branch joints, multiple lines). We provide installation manual and technical support. TARGET CUSTOMERS: Ordinary split: single rooms, small shops, budget buyers, JIJI sellers. Multi split: apartments (2-5 bedrooms), villas, small offices, shops with multiple rooms, hotels, restaurants, schools. MARGIN: Multi split has HIGHER margin potential — customers pay premium for space saving and aesthetics, but product cost is only slightly higher. Typical retail markup: 30-40% vs 20-30% for ordinary split. RECOMMENDATION: Stock BOTH — ordinary split for high-volume budget market (JIJI, small retailers), multi split for premium segment (apartments, offices, contractors). Multi split is a growing market in West Africa as urban middle class expands and apartment buildings proliferate."},
 
 ];
-
-
 
 // ===== French Knowledge Base =====
 var KB_DATA_FR = [
@@ -3353,7 +3358,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 
-
 <script>
 // Scroll progress bar + back to top + side nav active state
 window.addEventListener('scroll', function() {
@@ -3561,7 +3565,6 @@ setTimeout(function() {
 
 </script>
 
-
 <!-- AI Customer Service Chat Widget -->
 <div class="ai-chat-widget" id="aiChatWidget">
   <button class="ai-chat-button" onclick="toggleAiChat()" id="aiChatBtn">
@@ -3586,7 +3589,6 @@ setTimeout(function() {
     <div class="ai-chat-footer">Powered by Cofi AI | JM-ideal | <a href="https://wa.me/8613318393556" target="_blank">Talk to human on WhatsApp</a></div>
   </div>
 </div>
-
 
 <!-- Mobile Bottom Navigation -->
 <nav class="mobile-bottom-nav" id="mobileBottomNav">
@@ -3670,7 +3672,6 @@ setTimeout(function() {
     </div>
   </div>
 </div>
-
 
 <script>
 // Mobile Navigation Functions
