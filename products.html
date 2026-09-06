@@ -1286,6 +1286,173 @@
   }
 }
 
+
+/* PROMOTION Section */
+.promo-section {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  padding: 30px 20px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+.promo-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.promo-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+.promo-badge {
+  display: inline-block;
+  background: #fbbf24;
+  color: #991b1b;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  animation: pulse-badge 2s infinite;
+}
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.promo-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.promo-title .highlight {
+  color: #fbbf24;
+}
+.promo-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+.promo-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.promo-old-price {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: line-through;
+}
+.promo-new-price {
+  font-size: 38px;
+  font-weight: 900;
+  color: #fbbf24;
+  line-height: 1;
+}
+.promo-discount {
+  display: inline-block;
+  background: #fff;
+  color: #dc2626;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 800;
+}
+.promo-features {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.promo-feature {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 600;
+}
+.promo-feature .icon {
+  font-size: 16px;
+}
+.promo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+  transition: transform 0.2s;
+}
+.promo-cta:hover {
+  transform: scale(1.05);
+}
+.promo-image {
+  flex-shrink: 0;
+  width: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  border: 3px solid rgba(255,255,255,0.3);
+}
+.promo-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.promo-urgency {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+@media (max-width: 768px) {
+  .promo-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .promo-image {
+    width: 100%;
+    max-width: 350px;
+  }
+  .promo-title {
+    font-size: 20px;
+  }
+  .promo-new-price {
+    font-size: 30px;
+  }
+  .promo-features {
+    justify-content: center;
+  }
+  .promo-price-row {
+    justify-content: center;
+  }
+}
+
 </style>
 <link rel="preconnect" href="https://www.jmideal.cn">
 <link rel="preconnect" href="https://wa.me">
@@ -1564,6 +1731,36 @@
     <div class="eyebrow">JM-ideal / JML Electric — Product Line</div>
     <h1 id="pageTitle">Air Conditioners, VRFs &amp; Parts for West Africa</h1>
     <p id="pageSub">World No.1 Aircon Factory-direct pricing with genuine Midea backing. Local Stock &amp; Service Parts ready, shipped via Tema and Tincan Bonded Warehouse, White-label Packing optional, Local GHS/NGN COD. Tap any product for full specs and an instant WhatsApp quote.</p>
+  </div>
+</section>
+
+
+<!-- PROMOTION Section -->
+<section class="promo-section" id="promotion">
+  <div class="promo-container">
+    <div class="promo-content">
+      <span class="promo-badge">&#128293; Limited Time Promotion</span>
+      <span class="promo-urgency">&#9201; While Stock Lasts</span>
+      <h2 class="promo-title">Fix-Speed 18C Series <span class="highlight">24,000 BTU</span> Hi-Wall Split AC</h2>
+      <p class="promo-desc">Midea Carrier Thailand Factory Warehouse Clearance Sale — Now Available in Ghana! Genuine Midea Carrier quality at unbeatable prices.</p>
+      <div class="promo-price-row">
+        <span class="promo-old-price">GHS 10,856</span>
+        <span class="promo-new-price">GHS 7,599</span>
+        <span class="promo-discount">30% OFF</span>
+      </div>
+      <div class="promo-features">
+        <div class="promo-feature"><span class="icon">&#9989;</span> Lowest Price in Ghana</div>
+        <div class="promo-feature"><span class="icon">&#9989;</span> 24,000 BTU Powerful Cooling</div>
+        <div class="promo-feature"><span class="icon">&#9989;</span> Genuine Midea Carrier</div>
+        <div class="promo-feature"><span class="icon">&#9989;</span> Pay & Pickup at JML Accra Warehouse</div>
+      </div>
+      <a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20am%20interested%20in%20the%20PROMOTION%2024000%20BTU%20Fix-Speed%2018C%20Split%20AC%20at%20GHS7599.%20Please%20share%20details%20and%20pickup%20info." target="_blank" class="promo-cta">
+        &#128172; Grab This Deal on WhatsApp
+      </a>
+    </div>
+    <div class="promo-image">
+      <img src="images/Carries%2024K%20Split%20AC%20Promotion_01.png" alt="Midea Carrier 24000 BTU Split AC Promotion - GHS7599 Only" loading="lazy">
+    </div>
   </div>
 </section>
 
