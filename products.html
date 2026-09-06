@@ -322,6 +322,39 @@
 .warranty-table th{background:#1a2b4a;color:#fff;}
 .warranty-table tr:hover{background:#f8f9fb;}
 
+
+/* ===== AI Knowledge Base / Smart Q&A ===== */
+.kb-section{background:linear-gradient(135deg,#1a2b4a 0%,#2a4a7a 100%);padding:60px 0;color:#fff;}
+.kb-wrap{max-width:900px;margin:0 auto;}
+.kb-head{text-align:center;margin-bottom:30px;}
+.kb-head h2{color:#fff;margin:0 0 10px;font-size:28px;}
+.kb-head p{color:rgba(255,255,255,.7);margin:0;font-size:15px;}
+.kb-search-box{position:relative;margin-bottom:25px;}
+.kb-search-box input{width:100%;padding:16px 50px 16px 20px;border:none;border-radius:10px;font-size:16px;background:rgba(255,255,255,.95);color:#333;}
+.kb-search-box input:focus{outline:none;box-shadow:0 0 0 3px rgba(255,140,0,.4);}
+.kb-search-icon{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:20px;opacity:.5;}
+.kb-results{background:rgba(255,255,255,.08);border-radius:10px;padding:20px;min-height:100px;}
+.kb-result-item{background:rgba(255,255,255,.1);border-radius:8px;padding:15px;margin-bottom:12px;cursor:pointer;transition:background .2s;}
+.kb-result-item:hover{background:rgba(255,255,255,.18);}
+.kb-result-item .q{font-weight:600;color:#ff8c00;margin-bottom:6px;font-size:15px;}
+.kb-result-item .a{color:rgba(255,255,255,.85);font-size:14px;line-height:1.6;display:none;}
+.kb-result-item.open .a{display:block;}
+.kb-result-item .a.show{display:block;}
+.kb-categories{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center;}
+.kb-cat{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer;transition:all .2s;}
+.kb-cat:hover,.kb-cat.active{background:#ff8c00;border-color:#ff8c00;}
+.kb-suggest{margin-top:15px;padding-top:15px;border-top:1px solid rgba(255,255,255,.15);}
+.kb-suggest h4{color:rgba(255,255,255,.7);font-size:13px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px;}
+.kb-suggest-list{display:flex;flex-wrap:wrap;gap:8px;}
+.kb-suggest-item{background:rgba(255,255,255,.1);padding:6px 12px;border-radius:6px;font-size:13px;color:rgba(255,255,255,.8);cursor:pointer;transition:background .2s;}
+.kb-suggest-item:hover{background:rgba(255,140,0,.3);color:#fff;}
+.kb-whatsapp{text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);}
+.kb-whatsapp p{color:rgba(255,255,255,.7);font-size:14px;margin:0 0 10px;}
+.kb-whatsapp a{display:inline-block;background:#25D366;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;transition:transform .2s;}
+.kb-whatsapp a:hover{transform:translateY(-2px);}
+.kb-empty{text-align:center;padding:30px;color:rgba(255,255,255,.6);}
+.kb-empty .icon{font-size:40px;margin-bottom:10px;}
+
 </style>
 </head>
 <body>
@@ -742,6 +775,52 @@
   </div>
 </section>
 
+
+<section class="kb-section" id="knowledgebase">
+  <div class="container">
+    <div class="kb-wrap">
+      <div class="kb-head">
+        <h2>&#129302; AI Product Knowledge Base</h2>
+        <p>Ask any question about our products — get instant answers 24/7</p>
+      </div>
+      <div class="kb-search-box">
+        <input type="text" id="kbSearch" placeholder="e.g. What is the MOQ for VRF? / How to install split AC? / Warranty period?" oninput="searchKB()">
+        <span class="kb-search-icon">&#128269;</span>
+      </div>
+      <div class="kb-categories" id="kbCategories">
+        <span class="kb-cat active" onclick="filterKB('all',this)">All</span>
+        <span class="kb-cat" onclick="filterKB('product',this)">Products</span>
+        <span class="kb-cat" onclick="filterKB('vrf',this)">VRF System</span>
+        <span class="kb-cat" onclick="filterKB('install',this)">Installation</span>
+        <span class="kb-cat" onclick="filterKB('warranty',this)">Warranty</span>
+        <span class="kb-cat" onclick="filterKB('shipping',this)">Shipping</span>
+        <span class="kb-cat" onclick="filterKB('price',this)">Price & MOQ</span>
+      </div>
+      <div class="kb-results" id="kbResults">
+        <div class="kb-empty">
+          <div class="icon">&#128161;</div>
+          <p>Type a question above or click a category to browse common questions</p>
+        </div>
+      </div>
+      <div class="kb-suggest" id="kbSuggest">
+        <h4>Popular Questions</h4>
+        <div class="kb-suggest-list">
+          <span class="kb-suggest-item" onclick="askKB('What is the MOQ for split AC?')">What is MOQ for split AC?</span>
+          <span class="kb-suggest-item" onclick="askKB('How long is compressor warranty?')">Compressor warranty?</span>
+          <span class="kb-suggest-item" onclick="askKB('What is V8 VRF capacity range?')">V8 VRF capacity?</span>
+          <span class="kb-suggest-item" onclick="askKB('Shipping time to Tema Ghana?')">Shipping to Tema?</span>
+          <span class="kb-suggest-item" onclick="askKB('Are units 220V 50Hz?')">220V 50Hz compatible?</span>
+          <span class="kb-suggest-item" onclick="askKB('Can I get white-label packaging?')">White-label packaging?</span>
+        </div>
+      </div>
+      <div class="kb-whatsapp">
+        <p>Can't find your answer? Chat with us directly on WhatsApp</p>
+        <a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20have%20a%20question%20about%20your%20products" target="_blank" rel="noopener">&#128172; Ask on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="news">
   <div class="container">
     <div class="news-head">
@@ -1057,6 +1136,115 @@ function downloadPriceList(){
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+
+// ===== AI Knowledge Base =====
+var KB_DATA = [
+  // Product questions
+  {cat:"product", q:"What products do you offer?", a:"We offer a complete range: Split AC (12K BTU fixed/inverter), Solar AC (12K DC 48V hybrid), Portable AC (9K), Floor Standing (24K 3HP), Ceiling Cassette (36K), A7 Ducted, Multi-Split (1 outdoor to 2-3 indoor), V8 VRF commercial systems (8-120HP), VC Max VRF (8-90HP), plus spare parts and installation kits."},
+  {cat:"product", q:"Are your units 220V 50Hz suitable for West Africa?", a:"Yes! All split, portable and commercial units are configured for 220V / 50Hz / 1PH — the standard across Ghana, Nigeria, Togo, Benin, Ivory Coast and most of West Africa. VRF systems are 380V / 3N / 50Hz. We do NOT sell 110V/60Hz units for North America."},
+  {cat:"product", q:"What refrigerant do your units use?", a:"Most split and portable units use R410A. Newer models including P9 cassette use R32 (more eco-friendly, lower GWP). Solar AC and VRF systems use R410A. All refrigerants comply with international standards and are available as spare consumables."},
+  {cat:"product", q:"Do you provide installation accessories?", a:"Yes. Each split AC set includes basic accessories (remote, battery, drain pipe, wall plate, screws). For installers, we offer a complete 3M installation kit with insulated copper pipe, brass fittings, universal remote, indoor/outdoor PCB, rotary compressor and fan motors — hard-to-source parts local technicians struggle to find."},
+  {cat:"product", q:"Can I get white-label / OEM packaging with my own brand?", a:"Yes, white-label packing is optional. We can apply your brand logo, custom carton design and user manual in English or French. MOQ for OEM is typically 100 sets per model. Ideal for JIJI top sellers and distributors building their own brand."},
+
+  // VRF questions
+  {cat:"vrf", q:"What is the capacity range of V8 VRF?", a:"Midea V8 VRF offers: Individual series 8-42HP, Combinable series 8-120HP (up to 4 modules combined). Cooling capacity from 22.4kW to 335kW. Suitable for offices, hotels, shopping malls, hospitals and schools."},
+  {cat:"vrf", q:"What is the capacity range of VC Max VRF?", a:"Midea VC Max VRF standard series: Single unit 8-30HP, Combined unit 32-90HP. Uses full DC inverter technology with 17-sensor SuperSense monitoring. 60-step energy management from 40% to 100% in 1% increments."},
+  {cat:"vrf", q:"What is ShieldBox IP55 in V8 VRF?", a:"ShieldBox IP55 is a fully-enclosed electrical control box that provides all-round protection: dustproof (IP5X), waterproof (IPX5), insect proof, rain & snow proof. It isolates electronic components from harsh environments, improving reliability in coastal and dusty West African conditions."},
+  {cat:"vrf", q:"What is META 2.0 energy saving technology?", a:"META 2.0 (Midea Evaporating Temperature Alteration) is a triple-variable control technology that automatically recognizes building space, matches refrigerant temperature to room load, and adjusts airflow. It improves annual energy efficiency by 28%+ compared to conventional VRF."},
+  {cat:"vrf", q:"What indoor units are compatible with VRF?", a:"Wide range: One-way/two-way/four-way cassette, compact cassette, arc duct, low/medium/high static pressure duct, wall mounted, ceiling & floor, floor standing, fresh air processing unit. Capacities from 1.5kW to 56kW. Up to 3840 indoor units can be controlled in large systems."},
+  {cat:"vrf", q:"What is HyperLink communication in V8?", a:"HyperLink is Midea's original communication bus chip that supports ANY wiring topology (daisy chain, tree, star, ring) — not just traditional daisy chain. Communication distance up to 2000m, strong anti-interference. Reduces installation cost and wrong connection risk. If one connection breaks, the rest continues operating."},
+  {cat:"vrf", q:"What is DOCTOR M 2.0 smart diagnostics?", a:"DOCTOR M 2.0 uses 19 sensors distributed throughout the refrigerant system to monitor every part in real-time. It can predict faults before they happen, visualize refrigerant amount, and identify filter dirty blockage rate (10%-99%). Intelligent Bluetooth module allows reading outdoor unit data directly from smartphone without opening cabinet."},
+  {cat:"vrf", q:"What is the operating temperature range for VRF?", a:"V8 VRF: -15°C to 55°C ambient temperature. VC Max: similar wide range. PTC heater ensures electronic components stay within normal operating range even at -30°C. Microchannel refrigerant cooling keeps inverter modules at optimal temperature in hot climates."},
+  {cat:"vrf", q:"What control options are available for VRF?", a:"Multiple options: Individual controller (each indoor unit), 7-inch central controller (up to 8 systems/64 units), 10.1-inch central controller (up to 48 systems/384 units), IMM Pro 2.0 (up to 3840 units for large buildings), Midea cloud app (PC/tablet/mobile), BMS protocol gateway for third-party building management integration."},
+
+  // Installation questions
+  {cat:"install", q:"How to install a split air conditioner?", a:"1) Mount indoor unit wall plate 2-2.5m high, ensure level. 2) Drill 65mm hole through wall for pipes and cables (slight downward slope toward outdoor for drainage). 3) Connect copper pipes (liquid line 1/4, gas line 3/8), insulation must cover all copper. 4) Connect power cable and signal wire. 5) Mount outdoor unit on concrete pad or wall bracket, allow 30cm clearance for airflow. 6) Vacuum the system for 15-30 minutes. 7) Open refrigerant valves, test for leaks with soapy water. 8) Power on and test cooling. We recommend certified technician for installation."},
+  {cat:"install", q:"What is the standard pipe length for split AC?", a:"Standard included pipe length is 3 meters. Maximum recommended pipe length is 15-20 meters for 12K BTU units. Longer runs require larger diameter pipe and additional refrigerant charge. Vertical height difference should not exceed 10 meters. We sell extension pipe kits if needed."},
+  {cat:"install", q:"Do I need a stabilizer for the AC?", a:"In West Africa with unstable voltage, we strongly recommend a voltage stabilizer (5KVA for 1.5HP split AC). Wide voltage models (150V-260V) are available on request. Midea inverter units have better voltage tolerance than fixed-speed, but stabilizer still protects the compressor PCB from power surges."},
+  {cat:"install", q:"How much space is needed around outdoor unit?", a:"Minimum clearance: 30cm on sides and back, 50cm above (for hot air exhaust), 100cm in front (for service access). Do not enclose the outdoor unit in a small cabinet — poor airflow causes high pressure, high electricity consumption, and compressor damage. For VRF outdoor units, follow the installation manual for specific clearance requirements."},
+  {cat:"install", q:"Can solar AC work without solar panels?", a:"Yes. Our 12K solar AC is a DC 48V hybrid system. It can run on: 1) Solar panels only (3-4 panels of 300-450W), 2) Grid power with AC/DC adapter, 3) Battery bank (48V), 4) Hybrid combination. MPPT charge controller included. For shops and farms in Ghana, payback can be under 18 months with high electricity tariffs."},
+
+  // Warranty questions
+  {cat:"warranty", q:"How long is the compressor warranty?", a:"1-year compressor warranty on all Midea-brand units. For large distributor agreements (annual volume 500+ units), extended compressor warranty up to 5 years is available. Warranty covers manufacturing defects only — does not cover damage from improper installation, power surge, or lack of maintenance."},
+  {cat:"warranty", q:"What does the parts warranty cover?", a:"1-year parts warranty on indoor/outdoor PCBs, fan motors, and remote controls. Remote control: 6 months. Refrigerant leak: not covered (installation-related). We provide FREE spare parts (PCB, remote, capacitor, sensor) equal to 1% of order value for after-sales support with every shipment."},
+  {cat:"warranty", q:"Do you provide technical support after sale?", a:"Yes. WhatsApp technical support 7 days a week. Video call troubleshooting for installation and repair. Fault code reference guide included with every shipment. Training available for distributor service teams. For VRF systems, DOCTOR M 2.0 smart diagnostics helps identify faults quickly, and Bluetooth after-sales kit allows reading unit data from smartphone."},
+  {cat:"warranty", q:"How to claim warranty?", a:"1) Take photos/videos of the fault and product label (model, serial number). 2) WhatsApp us with description and fault code (if displayed). 3) Our technician will diagnose and guide troubleshooting. 4) If confirmed manufacturing defect, we will ship replacement part free of charge (for parts under warranty). 5) For compressor replacement under extended warranty, we provide replacement compressor or credit toward next order."},
+
+  // Shipping questions
+  {cat:"shipping", q:"How long is shipping to Tema Ghana?", a:"Sea freight from Guangzhou to Tema (Ghana): approximately 28-35 days. To Tincan (Nigeria): 30-40 days. To Abidjan (Ivory Coast): 32-38 days. To Lome (Togo) / Cotonou (Benin): 30-35 days. Stock items ship 3-7 days after deposit. OEM/white-label orders: 15-25 days production."},
+  {cat:"shipping", q:"Do you have local stock in West Africa?", a:"We work with bonded warehouse partners in Tema (Ghana) and Tincan (Nigeria) for fast-moving models and spare parts. Local stock means you can receive goods in 2-5 days instead of waiting 30+ days by sea. Local GHS/NGN cash on delivery (COD) available. Contact us for current stock availability."},
+  {cat:"shipping", q:"What documents do you provide for customs clearance?", a:"We provide complete set: Commercial Invoice, Packing List, Bill of Lading (B/L), Certificate of Origin (CO), CE/RoHS certification copies. HS Code: 8415.10 for split AC, 8415.81 for other AC. We can assist with any additional documents required by your country's customs."},
+  {cat:"shipping", q:"Can you ship by air for urgent orders?", a:"Yes. For urgent spare parts (PCB, remote, compressor), we offer DHL/FedEx express (5-7 days) or air freight (7-10 days). Sample orders of 1-2 units ship by express. Air freight cost is significantly higher than sea — recommended only for urgent parts or samples, not bulk orders."},
+  {cat:"shipping", q:"What is mixed container loading?", a:"Mixed container loading means you can combine multiple product models in one 20ft or 40ft HQ container. For example: 100 sets split AC + 20 sets floor standing + 50 pcs installation kits in one 40HQ. This reduces your per-unit shipping cost and lets you test multiple products. Use our Container Load Calculator on the website to estimate loading."},
+
+  // Price & MOQ questions
+  {cat:"price", q:"What is the MOQ for split AC?", a:"Split AC: 20 sets per model. Commercial / VRF: 1 set. Parts & accessories: 5-100 pcs depending on item. Mixed container loading available — combine multiple models to reach container volume. Sample orders of 1-2 units accepted at sample pricing (cost deductible from first bulk order of 20+ sets)."},
+  {cat:"price", q:"What is the price range for split AC?", a:"12K BTU fixed-speed split AC: US$125-155 / set FOB. 12K BTU inverter split AC: US$159-175 / set FOB. Prices are reference only — final price depends on quantity, port, current market and order timing. Larger quantities get better pricing. Contact us on WhatsApp for exact quotation."},
+  {cat:"price", q:"What payment methods do you accept?", a:"We accept: T/T bank transfer (30% deposit, 70% before shipment), L/C at sight for large orders, Western Union / MoneyGram for sample and small orders. For regular customers in Ghana and Nigeria, local GHS / NGN cash on delivery (COD) may be arranged through bonded warehouse partners."},
+  {cat:"price", q:"Do you offer quantity discounts?", a:"Yes. Quantity tiers: 20-49 sets (standard price), 50-99 sets (3-5% discount), 100-499 sets (5-8% discount), 500+ sets / year (distributor pricing + extended warranty + dedicated support). Annual distributor agreements available with priority production, marketing support and training."},
+  {cat:"price", q:"Can I order a sample before bulk order?", a:"Yes. Sample orders of 1-2 units accepted at sample pricing (slightly higher than bulk). Sample cost can be DEDUCTED from your first bulk order of 20+ sets. Samples ship by express air (DHL/FedEx, 5-7 days) or can be collected from our Shunde office. This lets you test quality before committing to bulk purchase."},
+];
+
+var currentKBCat = 'all';
+
+function searchKB(){
+  var query = document.getElementById('kbSearch').value.toLowerCase().trim();
+  var results = document.getElementById('kbResults');
+  if(!query){
+    results.innerHTML = '<div class="kb-empty"><div class="icon">&#128161;</div><p>Type a question above or click a category to browse common questions</p></div>';
+    return;
+  }
+  var matched = KB_DATA.filter(function(item){
+    if(currentKBCat !== 'all' && item.cat !== currentKBCat) return false;
+    return item.q.toLowerCase().indexOf(query) > -1 || item.a.toLowerCase().indexOf(query) > -1;
+  });
+  if(matched.length === 0){
+    results.innerHTML = '<div class="kb-empty"><div class="icon">&#128533;</div><p>No matching answer found. Try different keywords or ask us on WhatsApp.</p></div>';
+    return;
+  }
+  var html = '';
+  matched.forEach(function(item, idx){
+    html += '<div class="kb-result-item' + (idx === 0 ? ' open' : '') + '" onclick="toggleKBAnswer(this)">';
+    html += '<div class="q">Q: ' + item.q + '</div>';
+    html += '<div class="a">A: ' + item.a + '</div>';
+    html += '</div>';
+  });
+  results.innerHTML = html;
+}
+
+function filterKB(cat, el){
+  currentKBCat = cat;
+  document.querySelectorAll('.kb-cat').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  var query = document.getElementById('kbSearch').value;
+  if(query){
+    searchKB();
+  } else {
+    var matched = KB_DATA.filter(function(item){
+      return cat === 'all' || item.cat === cat;
+    });
+    var results = document.getElementById('kbResults');
+    var html = '';
+    matched.forEach(function(item, idx){
+      html += '<div class="kb-result-item' + (idx < 3 ? ' open' : '') + '" onclick="toggleKBAnswer(this)">';
+      html += '<div class="q">Q: ' + item.q + '</div>';
+      html += '<div class="a">A: ' + item.a + '</div>';
+      html += '</div>';
+    });
+    results.innerHTML = html;
+  }
+}
+
+function toggleKBAnswer(el){
+  el.classList.toggle('open');
+}
+
+function askKB(question){
+  document.getElementById('kbSearch').value = question;
+  searchKB();
+  document.getElementById('kbResults').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
 // ===== FAQ Toggle =====
