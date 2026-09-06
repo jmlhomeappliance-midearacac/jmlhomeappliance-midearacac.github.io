@@ -593,31 +593,74 @@
   gap: 12px;
 }
 .ai-chat-msg {
-  max-width: 85%;
+  max-width: 82%;
   padding: 10px 14px;
-  border-radius: 16px;
+  border-radius: 14px;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.55;
   word-wrap: break-word;
   animation: msgFadeIn 0.3s ease;
-}
-@keyframes msgFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  position: relative;
+  margin-bottom: 4px;
 }
 .ai-chat-msg.bot {
   background: #fff;
   color: #2d3436;
   align-self: flex-start;
   border-bottom-left-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  border: 1px solid #f0f0f0;
 }
 .ai-chat-msg.user {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: #fff;
   align-self: flex-end;
   border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
+/* Add sender label */
+.ai-chat-msg .sender-label {
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.ai-chat-msg.bot .sender-label {
+  color: #667eea;
+}
+.ai-chat-msg.user .sender-label {
+  color: rgba(255,255,255,0.8);
+}
+/* Message group spacing */
+.ai-chat-msg + .ai-chat-msg.bot {
+  margin-top: 2px;
+}
+.ai-chat-msg + .ai-chat-msg.user {
+  margin-top: 2px;
+}
+.ai-chat-msg.bot + .ai-chat-msg.user {
+  margin-top: 12px;
+}
+.ai-chat-msg.user + .ai-chat-msg.bot {
+  margin-top: 12px;
+}
+/* Quick replies container */
+.ai-chat-quick-wrapper {
+  align-self: flex-start;
+  max-width: 85%;
+  margin-bottom: 8px;
+}
+.ai-chat-quick-label {
+  font-size: 10px;
+  color: #b2bec3;
+  margin-bottom: 6px;
+  padding-left: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .ai-chat-typing {
   display: flex;
   gap: 4px;
@@ -2433,7 +2476,7 @@ function toggleAiChat() {
 }
 
 function aiChatWelcome() {
-  addAiChatMsg('bot', 'Hello! &#128075; I\'m Emma, your AI Sales Assistant at JM-ideal. I can help you with product info, pricing, shipping, and more. How can I help you today?');
+  addAiChatMsg('bot', 'Hello! &#128075; I\'m Jimmy, your AI Sales Assistant at JM-ideal. I can help you with product info, pricing, shipping, and more. How can I help you today?');
   setTimeout(function() {
     addAiChatQuickReplies([
       'Show me product prices',
@@ -2449,7 +2492,8 @@ function addAiChatMsg(type, text) {
   var container = document.getElementById('aiChatMessages');
   var msg = document.createElement('div');
   msg.className = 'ai-chat-msg ' + type;
-  msg.innerHTML = text;
+  var label = type === 'bot' ? 'Jimmy' : 'You';
+  msg.innerHTML = '<div class="sender-label">' + label + '</div>' + text;
   container.appendChild(msg);
   container.scrollTop = container.scrollHeight;
   aiChatConversation.push({type: type, text: text});
@@ -2458,8 +2502,8 @@ function addAiChatMsg(type, text) {
 function addAiChatQuickReplies(buttons) {
   var container = document.getElementById('aiChatMessages');
   var wrapper = document.createElement('div');
-  wrapper.className = 'ai-chat-msg bot';
-  var html = '<div style="margin-bottom:6px;font-size:12px;color:#636e72">Quick questions:</div><div class="ai-chat-quick-replies">';
+  wrapper.className = 'ai-chat-quick-wrapper';
+  var html = '<div class="ai-chat-quick-label">&#128161; Quick questions</div><div class="ai-chat-quick-replies">';
   buttons.forEach(function(btn) {
     html += '<button class="ai-chat-quick-btn" onclick="aiChatQuickClick(\'' + btn.replace(/'/g, "\\'") + '\')">' + btn + '</button>';
   });
@@ -2595,7 +2639,7 @@ setTimeout(function() {
     <div class="ai-chat-header">
       <div class="ai-chat-avatar">&#129302;</div>
       <div class="ai-chat-header-info">
-        <div class="ai-chat-header-name">JM-ideal Sales Assistant <span style="font-size:10px;background:rgba(255,255,255,0.2);padding:2px 6px;border-radius:8px">AI</span></div>
+        <div class="ai-chat-header-name">Jimmy - JM-ideal Sales Assistant <span style="font-size:10px;background:rgba(255,255,255,0.2);padding:2px 6px;border-radius:8px">AI</span></div>
         <div class="ai-chat-header-status"><span class="ai-chat-status-dot"></span>Online - Reply in seconds</div>
       </div>
       <button class="ai-chat-close" onclick="toggleAiChat()">&#10005;</button>
@@ -2605,7 +2649,7 @@ setTimeout(function() {
       <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter')sendAiChatMsg()">
       <button class="ai-chat-send" onclick="sendAiChatMsg()">&#10148;</button>
     </div>
-    <div class="ai-chat-footer">Powered by JM-ideal AI | <a href="https://wa.me/8613318393556" target="_blank">Talk to human on WhatsApp</a></div>
+    <div class="ai-chat-footer">Powered by Jimmy AI | JM-ideal | <a href="https://wa.me/8613318393556" target="_blank">Talk to human on WhatsApp</a></div>
   </div>
 </div>
 
