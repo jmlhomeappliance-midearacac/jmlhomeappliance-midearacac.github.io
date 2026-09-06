@@ -1025,12 +1025,12 @@
   <div class="container">
     <div class="kb-wrap">
       <div class="kb-head">
-        <h2>&#129302; AI Product Knowledge Base</h2>
-        <p>Ask any question about our products — get instant answers 24/7</p>
+        <h2>&#10052;&#65039; AC Buddy <span style="font-size:14px;font-weight:400;color:#94a3b8">| Your AI Cooling Assistant</span></h2>
+        <p>Powered by JM-ideal | Trained on Midea factory data | Instant answers 24/7</p>
       </div>
       <div class="kb-search-wrap">
         <div class="kb-search-box">
-          <input type="text" id="kbSearch" placeholder="e.g. What is the MOQ for VRF? / How to install split AC? / Warranty period?" oninput="searchKB()" onkeydown="if(event.key==='Enter')searchKB()">
+          <input type="text" id="kbSearch" placeholder="Ask AC Buddy... e.g. What compressor is in 12K split AC? / MOQ? / Shipping to Ghana?" oninput="searchKB()" onkeydown="if(event.key==='Enter')searchKB()">
           <span class="kb-search-icon">&#128269;</span>
         </div>
         <button class="kb-search-btn" onclick="searchKB()">Search</button>
@@ -1065,6 +1065,7 @@
           <span class="kb-suggest-item" onclick="askKB('Can I get white-label packaging?')">White-label packaging?</span>
         </div>
       </div>
+      <div style="text-align:center;margin:16px 0"><a href="ac-buddy.html" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:10px 20px;border-radius:10px;text-decoration:none;font-weight:600;font-size:13px;transition:transform .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">&#128279; Open AC Buddy (Full Page) | Share with customers</a></div>
       <div class="kb-whatsapp">
         <p>Can't find your answer? Get AI-assisted reply on WhatsApp</p>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
@@ -1685,21 +1686,18 @@ var CN_EN_MAP = {
   '铜管': 'copper pipe tube connection',
 };
 
-// Override searchKB to use current language + Chinese support
-var originalSearchKB = searchKB;
+// AC Buddy - AI Search Engine (fixed version)
 searchKB = function(){
   var rawQuery = document.getElementById('kbSearch').value.toLowerCase().trim();
   var results = document.getElementById('kbResults');
   if(!rawQuery){
-    results.innerHTML = '<div class="kb-empty"><div class="icon">&#128161;</div><p>' + (currentKBLang === 'fr' ? 'Tapez une question ci-dessus ou cliquez sur une categorie' : 'Type a question above or click a category to browse common questions (English / Chinese supported)') + '</p></div>';
+    results.innerHTML = '<div class="kb-empty"><div class="icon">&#128161;</div><p>Type a question above or click a category to browse common questions (English / Chinese supported)</p></div>';
     return;
   }
   // Translate Chinese keywords to English for matching
   var query = rawQuery;
-  var extraKeywords = [];
   for(var cn in CN_EN_MAP){
     if(rawQuery.indexOf(cn) > -1){
-      extraKeywords.push(CN_EN_MAP[cn]);
       query = query.replace(new RegExp(cn, 'g'), ' ' + CN_EN_MAP[cn] + ' ');
     }
   }
@@ -1722,17 +1720,25 @@ searchKB = function(){
   });
   scored.sort(function(a, b){ return b.score - a.score; });
   if(scored.length === 0){
-    results.innerHTML = '<div class="kb-empty"><div class="icon">&#128533;</div><p>' + (currentKBLang === 'fr' ? 'Aucune reponse trouvee. Essayez dautres mots-cles ou demandez sur WhatsApp.' : 'No matching answer found. Try different keywords or ask us on WhatsApp.') + '</p></div>';
+    results.innerHTML = '<div class="kb-empty"><div class="icon">&#129300;</div><p>No matching answer found. Try different keywords or <a href="https://wa.me/8613318393556?text=Hello%20AC%20Buddy%2C%20I%20have%20a%20question" target="_blank" style="color:#ff8c00">ask AC Buddy on WhatsApp</a>.</p></div>';
     return;
   }
   var html = '';
-  scored.forEach(function(entry, idx){
-    html += '<div class="kb-result-item' + (idx === 0 ? ' open' : '') + '" onclick="toggleKBAnswer(this)">';
-    html += '<div class="q">Q: ' + entry.item.q + '</div>';
+  var showCount = Math.min(scored.length, 6);
+  for(var i = 0; i < showCount; i++){
+    var entry = scored[i];
+    var isBest = i === 0;
+    html += '<div class="kb-result-item' + (isBest ? ' open best-match' : '') + '" onclick="toggleKBAnswer(this)">';
+    html += '<div class="q">' + (isBest ? '<span class="best-badge">&#11088; BEST MATCH</span> ' : '') + 'Q: ' + entry.item.q + '</div>';
     html += '<div class="a">A: ' + entry.item.a + '</div>';
     html += '</div>';
-  });
+  }
+  if(scored.length > 6){
+    html += '<div style="text-align:center;padding:10px;color:#94a3b8;font-size:12px">Showing top 6 of ' + scored.length + ' matches. Refine your question for more precise results.</div>';
+  }
   results.innerHTML = html;
+  // Scroll to results
+  results.scrollIntoView({behavior:'smooth', block:'nearest'});
 };
 
 // ===== AI Ask via WhatsApp =====

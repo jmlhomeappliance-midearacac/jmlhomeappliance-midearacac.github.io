@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AC Buddy - Your AI Cooling Assistant | JM-ideal</title>
+<meta name="description" content="AC Buddy by JM-ideal - AI-powered air conditioner knowledge assistant. Instant answers on specs, pricing, installation, warranty for West Africa distributors.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%);min-height:100vh;color:#fff;overflow-x:hidden}
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.particle{position:absolute;width:4px;height:4px;background:rgba(255,140,0,.3);border-radius:50%;animation:float 15s infinite}
+@keyframes float{0%,100%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) translateX(50px);opacity:0}}
+.container{max-width:900px;margin:0 auto;padding:20px;position:relative;z-index:1}
+.header{text-align:center;padding:40px 20px 30px}
+.logo{display:inline-flex;align-items:center;gap:12px;margin-bottom:20px}
+.logo-icon{width:60px;height:60px;background:linear-gradient(135deg,#ff8c00,#ff6b00);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 8px 32px rgba(255,140,0,.4);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 32px rgba(255,140,0,.4)}50%{box-shadow:0 8px 48px rgba(255,140,0,.7)}}
+.logo-text{text-align:left}
+.logo-text h1{font-size:28px;font-weight:800;background:linear-gradient(135deg,#fff,#ff8c00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-text p{font-size:13px;color:#94a3b8}
+.badge{display:inline-block;background:linear-gradient(135deg,#7c3aed,#a855f7);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px;letter-spacing:.5px}
+.tagline{font-size:18px;color:#cbd5e1;margin-bottom:8px}
+.subtagline{font-size:14px;color:#64748b;margin-bottom:30px}
+.chat-box{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:24px;margin-bottom:24px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.input-wrap{display:flex;gap:12px;margin-bottom:20px}
+.input-box{flex:1;position:relative}
+.input-box input{width:100%;padding:16px 50px 16px 20px;background:rgba(255,255,255,.08);border:2px solid rgba(255,140,0,.3);border-radius:16px;color:#fff;font-size:16px;outline:none;transition:all .3s}
+.input-box input:focus{border-color:#ff8c00;box-shadow:0 0 0 4px rgba(255,140,0,.15)}
+.input-box input::placeholder{color:#64748b}
+.input-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:20px;opacity:.5}
+.send-btn{width:56px;height:56px;background:linear-gradient(135deg,#ff8c00,#ff6b00);border:none;border-radius:16px;color:#fff;font-size:24px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.send-btn:hover{transform:scale(1.05);box-shadow:0 8px 24px rgba(255,140,0,.4)}
+.send-btn:active{transform:scale(.95)}
+.typing{display:none;align-items:center;gap:8px;padding:12px 20px;color:#94a3b8;font-size:14px}
+.typing.show{display:flex}
+.typing-dots{display:flex;gap:4px}
+.typing-dots span{width:8px;height:8px;background:#ff8c00;border-radius:50%;animation:typing 1.4s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-8px)}}
+.results{max-height:500px;overflow-y:auto}
+.results::-webkit-scrollbar{width:6px}
+.results::-webkit-scrollbar-track{background:rgba(255,255,255,.05)}
+.results::-webkit-scrollbar-thumb{background:rgba(255,140,0,.3);border-radius:3px}
+.result-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;margin-bottom:12px;transition:all .3s;animation:slideIn .4s ease}
+.result-card:hover{border-color:rgba(255,140,0,.3);background:rgba(255,255,255,.08)}
+.result-card.best{border-color:rgba(255,140,0,.5);background:linear-gradient(135deg,rgba(255,140,0,.1),rgba(255,255,255,.05))}
+@keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.result-q{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.result-q .q-icon{min-width:32px;height:32px;background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.result-q .q-text{font-weight:600;font-size:15px;color:#e2e8f0;line-height:1.5}
+.result-a{color:#94a3b8;font-size:14px;line-height:1.7;padding-left:42px}
+.result-a strong{color:#ff8c00}
+.score-badge{display:inline-block;background:rgba(34,197,94,.2);color:#4ade80;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-left:8px}
+.categories{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center}
+.cat-btn{padding:8px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;color:#94a3b8;font-size:13px;cursor:pointer;transition:all .3s}
+.cat-btn:hover,.cat-btn.active{background:linear-gradient(135deg,#ff8c00,#ff6b00);border-color:transparent;color:#fff}
+.suggestions{margin-top:24px}
+.suggestions h4{color:#64748b;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;text-align:center}
+.suggest-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.suggest-item{padding:8px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;color:#cbd5e1;font-size:13px;cursor:pointer;transition:all .3s}
+.suggest-item:hover{background:rgba(255,140,0,.15);border-color:rgba(255,140,0,.3);color:#ff8c00}
+.footer{text-align:center;padding:30px 20px;color:#475569;font-size:12px}
+.footer a{color:#ff8c00;text-decoration:none}
+.share-bar{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.share-btn{padding:10px 20px;border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s;border:none;color:#fff;display:flex;align-items:center;gap:8px}
+.share-btn.wa{background:#25D366}
+.share-btn.fb{background:#1877F2}
+.share-btn.li{background:#0A66C2}
+.share-btn.copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.share-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.stats{display:flex;gap:20px;justify-content:center;margin:20px 0;flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-num{font-size:24px;font-weight:800;color:#ff8c00}
+.stat-label{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px}
+@media(max-width:600px){.logo-text h1{font-size:22px}.input-wrap{flex-direction:column}.send-btn{width:100%;height:48px}.chat-box{padding:16px}.result-a{padding-left:0}}
+</style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+<div class="container">
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">&#10052;&#65039;</div>
+      <div class="logo-text">
+        <h1>AC Buddy</h1>
+        <p>by JM-ideal | JML Electric Appliance Ltd</p>
+      </div>
+    </div>
+    <div class="badge">&#129302; AI-POWERED COOLING ASSISTANT</div>
+    <div class="tagline">Your 24/7 Air Conditioner Expert</div>
+    <div class="subtagline">Instant answers on specs, pricing, installation, warranty & more — trained on Midea factory data</div>
+    <div class="stats">
+      <div class="stat-item"><div class="stat-num" id="kbCount">0</div><div class="stat-label">Answers</div></div>
+      <div class="stat-item"><div class="stat-num">12+</div><div class="stat-label">Product Lines</div></div>
+      <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Available</div></div>
+    </div>
+  </div>
+
+  <div class="chat-box">
+    <div class="categories" id="categories">
+      <span class="cat-btn active" onclick="filterCat('all',this)">All</span>
+      <span class="cat-btn" onclick="filterCat('product',this)">Products</span>
+      <span class="cat-btn" onclick="filterCat('vrf',this)">VRF</span>
+      <span class="cat-btn" onclick="filterCat('install',this)">Installation</span>
+      <span class="cat-btn" onclick="filterCat('warranty',this)">Warranty</span>
+      <span class="cat-btn" onclick="filterCat('shipping',this)">Shipping</span>
+      <span class="cat-btn" onclick="filterCat('price',this)">Price & MOQ</span>
+    </div>
+    <div class="input-wrap">
+      <div class="input-box">
+        <input type="text" id="searchInput" placeholder="Ask me anything... e.g. What compressor is in 12K split AC?" onkeydown="if(event.key==='Enter')doSearch()">
+        <span class="input-icon">&#128172;</span>
+      </div>
+      <button class="send-btn" onclick="doSearch()">&#10148;</button>
+    </div>
+    <div class="typing" id="typing">
+      <div class="typing-dots"><span></span><span></span><span></span></div>
+      <span>AC Buddy is thinking...</span>
+    </div>
+    <div class="results" id="results">
+      <div style="text-align:center;padding:40px 20px;color:#64748b">
+        <div style="font-size:48px;margin-bottom:16px">&#128161;</div>
+        <p style="font-size:15px;margin-bottom:8px">Hi! I'm AC Buddy, your AI cooling assistant.</p>
+        <p style="font-size:13px">Type a question above or click a suggestion below to get started.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="suggestions">
+    <h4>Popular Questions</h4>
+    <div class="suggest-list" id="suggestList"></div>
+  </div>
+
+  <div class="share-bar">
+    <button class="share-btn wa" onclick="shareWA()">&#128241; WhatsApp</button>
+    <button class="share-btn fb" onclick="shareFB()">&#120143; Facebook</button>
+    <button class="share-btn li" onclick="shareLI()">&#128279; LinkedIn</button>
+    <button class="share-btn copy" onclick="copyLink()">&#128203; Copy Link</button>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 JM-ideal | JML Electric Appliance Ltd | West Africa's Trusted AC Partner</p>
+    <p style="margin-top:8px"><a href="https://www.jmideal.cn">www.jmideal.cn</a> | WhatsApp: +86 133 1839 3556 | Email: jmlhomeappliance@gmail.com</p>
+  </div>
+</div>
+
+<script>
+// Knowledge base data - will be loaded from products.html or embedded
+var KB_DATA = [];
+var currentCat = 'all';
+var CN_EN_MAP = {};
+
+// Load KB data from parent or fetch
+function loadKB(){
+  // Try to get from parent window (if embedded)
+  if(window.parent && window.parent.KB_DATA){
+    KB_DATA = window.parent.KB_DATA;
+    CN_EN_MAP = window.parent.CN_EN_MAP || {};
+  }
+  document.getElementById('kbCount').textContent = KB_DATA.length;
+  renderSuggestions();
+}
+
+function renderSuggestions(){
+  var suggests = [
+    'What is MOQ for split AC?',
+    'What compressor is used in 12000 BTU split AC?',
+    'Shipping time to Tema Ghana?',
+    'Are units 220V 50Hz?',
+    'Can I get white-label packaging?',
+    'What is V8 VRF capacity range?',
+    'How long is compressor warranty?',
+    'Multi split system advantages?'
+  ];
+  var html = '';
+  suggests.forEach(function(q){
+    html += '<span class="suggest-item" onclick="askQuestion(\''+q.replace(/'/g,"\\'")+'\')">'+q+'</span>';
+  });
+  document.getElementById('suggestList').innerHTML = html;
+}
+
+function filterCat(cat, el){
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(function(b){b.classList.remove('active')});
+  el.classList.add('active');
+  if(document.getElementById('searchInput').value){
+    doSearch();
+  }
+}
+
+function askQuestion(q){
+  document.getElementById('searchInput').value = q;
+  doSearch();
+}
+
+function doSearch(){
+  var rawQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+  var results = document.getElementById('results');
+  var typing = document.getElementById('typing');
+  
+  if(!rawQuery){
+    results.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#64748b"><div style="font-size:48px;margin-bottom:16px">&#128161;</div><p>Type a question to get started.</p></div>';
+    return;
+  }
+  
+  // Show typing animation
+  typing.classList.add('show');
+  results.innerHTML = '';
+  
+  setTimeout(function(){
+    typing.classList.remove('show');
+    
+    // Translate Chinese keywords
+    var query = rawQuery;
+    for(var cn in CN_EN_MAP){
+      if(rawQuery.indexOf(cn) > -1){
+        query = query.replace(new RegExp(cn, 'g'), ' ' + CN_EN_MAP[cn] + ' ');
+      }
+    }
+    query = query.trim();
+    
+    var keywords = query.split(/[\s,?]+/).filter(function(k){return k.length > 1});
+    var scored = [];
+    
+    KB_DATA.forEach(function(item){
+      if(currentCat !== 'all' && item.cat !== currentCat) return;
+      var qText = item.q.toLowerCase();
+      var aText = item.a.toLowerCase();
+      var score = 0;
+      if(qText.indexOf(query) > -1) score += 100;
+      if(aText.indexOf(query) > -1) score += 50;
+      keywords.forEach(function(kw){
+        if(qText.indexOf(kw) > -1) score += 10;
+        if(aText.indexOf(kw) > -1) score += 5;
+      });
+      if(score > 0) scored.push({item:item, score:score});
+    });
+    
+    scored.sort(function(a,b){return b.score - a.score});
+    
+    if(scored.length === 0){
+      results.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#64748b"><div style="font-size:48px;margin-bottom:16px">&#129300;</div><p style="font-size:15px;margin-bottom:12px">No matching answer found.</p><p style="font-size:13px;margin-bottom:20px">Try different keywords or ask us directly on WhatsApp.</p><a href="https://wa.me/8613318393556?text=Hello%20AC%20Buddy%2C%20I%20have%20a%20question%3A%20'+encodeURIComponent(rawQuery)+'" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 24px;border-radius:12px;text-decoration:none;font-weight:600">&#128172; Ask on WhatsApp</a></div>';
+      return;
+    }
+    
+    var html = '';
+    var showCount = Math.min(scored.length, 5);
+    for(var i = 0; i < showCount; i++){
+      var entry = scored[i];
+      var isBest = i === 0;
+      html += '<div class="result-card'+(isBest?' best':'')+'">';
+      html += '<div class="result-q"><div class="q-icon">'+(isBest?'&#11088;':'&#10067;')+'</div><div class="q-text">'+entry.item.q+(isBest?'<span class="score-badge">BEST MATCH</span>':'')+'</div></div>';
+      html += '<div class="result-a">'+entry.item.a+'</div>';
+      html += '</div>';
+    }
+    if(scored.length > 5){
+      html += '<div style="text-align:center;padding:12px;color:#64748b;font-size:13px">Showing top 5 of '+scored.length+' matches. Refine your question for more precise results.</div>';
+    }
+    results.innerHTML = html;
+  }, 600);
+}
+
+function shareWA(){
+  var url = encodeURIComponent(window.location.href);
+  var text = encodeURIComponent('Check out AC Buddy - AI Cooling Assistant by JM-ideal! Get instant answers on air conditioner specs, pricing, installation and more.');
+  window.open('https://wa.me/?text='+text+'%20'+url, '_blank');
+}
+function shareFB(){
+  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href), '_blank');
+}
+function shareLI(){
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href), '_blank');
+}
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(function(){
+    alert('Link copied to clipboard! Share it with your customers.');
+  });
+}
+
+// Create particles
+for(var i = 0; i < 30; i++){
+  var p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random()*100 + '%';
+  p.style.animationDelay = Math.random()*15 + 's';
+  p.style.animationDuration = (10 + Math.random()*10) + 's';
+  document.getElementById('particles').appendChild(p);
+}
+
+// Load KB on page load
+window.onload = function(){
+  loadKB();
+  // If no KB data loaded (standalone page), fetch from products.html
+  if(KB_DATA.length === 0){
+    fetch('products.html')
+      .then(function(r){return r.text()})
+      .then(function(html){
+        var match = html.match(/var KB_DATA = (\[[\s\S]*?\]);/);
+        if(match){
+          try{
+            KB_DATA = JSON.parse(match[1].replace(/(\w+):/g, '"$1":').replace(/,\s*}/g, '}').replace(/,\s*]/g, ']'));
+          }catch(e){
+            // Fallback: eval in sandbox
+            eval(match[0]);
+          }
+          document.getElementById('kbCount').textContent = KB_DATA.length;
+          renderSuggestions();
+        }
+        var cnMatch = html.match(/var CN_EN_MAP = ({[\s\S]*?});/);
+        if(cnMatch){
+          eval(cnMatch[0]);
+        }
+      })
+      .catch(function(){
+        document.getElementById('kbCount').textContent = '80+';
+      });
+  }
+};
+</script>
+</body>
+</html>
