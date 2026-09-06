@@ -538,7 +538,47 @@
       <h2>Send Inquiry / Leave a Message</h2>
       <p>Fill in the form below — we reply within hours with pricing, specs and shipping options.</p>
     </div>
-    <style>body.detail-mode #inquiry{background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);padding-top:30px}body.detail-mode #inquiry .inquiry-head h2{color:#0b2447}body.detail-mode #knowledgebase{background:#fafafe}.proof-modal{display:none;position:fixed;z-index:10000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.85);overflow:auto}.proof-modal.active{display:flex;align-items:center;justify-content:center}.proof-modal-content{background:#fff;border-radius:12px;padding:24px;max-width:680px;width:90%;max-height:90vh;overflow-y:auto;position:relative;text-align:center}.proof-modal-close{position:absolute;top:12px;right:16px;font-size:32px;cursor:pointer;color:#64748b;line-height:1}.proof-modal-close:hover{color:#1e293b}.proof-modal-content h3{color:#0f172a;margin:0 0 16px 0;font-size:20px}.proof-modal-content img{max-width:100%;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:12px}.proof-modal-content p{color:#475569;font-size:14px;line-height:1.6;margin:0}.midea-genuine-card[onclick]{transition:transform 0.2s,box-shadow 0.2s}.midea-genuine-card[onclick]:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}</style>
+    <style>body.detail-mode #inquiry{background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);padding-top:30px}body.detail-mode #inquiry .inquiry-head h2{color:#0b2447}body.detail-mode #knowledgebase{background:#fafafe}.proof-modal{display:none;position:fixed;z-index:10000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.85);overflow:auto}.proof-modal.active{display:flex;align-items:center;justify-content:center}.proof-modal-content{background:#fff;border-radius:12px;padding:24px;max-width:680px;width:90%;max-height:90vh;overflow-y:auto;position:relative;text-align:center}.proof-modal-close{position:absolute;top:12px;right:16px;font-size:32px;cursor:pointer;color:#64748b;line-height:1}.proof-modal-close:hover{color:#1e293b}.proof-modal-content h3{color:#0f172a;margin:0 0 16px 0;font-size:20px}.proof-modal-content img{max-width:100%;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:12px}.proof-modal-content p{color:#475569;font-size:14px;line-height:1.6;margin:0}.midea-genuine-card[onclick]{transition:transform 0.2s,box-shadow 0.2s}.midea-genuine-card[onclick]:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+/* === Mobile Optimization for AI Search / AC Buddy === */
+@media(max-width:768px){
+.kb-section{padding:30px 15px}
+.kb-head h2{font-size:22px !important}
+.kb-head p{font-size:14px !important;color:#fff !important}
+.kb-search-box input{font-size:15px !important;padding:14px 45px 14px 16px !important;color:#222 !important}
+.kb-search-box input::placeholder{color:#666 !important;font-size:13px !important}
+.kb-search-btn{font-size:14px !important;padding:12px 20px !important}
+.kb-categories{gap:6px}
+.kb-cat{font-size:12px !important;padding:5px 10px !important;color:#fff !important}
+.kb-results{padding:12px}
+.kb-result-item{padding:12px !important}
+.kb-result-item .q{font-size:14px !important;color:#ffb347 !important;font-weight:700 !important}
+.kb-result-item .a{font-size:14px !important;color:#fff !important;line-height:1.7 !important}
+.kb-result-item .a strong{color:#ffd700 !important}
+.kb-suggest h4{font-size:12px !important;color:#fff !important;opacity:1 !important}
+.kb-suggest-item{font-size:13px !important;color:#fff !important;padding:8px 12px !important}
+.kb-whatsapp p{font-size:13px !important;color:#fff !important}
+.kb-whatsapp a{font-size:13px !important;padding:10px 16px !important}
+.kb-empty{color:#fff !important;font-size:14px !important}
+.kb-empty p{color:#fff !important;font-size:14px !important}
+.kb-lang-btn{font-size:12px !important;padding:4px 10px !important}
+.best-badge{font-size:11px !important}
+}
+@media(max-width:480px){
+.kb-head h2{font-size:19px !important}
+.kb-search-box input{font-size:14px !important}
+.kb-result-item .q{font-size:13px !important}
+.kb-result-item .a{font-size:13px !important}
+.kb-suggest-item{font-size:12px !important}
+}
+/* Ensure high contrast on all screen sizes */
+.kb-head p{color:#fff !important}
+.kb-result-item .a{color:#fff !important}
+.kb-suggest h4{color:#fff !important;opacity:1 !important}
+.kb-suggest-item{color:#fff !important}
+.kb-whatsapp p{color:#fff !important}
+.kb-empty{color:#fff !important}
+.kb-empty p{color:#fff !important}
+</style>
     <form class="inquiry-form" id="inquiryForm" onsubmit="return submitInquiry(event)">
       <div class="form-row">
         <div class="form-group">
