@@ -95,6 +95,51 @@
       .product-info h1 { font-size:20px; }
       .nav { display:none; }
     }
+  
+    /* AI Chat & Inquiry Form Styles */
+    .ai-section { background:linear-gradient(135deg,#0b2447,#1a3a6e); color:#fff; padding:30px; border-radius:12px; margin-bottom:30px; text-align:center; }
+    .ai-section h2 { color:#fff; border-bottom:none; margin-bottom:10px; }
+    .ai-section p { opacity:0.9; margin-bottom:20px; font-size:15px; }
+    .ai-buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .ai-btn { padding:12px 24px; border-radius:25px; text-decoration:none; font-weight:700; font-size:14px; display:inline-flex; align-items:center; gap:8px; transition:transform 0.2s; }
+    .ai-btn:hover { transform:translateY(-2px); }
+    .ai-btn-primary { background:#7c3aed; color:#fff; }
+    .ai-btn-whatsapp { background:#25D366; color:#fff; }
+    .inquiry-section { background:#fff; padding:30px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.05); margin-bottom:30px; }
+    .inquiry-section h2 { font-size:22px; color:#0b2447; margin-bottom:10px; padding-bottom:10px; border-bottom:2px solid #f59e0b; }
+    .inquiry-section .sub { color:#666; font-size:14px; margin-bottom:20px; }
+    .inquiry-form { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .form-group { display:flex; flex-direction:column; }
+    .form-group.full { grid-column:1/-1; }
+    .form-group label { font-size:13px; font-weight:600; color:#0b2447; margin-bottom:5px; }
+    .form-group label .req { color:#ef4444; }
+    .form-group input, .form-group select, .form-group textarea { padding:10px 12px; border:1px solid #ddd; border-radius:8px; font-size:14px; font-family:inherit; transition:border-color 0.2s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:#f59e0b; }
+    .form-group textarea { min-height:100px; resize:vertical; }
+    .form-submit { grid-column:1/-1; text-align:center; margin-top:10px; }
+    .form-submit button { background:linear-gradient(135deg,#f59e0b,#d97706); color:#fff; border:none; padding:14px 40px; border-radius:25px; font-size:16px; font-weight:700; cursor:pointer; transition:transform 0.2s; }
+    .form-submit button:hover { transform:translateY(-2px); }
+    .form-submit button:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+    .form-msg { grid-column:1/-1; text-align:center; padding:12px; border-radius:8px; font-size:14px; display:none; }
+    .form-msg.success { background:#d1fae5; color:#065f46; display:block; }
+    .form-msg.error { background:#fee2e2; color:#991b1b; display:block; }
+    @media (max-width:768px) {
+      .inquiry-form { grid-template-columns:1fr; }
+    }
+
+  
+    /* Spec Sheet Image Styles */
+    .spec-sheet-section { background:#fff; padding:30px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.05); margin-bottom:30px; }
+    .spec-sheet-section h2 { font-size:22px; color:#0b2447; margin-bottom:10px; padding-bottom:10px; border-bottom:2px solid #f59e0b; }
+    .spec-sheet-section .sub { color:#666; font-size:14px; margin-bottom:20px; }
+    .spec-sheet-img { width:100%; border-radius:8px; border:1px solid #eee; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+    .spec-sheet-actions { display:flex; gap:12px; margin-top:20px; flex-wrap:wrap; justify-content:center; }
+    .spec-btn { padding:12px 24px; border-radius:25px; text-decoration:none; font-weight:700; font-size:14px; display:inline-flex; align-items:center; gap:8px; transition:transform 0.2s; }
+    .spec-btn:hover { transform:translateY(-2px); }
+    .spec-btn-download { background:#0b2447; color:#fff; }
+    .spec-btn-whatsapp { background:#25D366; color:#fff; }
+    .spec-btn-print { background:#6b7280; color:#fff; }
+
   </style>
 </head>
 <body>
@@ -214,6 +259,18 @@
       <p class="market-text">Perfect for renters who cannot install split AC, small shops, temporary offices, event spaces, and homes needing supplemental cooling. Very popular in Ghana & Nigeria among young professionals and small business owners. Easy to resell — high demand in local markets.</p>
     </div>
     
+    
+    <div class="spec-sheet-section">
+      <h2>📋 Product Spec Sheet</h2>
+      <p class="sub">Complete technical specifications at a glance. Download or share directly with your customers on WhatsApp.</p>
+      <img src="images/spec_p4.jpg?v=20260909" alt="9000 BTU Portable Air Conditioner Technical Specifications" class="spec-sheet-img" loading="lazy">
+      <div class="spec-sheet-actions">
+        <a href="images/spec_p4.jpg?v=20260909" download="9000_BTU_Portable_Air_Conditioner_Spec_Sheet.jpg" class="spec-btn spec-btn-download">⬇️ Download Spec Sheet</a>
+        <a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20am%20interested%20in%209000%20BTU%20Portable%20Air%20Conditioner.%20Please%20share%20the%20full%20spec%20sheet%20and%20pricing." target="_blank" class="spec-btn spec-btn-whatsapp">💬 Share on WhatsApp</a>
+        <a href="javascript:window.print()" class="spec-btn spec-btn-print">🖨️ Print</a>
+      </div>
+    </div>
+
     <div class="section">
       <h2>🔗 Related Products</h2>
       <div class="related-grid">
@@ -260,5 +317,49 @@
   </footer>
   
   <a href="https://wa.me/8613318393556?text=Hello%20JM-ideal%2C%20I%20want%20to%20inquire%20about%20your%20products" target="_blank" class="whatsapp-float">💬</a>
+
+<script>
+function submitInquiry(e) {
+  e.preventDefault();
+  var form = document.getElementById("inquiryForm");
+  var btn = document.getElementById("inquiryBtn");
+  var msg = document.getElementById("inquiryMsg");
+  var formData = new FormData(form);
+  formData.append("_subject", "New Inquiry from jmideal.cn - " + (formData.get("country") || "West Africa"));
+  formData.append("_template", "table");
+  formData.append("_captcha", "false");
+  
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+  msg.className = "form-msg";
+  msg.style.display = "none";
+  
+  fetch("https://formsubmit.co/ajax/jmlhomeappliance@gmail.com", {
+    method: "POST",
+    body: formData
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(data){
+    if(data.success === "true" || data.success === true){
+      msg.textContent = "Thank you! Your inquiry has been sent. We will reply within hours.";
+      msg.className = "form-msg success";
+      form.reset();
+    } else {
+      msg.textContent = "Something went wrong. Please email jmlhomeappliance@gmail.com or WhatsApp +86 133 1839 3556.";
+      msg.className = "form-msg error";
+    }
+  })
+  .catch(function(err){
+    msg.textContent = "Network error. Please email jmlhomeappliance@gmail.com or WhatsApp +86 133 1839 3556.";
+    msg.className = "form-msg error";
+  })
+  .finally(function(){
+    btn.disabled = false;
+    btn.textContent = "Send Inquiry";
+  });
+  return false;
+}
+</script>
+
 </body>
 </html>
